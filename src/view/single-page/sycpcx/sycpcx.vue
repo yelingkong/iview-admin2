@@ -2,7 +2,7 @@
   <div>
     <Row justify="space-between" class="list-zt-body">
       <div v-for="(item,index) in listzt">
-        <Col span="6">
+        <Col class="list_zt_7">
           <div class="list-zt" :class="{'hover':index==listztHover}" @click="listztHover=index">
             <div class="list-zt-top"></div>
             <span>{{item.name}}</span>
@@ -21,15 +21,19 @@
             </FormItem>
           </i-col>
           <i-col span="8">
-            <FormItem label="溯源企业：">
-              <Input v-model="value" placeholder="请输入主体名称"/>
+            <FormItem label="赋码日期：">
+              <DatePicker :value="countDate" type="daterange" placement="bottom-end"
+                          style="width: 100%" transfer></DatePicker>
             </FormItem>
           </i-col>
           <i-col span="8">
-            <FormItem label="审核状态：">
-              <Select v-model="reviewStatusModel">
-                <Option v-for="item in reviewStatus" :value="item.value" :key="item.value">{{ item.label }}</Option>
-              </Select>
+            <FormItem label="产品名称：">
+              <Input v-model="value" placeholder="请输入"/>
+            </FormItem>
+          </i-col>
+          <i-col span="8">
+            <FormItem label="生成主体：">
+              <Input v-model="value" placeholder="请输入"/>
             </FormItem>
           </i-col>
 
@@ -45,21 +49,10 @@
       </Row>
     </Row>
     <div class="list_table">
-      <Row :gutter="16" class="button_left">
-        <Col>
-          <i-col span="3">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fl">审核</Button>
-            </i-col>
-            <i-col span="12">
-              <Button size="large" class="fl">查看</Button>
-            </i-col>
-          </i-col>
-        </Col>
-      </Row>
       <Row :gutter="16" class="search_list2">
+        <Button class="exportdata" type="primary" size="large" @click="exportData(1)">导出数据</Button>
         <Col>
-          <Table :columns="columns1" :data="data1" ref="table"></Table>
+          <Table :columns="columns" :data="tableData" ref="table"></Table>
         </Col>
       </Row>
       <Row :gutter="16" type="flex" justify="end">
@@ -73,25 +66,43 @@
   </div>
 </template>
 <script>
+  import {getTableData} from '@/api/data'
+  import Tables from '_c/tables'
+
   export default {
-    data () {
+    components: {
+      Tables
+    },
+    data() {
       return {
         listztHover: 0,
         listzt: [
           {
-            name: '合计主体数',
-            num: 1332
+            name: '合计产品数',
+            num: 133333
           },
           {
-            name: '待审核',
+            name: '蔬菜',
             num: 322
           },
           {
-            name: '待复审',
+            name: '水果',
             num: 352
           },
           {
-            name: '已审核',
+            name: '水产品',
+            num: 24
+          },
+          {
+            name: '畜禽',
+            num: 352
+          },
+          {
+            name: '粮油',
+            num: 24
+          },
+          {
+            name: '其他',
             num: 24
           }
         ],
@@ -165,38 +176,20 @@
           zone: '010',
           phone: '1000000'
         },
-        columns1: [
-          {
-            type: 'selection',
-            width: 60,
-            align: 'center'
-          },
-          {
-            title: '地区',
-            key: 'name'
-          },
-          {
-            title: '主体名称',
-            key: 'key1'
-          },
-          {
-            title: '注册时间',
-            key: 'key2'
-          },
-          {
-            title: '审核状态',
-            key: 'key3'
-          },
-          {
-            title: '审核日期',
-            key: 'key4'
-          },
+        columns: [
+          {type: 'selection', width: 60, align: 'center'},
+          {title: '主体名称', key: 'address', sortable: true},
+          {title: '产品名称', key: 'zhuti',},
+          {title: '数量', key: 'shuliang',},
+          {title: '产品追溯码', key: 'zhuisuma',width:230},
+          {title: '赋码日期', key: 'createTime',},
+          {title: '标签打印数量', key: 'zhangshu',},
           {
             title: '操作',
             key: 'action',
             width: 150,
             align: 'center',
-            render: (h, params) => {
+            render: (h, {row, index}) => {
               return h('div', [
                 h('Button', {
                   props: {
@@ -208,92 +201,15 @@
                   },
                   on: {
                     click: () => {
-                      this.show(params.index)
+                      this.show(row.index)
                     }
                   }
                 }, '查看'),
-                h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.remove(params.index)
-                    }
-                  }
-                }, '审核')
               ])
             }
           }
         ],
-        data1: [
-          {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          },
-
-        ],
+        tableData: [],
         data: [{
           value: 'beijing',
           label: '北京',
@@ -343,22 +259,24 @@
         }]
       }
     },
-    mounted: function () {
-
+    mounted() {
+      getTableData().then(res => {
+        this.tableData = res.data
+      })
     },
     methods: {
-      exportData (type) {
+      exportData(type) {
         this.$refs.table.exportCsv({
           filename: 'The original data'
         })
       },
-      show (index) {
+      show(index) {
         this.$Modal.info({
           title: 'User Info',
           content: `Name：${this.data1[index].name}<br>Age：${this.data1[index].age}<br>Address：${this.data1[index].address}`
         })
       },
-      remove (index) {
+      remove(index) {
         this.data1.splice(index, 1)
       }
     }
@@ -480,7 +398,7 @@
 
   .search_list2 {
     padding-top: 10px;
-    margin: 10px !important;
+    padding: 10px !important;
   }
 
   .fr {
@@ -500,6 +418,16 @@
 
   .button_left {
     margin-left: 10px !important;
+  }
+
+  .list_zt_7 {
+    width: 14.28%;
+    float: left;
+  }
+
+  .exportdata {
+    margin-left: 10px;
+    margin-bottom: 10px;
   }
 </style>
 

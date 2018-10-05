@@ -21,18 +21,23 @@
             </FormItem>
           </i-col>
           <i-col span="8">
-            <FormItem label="溯源企业：">
-              <Input v-model="value" placeholder="请输入主体名称"/>
+            <FormItem label="巡查日期：">
+              <DatePicker :value="countDate" type="daterange" placement="bottom-end"
+                          style="width: 100%" transfer></DatePicker>
             </FormItem>
           </i-col>
           <i-col span="8">
-            <FormItem label="审核状态：">
+            <FormItem label="追溯企业：">
+              <Input v-model="value" placeholder="请输入"/>
+            </FormItem>
+          </i-col>
+          <i-col span="8">
+            <FormItem label="巡查结果：">
               <Select v-model="reviewStatusModel">
-                <Option v-for="item in reviewStatus" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Option v-for="item in xunchajieguo" :value="item.value" :key="item.value">{{ item.label }}</Option>
               </Select>
             </FormItem>
           </i-col>
-
           <i-col span="3" offset="21">
             <i-col span="12">
               <Button type="primary" size="large" class="fr">查询</Button>
@@ -46,20 +51,12 @@
     </Row>
     <div class="list_table">
       <Row :gutter="16" class="button_left">
-        <Col>
-          <i-col span="3">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fl">审核</Button>
-            </i-col>
-            <i-col span="12">
-              <Button size="large" class="fl">查看</Button>
-            </i-col>
-          </i-col>
-        </Col>
+        <Button class="exportdata" type="primary" size="large"><Icon type="md-add" />新增任务</Button>
+        <Button class="exportdata" size="large">删除</Button>
       </Row>
       <Row :gutter="16" class="search_list2">
         <Col>
-          <Table :columns="columns1" :data="data1" ref="table"></Table>
+          <tables ref="tables" editable v-model="tableData" :columns="columns"/>
         </Col>
       </Row>
       <Row :gutter="16" type="flex" justify="end">
@@ -73,31 +70,38 @@
   </div>
 </template>
 <script>
+  import Tables from '_c/tables'
+  import { getTableData } from '@/api/data'
+
   export default {
+    name: 'zcrzsh',
+    components: {
+      Tables
+    },
     data () {
       return {
         listztHover: 0,
         listzt: [
           {
-            name: '合计主体数',
+            name: '巡查次数',
             num: 1332
           },
           {
-            name: '待审核',
+            name: '巡查人次',
             num: 322
           },
           {
-            name: '待复审',
+            name: '巡查覆盖率',
             num: 352
           },
           {
-            name: '已审核',
+            name: '巡查合格率',
             num: 24
           }
         ],
         reviewStatus: [
           {
-            value: '0',
+            value: '',
             label: '全部'
           },
           {
@@ -111,10 +115,24 @@
           {
             value: '3',
             label: '已复审'
+          }
+        ],
+        xunchajieguo: [
+          {
+            value: '',
+            label: '全部'
           },
           {
-            value: '4',
-            label: '已复审'
+            value: '1',
+            label: '合格'
+          },
+          {
+            value: '2',
+            label: '基本合格'
+          },
+          {
+            value: '3',
+            label: '不合格'
           }
         ],
         enterprises: [
@@ -165,38 +183,58 @@
           zone: '010',
           phone: '1000000'
         },
-        columns1: [
+        columns: [
+          { type: 'selection', width: 60, align: 'center' },
+          { title: '地区', key: 'address', sortable: true },
+          { title: '企业名称', key: 'zhuti', },
+          { title: '检查单位', key: 'createTime', },
           {
-            type: 'selection',
-            width: 60,
-            align: 'center'
+            title: '巡查结果',
+            key: 'reviewTheStatus',
+            render: (h, { row }) => {
+              if (row.reviewTheStatus === 0) {
+                return h('Badge', {
+                  props: {
+                    status: 'default',
+                    text: '待审核'
+                  }
+                })
+              } else if (row.reviewTheStatus === 1) {
+                return h('Badge', {
+                  props: {
+                    status: 'error',
+                    text: '待复审'
+                  }
+                })
+              } else if (row.reviewTheStatus === 2) {
+                return h('Badge', {
+                  props: {
+                    status: 'success',
+                    text: '已复审'
+                  }
+                })
+              }
+            }
           },
           {
-            title: '地区',
-            key: 'name'
-          },
-          {
-            title: '主体名称',
-            key: 'key1'
-          },
-          {
-            title: '注册时间',
-            key: 'key2'
-          },
-          {
-            title: '审核状态',
-            key: 'key3'
-          },
-          {
-            title: '审核日期',
-            key: 'key4'
+            title: '巡查日期',
+            key: 'dateOfAudit',
+            render: (h, { row }) => {
+              if (row.reviewTheStatus === 0) {
+                return h('div', {
+                })
+              }else{
+                return h('div', {
+                },row.dateOfAudit)
+              }
+            }
           },
           {
             title: '操作',
             key: 'action',
-            width: 150,
+            width: 250,
             align: 'center',
-            render: (h, params) => {
+            render: (h, { row,index }) => {
               return h('div', [
                 h('Button', {
                   props: {
@@ -208,10 +246,24 @@
                   },
                   on: {
                     click: () => {
-                      this.show(params.index)
+                      this.show(row.index)
                     }
                   }
                 }, '查看'),
+                h('Button', {
+                  props: {
+                    type: 'success',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.shenhe(index)
+                    }
+                  }
+                }, '编辑'),
                 h('Button', {
                   props: {
                     type: 'error',
@@ -219,81 +271,15 @@
                   },
                   on: {
                     click: () => {
-                      this.remove(params.index)
+                      this.shenhe(index)
                     }
                   }
-                }, '审核')
+                }, '删除')
               ])
             }
           }
         ],
-        data1: [
-          {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          },
-
-        ],
+        tableData: [],
         data: [{
           value: 'beijing',
           label: '北京',
@@ -343,23 +329,23 @@
         }]
       }
     },
-    mounted: function () {
-
+    mounted () {
+      getTableData().then(res => {
+        this.tableData = res.data
+      })
     },
     methods: {
-      exportData (type) {
-        this.$refs.table.exportCsv({
-          filename: 'The original data'
-        })
-      },
       show (index) {
         this.$Modal.info({
           title: 'User Info',
-          content: `Name：${this.data1[index].name}<br>Age：${this.data1[index].age}<br>Address：${this.data1[index].address}`
+          content: `Name：${this.tableData[index].name}<br>Age：${this.tableData[index].age}<br>Address：${this.tableData[index].address}`
         })
       },
-      remove (index) {
-        this.data1.splice(index, 1)
+      shenhe (index) {
+        this.tableData[index].reviewTheStatus=1
+      },
+      fushen(index){
+        this.tableData[index].reviewTheStatus=2
       }
     }
   }
@@ -372,6 +358,7 @@
 
   .list-zt-body {
     background: #fff;
+    margin-bottom: 10px;
   }
 
   .list-zt {
@@ -479,8 +466,7 @@
   }
 
   .search_list2 {
-    padding-top: 10px;
-    margin: 10px !important;
+
   }
 
   .fr {
