@@ -1,0 +1,584 @@
+<template>
+  <div>
+    <Row :gutter="16" class="tongji_body">
+      <i-col span="17">
+        <Card shadow title="溯源信息统计" style="text-align: left">
+          <Row :gutter="16">
+            <Col span="4">
+              <div class="suyuan_message"><h3>溯源主体总数</h3>
+                <p><span>682</span>家</p>
+              </div>
+            </Col>
+            <Col span="4">
+              <div class="suyuan_message"><h3>溯源三品企业数</h3>
+                <p><span>682</span>家</p>
+              </div>
+            </Col>
+            <Col span="4">
+              <div class="suyuan_message"><h3>溯源产品数</h3>
+                <p><span>682</span>家</p>
+              </div>
+            </Col>
+            <Col span="4">
+              <div class="suyuan_message"><h3>溯源产品品种数</h3>
+                <p><span>682</span>家</p>
+              </div>
+            </Col>
+            <Col span="4">
+              <div class="suyuan_message"><h3>追溯码打印张数</h3>
+                <p><span>682</span>家</p>
+              </div>
+            </Col>
+            <Col span="4">
+              <div class="suyuan_message"><h3>追溯码查询次数</h3>
+                <p><span>682</span>家</p>
+              </div>
+            </Col>
+          </Row>
+        </Card>
+      </i-col>
+      <i-col span="7">
+        <Card shadow title="待办事件">
+          <Row>
+            <ul>
+              <li class="dbsj_list"><span>主体注册待审核 <i>3</i>家 <router-link to="/syztgl/zcrzsh">点击立即处理</router-link></span>
+              </li>
+              <li class="dbsj_list"><span>主体更新待审核 <i>3</i>家 <router-link to="/syztgl/dagxsh">点击立即处理</router-link></span>
+              </li>
+              <li class="dbsj_list" :class="{'fwb':yichang>0}"><span>异常主体待处理 <i>{{yichang}}</i>家 <router-link
+                to="/syztgl/ycztgl">点击立即处理</router-link></span></li>
+            </ul>
+          </Row>
+
+        </Card>
+      </i-col>
+    </Row>
+    <Row :gutter="16" class="tongji_body">
+      <i-col span="17">
+        <Tabs value="dcxj" class="bg-white">
+          <TabPane label="督查巡检" name="dcxj">
+            <Row :gutter="16">
+              <Col span="4">
+                <div class="dcxj_list"><h3>未巡查主体数</h3>
+                  <p><span>6</span>家</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>巡查1次主体数</h3>
+                  <p><span>2</span>家</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>巡查2次主体数</h3>
+                  <p><span>62</span>家</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>巡查主体总数</h3>
+                  <p><span>68</span>家</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>巡查覆盖率</h3>
+                  <p><span>68</span>%</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>巡查总次数</h3>
+                  <p><span>62</span>次</p>
+                </div>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane label="产品抽检" name="cpcj">
+            <Row :gutter="16">
+              <Col span="4">
+                <div class="dcxj_list"><h3>未抽检主体数</h3>
+                  <p><span>6</span>家</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>抽检1次主体数</h3>
+                  <p><span>2</span>家</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>抽检2次主体数</h3>
+                  <p><span>62</span>家</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>抽检主体总数</h3>
+                  <p><span>68</span>家</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>抽检覆盖率</h3>
+                  <p><span>68</span>%</p>
+                </div>
+              </Col>
+              <Col span="4">
+                <div class="dcxj_list"><h3>抽检总次数</h3>
+                  <p><span>62</span>次</p>
+                </div>
+              </Col>
+            </Row>
+          </TabPane>
+          <a href="" slot="extra" class="more">更多</a>
+        </Tabs>
+        <!--溯源产品分布-->
+        <Card title="溯源产品品种分布" :padding="0" shadow class="sycppzfb">
+          <a href="" slot="extra">更多</a>
+          <Row :gutter="16">
+            <Col span="4">
+              <chart-pie style="height: 100px;" :value="pieData"></chart-pie>
+            </Col>
+            <Col span="4"><chart-pie style="height: 100px;" :value="pieData"></chart-pie></Col>
+            <Col span="4"><chart-pie style="height: 100px;" :value="pieData"></chart-pie></Col>
+            <Col span="4"><chart-pie style="height: 100px;" :value="pieData"></chart-pie></Col>
+            <Col span="4"><chart-pie style="height: 100px;" :value="pieData"></chart-pie></Col>
+            <Col span="4"><chart-pie style="height: 100px;" :value="pieData"></chart-pie></Col>
+          </Row>
+        </Card>
+        <!--追溯码打印趋势-->
+        <Card title="追溯码打印趋势" :padding="0" shadow class="sycppzfb">
+          <a href="" slot="extra">更多</a>
+          <div class="charts" ref="chart"></div>
+        </Card>
+      </i-col>
+      <i-col span="7">
+        <Card title="溯源主体分布" :padding="0" shadow class="syztfb">
+          <a href="" slot="extra">更多</a>
+          <ul class="syztfb_list">
+            <li v-for="(item,index) in tableData">
+              <div v-if="index<3">
+                <i-col span="2"><i class="active">{{index+1}}</i></i-col>
+                <i-col span="8"><span>{{item.name}}</span></i-col>
+                <i-col span="14"><span>{{item.sell}}</span></i-col>
+              </div>
+              <div v-else>
+                <i-col span="2"><i>{{index+1}}</i></i-col>
+                <i-col span="8"><span>{{item.name}}</span></i-col>
+                <i-col span="14"><span>{{item.sell}}</span></i-col>
+              </div>
+            </li>
+          </ul>
+        </Card>
+        <Card title="投入品使用排行" :padding="0" shadow class="syztfb sycppzfb">
+          <a href="" slot="extra">更多</a>
+          <Tabs value="name1">
+            <TabPane label="农药" name="name1">
+              <ul class="syztfb_list mt0">
+                <li v-for="(item,index) in tableData">
+                  <div v-if="index<3">
+                    <i-col span="2"><i class="active">{{index+1}}</i></i-col>
+                    <i-col span="8"><span>{{item.name}}</span></i-col>
+                    <i-col span="14"><span>{{item.sell}}</span></i-col>
+                  </div>
+                  <div v-else>
+                    <i-col span="2"><i>{{index+1}}</i></i-col>
+                    <i-col span="8"><span>{{item.name}}</span></i-col>
+                    <i-col span="14"><span>{{item.sell}}</span></i-col>
+                  </div>
+                </li>
+              </ul>
+            </TabPane>
+            <TabPane label="兽药" name="name2">标签二的内容</TabPane>
+            <TabPane label="肥料" name="name3">标签三的内容</TabPane>
+            <TabPane label="饲料" name="name4">标签四的内容</TabPane>
+          </Tabs>
+
+        </Card>
+      </i-col>
+    </Row>
+    <Modal v-model="modal2" width="360">
+      <div style="text-align:center">
+        <p>某某某，您好。常州市目前有待处理异常主体{{yichang}}家，是否现在处理？</p>
+        <Row>
+          <Col span="9">
+            <Checkbox @on-change="setRemind" v-model="single">下次登录不在提醒</Checkbox>
+          </Col>
+        </Row>
+      </div>
+      <div slot="footer">
+        <Row :gutter="16">
+          <Col span="8" offset="3">
+            <Button type="primary" to="/syztgl/ycztgl">立即处理</Button>
+          </Col>
+          <Col span="8">
+            <Button @click="modal2=false">稍后处理</Button>
+          </Col>
+        </Row>
+      </div>
+    </Modal>
+  </div>
+</template>
+
+<script>
+  import echarts from 'echarts'
+  import Cookies from 'js-cookie'
+  import { ChartPie, ChartBar } from '_c/charts'
+  export default {
+    components: {
+      ChartPie,
+      ChartBar
+    },
+    data () {
+      return {
+        inforCardData: [
+          { title: '新增用户', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
+          { title: '累计点击', icon: 'md-locate', count: 23432, color: '#19be6b' },
+          { title: '新增问答', icon: 'md-help-circle', count: 142, color: '#ff9900' },
+          { title: '分享统计', icon: 'md-share', count: 657, color: '#ed3f14' },
+          { title: '新增互动', icon: 'md-chatbubbles', count: 12, color: '#E46CBB' },
+          { title: '新增页面', icon: 'md-map', count: 14, color: '#9A66E4' }
+        ],
+        pieData: [
+          {value: 335, name: '直接访问'},
+          {value: 310, name: '邮件营销'},
+          {value: 234, name: '联盟广告'},
+          {value: 135, name: '视频广告'},
+          {value: 1548, name: '搜索引擎'}
+        ],
+        barData: {
+          Mon: 13253,
+          Tue: 34235,
+          Wed: 26321,
+          Thu: 12340,
+          Fri: 24643,
+          Sat: 1322,
+          Sun: 1324
+        },
+        modal2: false,
+        single: false,
+        yichang: 2,
+        shortcuts: [
+          {
+            title: '操作一',
+            action: '/app'
+          }, {
+            title: '操作二',
+            action: '/push'
+          },
+        ],
+        newShortcut: {
+          status: false,
+          title: '',
+          action: ''
+        },
+        dateType: 'day',
+        countDate: [(new Date()), (new Date())],
+        tableColumns: [
+          {
+            type: 'index'
+          }, {
+            title: '名称',
+            key: 'name'
+          }, {
+            title: '销售额',
+            key: 'sell'
+          }
+        ],
+        tableData: [
+          {
+            name: '门店1',
+            sell: '123000'
+          }, {
+            name: '门店2',
+            sell: '123000'
+          }, {
+            name: '门店3',
+            sell: '123000'
+          }, {
+            name: '门店4',
+            sell: '123000'
+          }, {
+            name: '门店5',
+            sell: '123000'
+          },
+        ]
+      }
+    },
+    methods: {
+      handleAddNewShortcut () {
+        this.shortcuts.push({
+          title: this.newShortcut.title,
+          action: this.newShortcut.action
+        })
+      },
+      setRemind () {
+        if (this.single) {
+          Cookies.set('remind', 'false', { expires: 1 })
+        } else {
+          Cookies.set('remind', 'true', { expires: 1 })
+        }
+      },
+      getRemind () {
+        let remind = Cookies.get('remind')
+        if (typeof remind == 'undefined') {
+          if (this.yichang > 0) {
+            this.modal2 = true
+          }
+        } else {
+          if (remind == 'false') {
+            this.modal2 = false
+          } else {
+            this.modal2 = true
+          }
+        }
+      },
+      handleSetDate (type) {
+        const today = (new Date()).getTime()
+        let date
+        switch (type) {
+          case 'day' :
+            date = today
+            break
+          case 'week' :
+            date = today - 86400000 * 7
+            break
+          case 'month' :
+            date = today - 8640000 * 30
+            break
+          case 'year' :
+            date = today - 8640000 * 365
+            break
+        }
+        this.countDate = [(new Date(date)), (new Date(today))]
+      },
+      classObject (e) {
+        if (e > 3) {
+          return true
+        }
+      },
+      initChart () {
+        const myChart = echarts.init(this.$refs.chart)
+        const myChart1 = echarts.init(this.$refs.chart1)
+        const option = {
+          title: {
+            text: '2018年常州农产品追溯码打印趋势',
+            subtext: '截止日期：2018-09028',
+            x: 'center',
+            align: 'right',
+            textStyle: {
+              fontSize: '14'
+            }
+          },
+          xAxis: {
+            type: 'category',
+            data: [1, 2, 3, 4, 5, 6, 7]
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+          }]
+        }
+        const option1 = {
+          tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+          },
+          legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+          },
+          series: [
+            {
+              name:'访问来源',
+              type:'pie',
+              radius: ['50%', '70%'],
+              avoidLabelOverlap: false,
+              label: {
+                normal: {
+                  show: false,
+                  position: 'center'
+                },
+                emphasis: {
+                  show: true,
+                  textStyle: {
+                    fontSize: '30',
+                    fontWeight: 'bold'
+                  }
+                }
+              },
+              labelLine: {
+                normal: {
+                  show: false
+                }
+              },
+              data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'},
+                {value:135, name:'视频广告'},
+                {value:1548, name:'搜索引擎'}
+              ]
+            }
+          ]
+        };
+
+        myChart.setOption(option)
+        myChart1.setOption(option1)
+      }
+    },
+    mounted () {
+      this.getRemind()
+      this.initChart()
+    }
+  }
+</script>
+
+<style scoped>
+  .count {
+    font-size: 24px;
+  }
+
+  .breadcrumbstyle {
+    height: 54px;
+    width: 100%;
+    text-align: left;
+    background: #fff;
+    line-height: 54px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    color: #8D8D8D;
+  }
+
+  .fwb {
+    font-weight: bold;
+  }
+
+  .dbsj_list {
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    list-style: none;
+    border-bottom: 1px dashed #D2D2D2;
+  }
+
+  .dbsj_list a {
+    float: right;
+  }
+
+  .dbsj_list i {
+    margin-left: 5px;
+    color: #FE9D37;
+    font-style: normal;
+  }
+
+  .tongji_body {
+    padding: 16px;
+  }
+
+  .suyuan_message {
+    border: 1px solid #E4E4E4;
+    box-sizing: border-box;
+    text-align: center;
+    height: 120px;
+  }
+
+  .suyuan_message h3 {
+    font-size: 14px;
+    padding-top: 30px;
+    font-weight: 400;
+  }
+
+  .suyuan_message span {
+    font-size: 28px;
+    color: #1890FF;
+  }
+
+  .suyuan_message p {
+    margin-top: 10px;
+  }
+
+  .dcxj_list {
+    text-align: center;
+    height: 120px;
+  }
+
+  .dcxj_list h3 {
+    font-size: 14px;
+    padding-top: 30px;
+    font-weight: 400;
+  }
+
+  .dcxj_list span {
+    font-size: 28px;
+    color: #1890FF;
+  }
+
+  .dcxj_list p {
+    margin-top: 10px;
+  }
+
+  .bg-white {
+    background: #fff;
+  }
+
+  .more {
+    padding-top: 10px;
+    margin-right: 20px;
+    display: block;
+  }
+
+  .sycppzfb {
+    text-align: left;
+    margin-top: 20px;
+    background: #fff;
+  }
+
+  .charts {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    max-width: 870px;
+  }
+
+  .syztfb {
+    text-align: left;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .syztfb_list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .syztfb_list li {
+    list-style: none;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+
+  .syztfb_list li i {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: #F0F2F5;
+    border-radius: 20px;
+    color: #555556;
+    font-style: normal
+  }
+
+  .syztfb_list li i.active {
+    background: #314659;
+    color: #fff;
+  }
+
+  .mt0 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
