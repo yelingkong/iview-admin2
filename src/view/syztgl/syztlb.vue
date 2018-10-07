@@ -267,21 +267,12 @@
                   },
                   on: {
                     click: () => {
-                      this.show(params.index)
+                      this.$router.push({
+                        path: '/syztgl/syztlb/1231'
+                      });
                     }
                   }
-                }, '查看'),
-                h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.remove(params.index)
-                    }
-                  }
-                }, '审核')
+                }, '查看')
               ])
             }
           }

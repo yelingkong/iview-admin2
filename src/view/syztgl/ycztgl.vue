@@ -55,7 +55,7 @@
       </Row>
       <Row :gutter="16" class="search_list2">
         <Col>
-          <Table :columns="columns1" :data="data1" ref="table"></Table>
+          <Table :columns="columns" :data="data1" ref="table"></Table>
         </Col>
       </Row>
       <Row :gutter="16" type="flex" justify="end">
@@ -65,7 +65,54 @@
         <Col span="1"></Col>
       </Row>
     </div>
-
+    <!--处理信息modal-->
+    <Modal v-model="modal_see" class="modal_see" width="600" footer-hide="true" header-hide="true">
+      <Card title="审核">
+        <div class="shenhe_style">
+          <Form :label-width="100">
+            <i-col span="24">
+              <FormItem label="处理：">
+                <CheckboxGroup v-model="disabledGroup">
+                  <Checkbox label="禁止打印"></Checkbox>
+                  <Checkbox label="禁止查询"></Checkbox>
+                  <Checkbox label="禁止登陆"></Checkbox>
+                  <Checkbox label="忽略"></Checkbox>
+                </CheckboxGroup>
+              </FormItem>
+            </i-col>
+            <i-col span="24">
+              <FormItem label="不通过的原因：">
+                <Input v-model="yunyin" type="textarea" placeholder="请输入原因"/>
+              </FormItem>
+            </i-col>
+            <i-col span="24">
+              <Button type="primary" size="large">提交</Button>
+            </i-col>
+          </Form>
+        </div>
+      </Card>
+    </Modal>
+    <!--处理信息modal-->
+    <!--恢复modal-->
+    <template>
+      <Button type="primary" @click="modal1 = true">Display dialog box</Button>
+      <Modal v-model="huifuModal" width="360">
+        <div style="text-align:center">
+          <p>该企业有新的异常情况发生，确定要恢复吗？</p>
+        </div>
+        <div slot="footer">
+          <Row :gutter="16">
+            <Col span="8" offset="3">
+              <Button type="primary">确定</Button>
+            </Col>
+            <Col span="8">
+              <Button @click="huifuModal=false">取消</Button>
+            </Col>
+          </Row>
+        </div>
+      </Modal>
+    </template>
+    <!--恢复modal-->
   </div>
 </template>
 <script>
@@ -73,6 +120,8 @@
     data () {
       return {
         listztHover: 0,
+        modal_see:false,
+        huifuModal:false,
         listzt: [
           {
             name: '合计主体数',
@@ -180,7 +229,7 @@
           zone: '010',
           phone: '1000000'
         },
-        columns1: [
+        columns: [
           {
             type: 'selection',
             width: 60,
@@ -195,15 +244,15 @@
             key: 'key1'
           },
           {
-            title: '注册时间',
+            title: '异常次数',
             key: 'key2'
           },
           {
-            title: '审核状态',
+            title: '处理状态',
             key: 'key3'
           },
           {
-            title: '审核日期',
+            title: '处理结果',
             key: 'key4'
           },
           {
@@ -223,10 +272,10 @@
                   },
                   on: {
                     click: () => {
-                      this.show(params.index)
+                      this.huifuModal=true
                     }
                   }
-                }, '查看'),
+                }, '恢复'),
                 h('Button', {
                   props: {
                     type: 'error',
@@ -234,10 +283,10 @@
                   },
                   on: {
                     click: () => {
-                      this.remove(params.index)
+                      this.modal_see=true
                     }
                   }
-                }, '审核')
+                }, '处理')
               ])
             }
           }
@@ -309,7 +358,8 @@
           },
 
         ],
-        data: [{
+        data: [
+          {
           value: 'beijing',
           label: '北京',
           children: [
@@ -517,5 +567,19 @@
   .button_left {
     margin-left: 10px !important;
   }
+  /*处理结果class*/
+  .shenhe_style {
+    overflow: hidden;
+  }
+
+  .shenhe_style button {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .modal_see .ivu-modal-body {
+    padding: 0;
+  }
+  /*处理结果class*/
 </style>
 

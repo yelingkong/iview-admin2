@@ -12,6 +12,12 @@
                   </FormItem>
                 </i-col>
                 <i-col span="8">
+                  <FormItem label="组织形式：">
+                    <Cascader :value="organizationalFormModel" :data="organizationalForm" trigger="hover"
+                              transfer></Cascader>
+                  </FormItem>
+                </i-col>
+                <i-col span="8">
                   <FormItem label="日期：">
                     <DatePicker :value="countDate" type="daterange" placement="bottom-end"
                                 style="width: 100%" transfer></DatePicker>
@@ -29,7 +35,39 @@
             </Row>
           </Row>
         </TabPane>
-        <TabPane label="按企业查看" name="name2">标签二的内容</TabPane>
+        <TabPane label="按企业查看" name="name2">
+          <Row class="search_list">
+            <Row :gutter="16" class="search_list2">
+              <Form :label-width="100">
+                <i-col span="8">
+                  <FormItem label="地区：">
+                    <Cascader :data="data" trigger="hover" transfer></Cascader>
+                  </FormItem>
+                </i-col>
+                <i-col span="8">
+                  <FormItem label="组织形式：">
+                    <Cascader :value="organizationalFormModel" :data="organizationalForm" trigger="hover"
+                              transfer></Cascader>
+                  </FormItem>
+                </i-col>
+                <i-col span="8">
+                  <FormItem label="日期：">
+                    <DatePicker :value="countDate" type="daterange" placement="bottom-end"
+                                style="width: 100%" transfer></DatePicker>
+                  </FormItem>
+                </i-col>
+                <i-col span="3" offset="21">
+                  <i-col span="12">
+                    <Button type="primary" size="large" class="fr">查询</Button>
+                  </i-col>
+                  <i-col span="12">
+                    <Button size="large" class="fr">重置</Button>
+                  </i-col>
+                </i-col>
+              </Form>
+            </Row>
+          </Row>
+        </TabPane>
       </Tabs>
     </div>
     <Card title="常州市农产品追溯码统计表" :padding="0" shadow class="syztfb sycppzfb">
@@ -40,19 +78,75 @@
             <tables ref="tables" editable v-model="tableData" :columns="columns"/>
           </Col>
         </Row>
-        <Row :gutter="16" type="flex" justify="end">
-          <Col span="24" justify="end" class="page_right">
-            <Page :total="100"/>
-          </Col>
-          <Col span="1"></Col>
-        </Row>
       </div>
     </Card>
+    <Card title="常州市2018年农产品追溯码打印趋势" :padding="0" shadow class="syztfb sycppzfb zhuisuma_chart">
+      <div class="charts" ref="chart"></div>
+    </Card>
+    <Modal v-model="modal4" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
+      <Card title="农产品生产批次码" :padding="0">
+        <Row :gutter="16" class="search_list2">
+          <Col>
+            <i-col span="22" offset="1"><p>农产品在产出或组合时，农产品生产经营者在江苏追溯平台进行生产批次管理，系统自动生成与产品批次相对应的代码，可打印在产品追溯标识或追溯凭证上。</p>
+            </i-col>
+          </Col>
+          <i-col span="24" class="ncppcm">
+            <i-col span="12">
+              <img :src="ncppcm" key="min-logo"/>
+              <p>产品追溯码标签</p>
+            </i-col>
+            <i-col span="12">
+              <img :src="pc2" key="min-logo"/>
+              <p>追溯凭证标签</p>
+            </i-col>
+          </i-col>
+        </Row>
+      </Card>
+    </Modal>
+    <Modal v-model="modal6" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
+      <Card title="产品流通批次码" :padding="0">
+        <Row :gutter="16" class="search_list2">
+          <Col>
+            <i-col span="22" offset="1"><p>农产品在产出或组合时，农产品生产经营者在江苏追溯平台进行生产批次管理，系统自动生成与产品批次相对应的代码，可打印在产品追溯标识或追溯凭证上。</p>
+            </i-col>
+          </Col>
+          <i-col span="24" class="ncppcm">
+            <i-col span="12">
+              <img :src="ncppcm" key="min-logo"/>
+              <p>产品追溯码标签</p>
+            </i-col>
+            <i-col span="12">
+              <img :src="pc2" key="min-logo"/>
+              <p>追溯凭证标签</p>
+            </i-col>
+          </i-col>
+        </Row>
+      </Card>
+    </Modal>
+    <Modal v-model="modal5" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
+      <Card title="产品流通批次码" :padding="0">
+        <Row :gutter="16" class="search_list2">
+          <Col>
+            <i-col span="22" offset="1">
+              <p>农产品入市（进入批发市场、零售市场或生产加工企业环节）时，农产品生产经营者在江苏追溯平台填写交易信息后，系统自动生成对应该入市批次产品的代码，可打印在入市追溯凭证上。</p>
+            </i-col>
+          </Col>
+          <i-col span="24" class="ncppcm">
+            <img :src="pc3" key="min-logo"/>
+            <p>入市追溯凭证标签</p>
+          </i-col>
+        </Row>
+      </Card>
+    </Modal>
   </div>
 </template>
 <script>
-  import Tables from '_c/tables'
   import {getTableData} from '@/api/data'
+  import Tables from '_c/tables'
+  import echarts from 'echarts'
+  import ncppcm from '@/assets/images/ncppcm.png'
+  import pc2 from '@/assets/images/pc2.png'
+  import pc3 from '@/assets/images/pc3.png'
 
   export default {
     name: 'zcrzsh',
@@ -61,6 +155,12 @@
     },
     data() {
       return {
+        modal4: false,
+        modal5: false,
+        modal6: false,
+        ncppcm,
+        pc2,
+        pc3,
         listztHover: 0,
         listzt: [
           {
@@ -153,181 +253,155 @@
         columns: [
           {type: 'selection', width: 60, align: 'center'},
           {title: '地区', key: 'address', sortable: true},
-          {title: '主体名称', key: 'zhuti',},
-          {title: '注册时间', key: 'createTime',},
           {
-            title: '审核状态',
+            title: '产品生产批次码（张）', key: 'zhuti',
+            renderHeader: (h, index) => {
+              return h('div', [
+                h('Icon', {
+                  props: {
+                    type: 'md-alert',
+                    size: '20'
+                  },
+                  style: {
+                    marginRight: '5px',
+                    cursor: 'pointer'
+                  },
+                  on: {
+                    click: () => {
+                      this.modal4 = true
+                    }
+                  }
+                },),
+                h('span', '产品生产批次码（张）')
+              ]);
+            }
+          },
+          {
+            title: '产品流通批次码（张）', key: 'zhuti',
+            renderHeader: (h, index) => {
+              return h('div', [
+                h('Icon', {
+                  props: {
+                    type: 'md-alert',
+                    size: '20'
+                  },
+                  style: {
+                    marginRight: '5px',
+                    cursor: 'pointer'
+                  },
+                  on: {
+                    click: () => {
+                      this.modal6 = true
+                    }
+                  }
+                },),
+                h('span', '产品流通批次码（张）')
+              ]);
+            }
+          },
+          {
+            title: '产品入市批次码（张）', key: 'zhuti',
+            renderHeader: (h, index) => {
+              return h('div', [
+                h('Icon', {
+                  props: {
+                    type: 'md-alert',
+                    size: '20'
+                  },
+                  style: {
+                    marginRight: '5px',
+                    cursor: 'pointer'
+                  },
+                  on: {
+                    click: () => {
+                      this.modal5 = true
+                    }
+                  }
+                },),
+                h('span', '产品入市批次码（张）')
+              ]);
+            }
+          },
+          {
+            title: '合计（张）',
             key: 'reviewTheStatus',
-            render: (h, {row}) => {
-              if (row.reviewTheStatus === 0) {
-                return h('Badge', {
-                  props: {
-                    status: 'default',
-                    text: '待审核'
-                  }
-                })
-              } else if (row.reviewTheStatus === 1) {
-                return h('Badge', {
-                  props: {
-                    status: 'error',
-                    text: '待复审'
-                  }
-                })
-              } else if (row.reviewTheStatus === 2) {
-                return h('Badge', {
-                  props: {
-                    status: 'success',
-                    text: '已复审'
-                  }
-                })
-              }
-            }
           },
-          {
-            title: '审核日期',
-            key: 'dateOfAudit',
-            render: (h, {row}) => {
-              if (row.reviewTheStatus === 0) {
-                return h('div', {})
-              } else {
-                return h('div', {}, row.dateOfAudit)
-              }
-            }
-          },
-          {
-            title: '操作',
-            key: 'action',
-            width: 150,
-            align: 'center',
-            render: (h, {row, index}) => {
-              if (row.reviewTheStatus === 0) {
-                return h('div', [
-                  h('Button', {
-                    props: {
-                      type: 'primary',
-                      size: 'small'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    },
-                    on: {
-                      click: () => {
-                        this.show(row.index)
-                      }
-                    }
-                  }, '查看'),
-                  h('Button', {
-                    props: {
-                      type: 'error',
-                      size: 'small'
-                    },
-                    on: {
-                      click: () => {
-                        this.shenhe(index)
-                      }
-                    }
-                  }, '审核')
-                ])
-              } else if (row.reviewTheStatus === 1) {
-                return h('div', [
-                  h('Button', {
-                    props: {
-                      type: 'primary',
-                      size: 'small'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    },
-                    on: {
-                      click: () => {
-                        this.show(index)
-                      }
-                    }
-                  }, '查看'),
-                  h('Button', {
-                    props: {
-                      type: 'error',
-                      size: 'small'
-                    },
-                    on: {
-                      click: () => {
-                        this.fushen(index)
-                      }
-                    }
-                  }, '复审')
-                ])
-              } else if (row.reviewTheStatus === 2) {
-                return h('div', [
-                  h('Button', {
-                    props: {
-                      type: 'primary',
-                      size: 'small'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    },
-                    on: {
-                      click: () => {
-                        this.show(index)
-                      }
-                    }
-                  }, '查看')
-                ])
-              }
-            }
-          }
         ],
         tableData: [],
-        data: [{
-          value: 'beijing',
-          label: '北京',
-          children: [
-            {
-              value: 'gugong',
-              label: '故宫'
-            },
-            {
-              value: 'tiantan',
-              label: '天坛'
-            },
-            {
-              value: 'wangfujing',
-              label: '王府井'
+        option: {
+          title: {
+            text: '2018年常州农产品追溯码打印趋势',
+            subtext: '截止日期：2018-09028',
+            x: 'center',
+            align: 'right',
+            textStyle: {
+              fontSize: '14'
             }
-          ]
-        }, {
-          value: 'jiangsu',
-          label: '江苏',
-          children: [
-            {
-              value: 'nanjing',
-              label: '南京',
-              children: [
-                {
-                  value: 'fuzimiao',
-                  label: '夫子庙',
-                }
-              ]
-            },
-            {
-              value: 'suzhou',
-              label: '苏州',
-              children: [
-                {
-                  value: 'zhuozhengyuan',
-                  label: '拙政园',
-                },
-                {
-                  value: 'shizilin',
-                  label: '狮子林',
-                }
-              ]
-            }
-          ],
-        }]
+          },
+          xAxis: {
+            type: 'category',
+            data: [1, 2, 3, 4, 5, 6, 7]
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+          }]
+        },
+        data: [
+          {
+            value: 'beijing',
+            label: '北京',
+            children: [
+              {
+                value: 'gugong',
+                label: '故宫'
+              },
+              {
+                value: 'tiantan',
+                label: '天坛'
+              },
+              {
+                value: 'wangfujing',
+                label: '王府井'
+              }
+            ]
+          }, {
+            value: 'jiangsu',
+            label: '江苏',
+            children: [
+              {
+                value: 'nanjing',
+                label: '南京',
+                children: [
+                  {
+                    value: 'fuzimiao',
+                    label: '夫子庙',
+                  }
+                ]
+              },
+              {
+                value: 'suzhou',
+                label: '苏州',
+                children: [
+                  {
+                    value: 'zhuozhengyuan',
+                    label: '拙政园',
+                  },
+                  {
+                    value: 'shizilin',
+                    label: '狮子林',
+                  }
+                ]
+              }
+            ],
+          }]
       }
     },
     mounted() {
+      this.initChart()
       getTableData().then(res => {
         this.tableData = res.data
       })
@@ -344,7 +418,11 @@
       },
       fushen(index) {
         this.tableData[index].reviewTheStatus = 2
-      }
+      },
+      initChart() {
+        const myChart = echarts.init(this.$refs.chart)
+        myChart.setOption(this.option)
+      },
     }
   }
 
@@ -492,7 +570,46 @@
     width: 20%;
     float: left;
   }
-  .dcsj{margin-top: -5px;}
-  .search_list_index{background: #fff;margin-bottom: 10px;}
+
+  .dcsj {
+    margin-top: -5px;
+  }
+
+  .search_list_index {
+    background: #fff;
+    margin-bottom: 10px;
+  }
+
+  .charts {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    max-width: 1278px;
+  }
+
+  .zhuisuma_chart {
+    margin-top: 10px !important;
+  }
+
+  .ncpscpc {
+    padding: 0 !important;
+  }
+
+  .ivu-modal-body {
+    padding: 0 !important;
+  }
+
+  .ncppcm {
+    margin-top: 20px;
+  }
+
+  .ncppcm p {
+    text-align: center;
+  }
+
+  .ncppcm img {
+    display: block;
+    margin: 10px auto;
+  }
 </style>
 

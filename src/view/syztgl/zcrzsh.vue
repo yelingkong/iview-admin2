@@ -89,20 +89,44 @@
         <Col span="1"></Col>
       </Row>
     </div>
-
+    <Modal v-model="modal_see" class="modal_see" width="600" footer-hide="true" header-hide="true">
+      <Card title="审核">
+        <div class="shenhe_style">
+          <Form :label-width="100">
+            <i-col span="24">
+              <FormItem label="意见：">
+                <RadioGroup v-model="animal">
+                  <Radio label="通过"></Radio>
+                  <Radio label="不通过"></Radio>
+                </RadioGroup>
+              </FormItem>
+            </i-col>
+            <i-col span="24">
+              <FormItem label="不通过的原因：">
+                <Input v-model="yunyin" type="textarea" placeholder="请输入原因"/>
+              </FormItem>
+            </i-col>
+            <i-col span="24">
+              <Button type="primary" size="large">提交</Button>
+            </i-col>
+          </Form>
+        </div>
+      </Card>
+    </Modal>
   </div>
 </template>
 <script>
   import Tables from '_c/tables'
-  import { getTableData } from '@/api/data'
+  import {getTableData} from '@/api/data'
 
   export default {
     name: 'zcrzsh',
     components: {
       Tables
     },
-    data () {
+    data() {
       return {
+        modal_see: false,
         listztHover: 0,
         listzt: [
           {
@@ -189,14 +213,14 @@
           phone: '1000000'
         },
         columns: [
-          { type: 'selection', width: 60, align: 'center' },
-          { title: '地区', key: 'address', sortable: true },
-          { title: '主体名称', key: 'zhuti', },
-          { title: '注册时间', key: 'createTime', },
+          {type: 'selection', width: 60, align: 'center'},
+          {title: '地区', key: 'address', sortable: true},
+          {title: '主体名称', key: 'zhuti',},
+          {title: '注册时间', key: 'createTime',},
           {
             title: '审核状态',
             key: 'reviewTheStatus',
-            render: (h, { row }) => {
+            render: (h, {row}) => {
               if (row.reviewTheStatus === 0) {
                 return h('Badge', {
                   props: {
@@ -224,13 +248,11 @@
           {
             title: '审核日期',
             key: 'dateOfAudit',
-            render: (h, { row }) => {
+            render: (h, {row}) => {
               if (row.reviewTheStatus === 0) {
-                return h('div', {
-                })
-              }else{
-                return h('div', {
-                },row.dateOfAudit)
+                return h('div', {})
+              } else {
+                return h('div', {}, row.dateOfAudit)
               }
             }
           },
@@ -239,7 +261,7 @@
             key: 'action',
             width: 150,
             align: 'center',
-            render: (h, { row,index }) => {
+            render: (h, {row, index}) => {
               if (row.reviewTheStatus === 0) {
                 return h('div', [
                   h('Button', {
@@ -252,7 +274,9 @@
                     },
                     on: {
                       click: () => {
-                        this.show(row.index)
+                        this.$router.push({
+                          path: '/syztgl/zcrzsh/1231'
+                        });
                       }
                     }
                   }, '查看'),
@@ -263,12 +287,12 @@
                     },
                     on: {
                       click: () => {
-                        this.shenhe(index)
+                        this.shenhes(index)
                       }
                     }
                   }, '审核')
                 ])
-              }else if(row.reviewTheStatus===1){
+              } else if (row.reviewTheStatus === 1) {
                 return h('div', [
                   h('Button', {
                     props: {
@@ -280,7 +304,9 @@
                     },
                     on: {
                       click: () => {
-                        this.show(index)
+                        this.$router.push({
+                          path: '/syztgl/zcrzsh/1231'
+                        });
                       }
                     }
                   }, '查看'),
@@ -291,12 +317,12 @@
                     },
                     on: {
                       click: () => {
-                        this.fushen(index)
+                        this.shenhes(index)
                       }
                     }
                   }, '复审')
                 ])
-              }else if(row.reviewTheStatus===2){
+              } else if (row.reviewTheStatus === 2) {
                 return h('div', [
                   h('Button', {
                     props: {
@@ -308,7 +334,9 @@
                     },
                     on: {
                       click: () => {
-                        this.show(index)
+                        this.$router.push({
+                          path: '/syztgl/zcrzsh/1231'
+                        });
                       }
                     }
                   }, '查看')
@@ -318,72 +346,77 @@
           }
         ],
         tableData: [],
-        data: [{
-          value: 'beijing',
-          label: '北京',
-          children: [
-            {
-              value: 'gugong',
-              label: '故宫'
-            },
-            {
-              value: 'tiantan',
-              label: '天坛'
-            },
-            {
-              value: 'wangfujing',
-              label: '王府井'
-            }
-          ]
-        }, {
-          value: 'jiangsu',
-          label: '江苏',
-          children: [
-            {
-              value: 'nanjing',
-              label: '南京',
-              children: [
-                {
-                  value: 'fuzimiao',
-                  label: '夫子庙',
-                }
-              ]
-            },
-            {
-              value: 'suzhou',
-              label: '苏州',
-              children: [
-                {
-                  value: 'zhuozhengyuan',
-                  label: '拙政园',
-                },
-                {
-                  value: 'shizilin',
-                  label: '狮子林',
-                }
-              ]
-            }
-          ],
-        }]
+        data: [
+          {
+            value: 'beijing',
+            label: '北京',
+            children: [
+              {
+                value: 'gugong',
+                label: '故宫'
+              },
+              {
+                value: 'tiantan',
+                label: '天坛'
+              },
+              {
+                value: 'wangfujing',
+                label: '王府井'
+              }
+            ]
+          }, {
+            value: 'jiangsu',
+            label: '江苏',
+            children: [
+              {
+                value: 'nanjing',
+                label: '南京',
+                children: [
+                  {
+                    value: 'fuzimiao',
+                    label: '夫子庙',
+                  }
+                ]
+              },
+              {
+                value: 'suzhou',
+                label: '苏州',
+                children: [
+                  {
+                    value: 'zhuozhengyuan',
+                    label: '拙政园',
+                  },
+                  {
+                    value: 'shizilin',
+                    label: '狮子林',
+                  }
+                ]
+              }
+            ],
+          }]
       }
     },
-    mounted () {
+    mounted() {
       getTableData().then(res => {
         this.tableData = res.data
+        console.log(res)
       })
     },
     methods: {
-      show (index) {
+      show(index) {
         this.$Modal.info({
           title: 'User Info',
           content: `Name：${this.tableData[index].name}<br>Age：${this.tableData[index].age}<br>Address：${this.tableData[index].address}`
         })
       },
-      shenhe (index) {
-        this.tableData[index].reviewTheStatus=1
+      shenhes(index) {
+        this.modal_see = true
       },
-      fushen(index){
-        this.tableData[index].reviewTheStatus=2
+      shenhe(index) {
+        this.tableData[index].reviewTheStatus = 1
+      },
+      fushen(index) {
+        this.tableData[index].reviewTheStatus = 2
       }
     }
   }
@@ -523,6 +556,19 @@
 
   .button_left {
     margin-left: 10px !important;
+  }
+
+  .shenhe_style {
+    overflow: hidden;
+  }
+
+  .shenhe_style button {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .modal_see .ivu-modal-body {
+    padding: 0;
   }
 </style>
 

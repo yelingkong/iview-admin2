@@ -65,7 +65,40 @@
         <Col span="1"></Col>
       </Row>
     </div>
-
+    <Modal v-model="modal_see" class="modal_see" width="1000" footer-hide="true" header-hide="true">
+      <Card title="投入品使用详情">
+        <div class="shenhe_style">
+          <Card title="产品信息" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+            <Row :gutter="16">
+              <div class="detaileds">
+                <i-col span="10">
+                  <div class="detailed">投入品类型：<span>农药</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">投入品名称：<span>毒死蜱</span></div>
+                </i-col>
+                <i-col span="10">
+                  <div class="detailed">产品名称：<span>白菜</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">使用日期：<span>2016-09-21</span></div>
+                </i-col>
+                <i-col span="10">
+                  <div class="detailed">主体名称：<span>江苏省常州市金剑蜜梨专业合作社</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">所在地区：<span>天宁区郑陆镇</span></div>
+                </i-col>
+                <i-col span="20">
+                  <div class="detailed">产品追溯码：<span>
+1.2.62563584652132545X.02010102.20180904180329.001</span></div>
+                </i-col>
+              </div>
+            </Row>
+          </Card>
+        </div>
+      </Card>
+    </Modal>
   </div>
 </template>
 <script>
@@ -79,6 +112,7 @@
     data() {
       return {
         listztHover: 0,
+        modal_see: false,
         listzt: [
           {
             name: '合计投入品使用记录',
@@ -227,7 +261,8 @@
           }
         ],
         tableData: [],
-        data: [{
+        data: [
+          {
           value: 'beijing',
           label: '北京',
           children: [
@@ -288,10 +323,7 @@
         })
       },
       show(index) {
-        this.$Modal.info({
-          title: 'User Info',
-          content: `Name：${this.data1[index].name}<br>Age：${this.data1[index].age}<br>Address：${this.data1[index].address}`
-        })
+        this.modal_see=true
       },
       remove(index) {
         this.data1.splice(index, 1)
@@ -446,5 +478,38 @@
     margin-left: 10px;
     margin-bottom: 10px;
   }
+  .shenhe_style {
+    overflow: hidden;
+  }
+
+  .shenhe_style button {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .modal_see .ivu-modal-body {
+    padding: 0;
+  }
+  .detailed h2 {
+    margin-bottom: 20px;
+  }
+
+  .detailed {
+    font-size: 14px;
+    color: #383938;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .detailed span {
+    color: #68595A;
+
+  }
+
+  .detaileds {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
 </style>
 

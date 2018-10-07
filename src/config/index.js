@@ -14,6 +14,6 @@ export default {
    */
   baseUrl: {
     dev: '/',
-    pro: 'https://www.wanjunshijie.com/login.js'
+    pro: 'https://easy-mock.com/mock/5bb88474ff7cf8702e6ac4c5/example/'
   }
 }

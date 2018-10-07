@@ -62,7 +62,75 @@
         <Col span="1"></Col>
       </Row>
     </div>
-
+    <Modal v-model="modal_see" class="modal_see" width="1000" footer-hide="true" header-hide="true">
+      <Card title="溯源产品详情">
+        <div class="shenhe_style">
+          <Card title="产品信息" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+            <Row :gutter="16">
+              <div class="detaileds">
+                <i-col span="10">
+                  <div class="detailed">产品名称：<span>白菜</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">产品追溯码：<span>1.2.62563584652132545X.02010102.20180904180329.001</span></div>
+                </i-col>
+                <i-col span="10">
+                  <div class="detailed">产品来源：<span>自产</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">来源地：<span>蔬菜大棚基地</span></div>
+                </i-col>
+                <i-col span="10">
+                  <div class="detailed">数量：<span>30公斤</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">赋码日期：<span>2018-07-19</span></div>
+                </i-col>
+                <i-col span="10">
+                  <div class="detailed">质检类型：<span>自检合格</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">质检结果：<span>合格</span></div>
+                </i-col>
+              </div>
+            </Row>
+          </Card>
+          <Card title="销售信息" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+            <Row :gutter="16">
+              <div class="detaileds">
+                <i-col span="10">
+                  <div class="detailed">销售类型：<span>销售入市</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">销售日期：<span>2018-07-19</span></div>
+                </i-col>
+                <i-col span="10">
+                  <div class="detailed">客户名称：<span>XXX合作社</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">联系人：<span>张明</span></div>
+                </i-col>
+                <i-col span="10">
+                  <div class="detailed">地址：<span>常州市XX区XX镇。。</span></div>
+                </i-col>
+                <i-col span="14">
+                  <div class="detailed">联系电话：<span>18910128801</span></div>
+                </i-col>
+              </div>
+            </Row>
+          </Card>
+          <Card title="标签打印" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+            <Row :gutter="16">
+              <div class="detaileds">
+                <i-col span="20">
+                  <div class="detailed">累计打印追溯标签30张</div>
+                </i-col>
+              </div>
+            </Row>
+          </Card>
+        </div>
+      </Card>
+    </Modal>
   </div>
 </template>
 <script>
@@ -76,6 +144,7 @@
     data() {
       return {
         listztHover: 0,
+        modal_see: false,
         listzt: [
           {
             name: '合计产品数',
@@ -271,10 +340,7 @@
         })
       },
       show(index) {
-        this.$Modal.info({
-          title: 'User Info',
-          content: `Name：${this.data1[index].name}<br>Age：${this.data1[index].age}<br>Address：${this.data1[index].address}`
-        })
+        this.modal_see=true
       },
       remove(index) {
         this.data1.splice(index, 1)
@@ -394,6 +460,7 @@
 
   .list_table {
     background: #fff;
+    padding-top: 0;
   }
 
   .search_list2 {
@@ -429,5 +496,38 @@
     margin-left: 10px;
     margin-bottom: 10px;
   }
+  .shenhe_style {
+    overflow: hidden;
+  }
+
+  .shenhe_style button {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .modal_see .ivu-modal-body {
+    padding: 0;
+  }
+  .detailed h2 {
+    margin-bottom: 20px;
+  }
+
+  .detailed {
+    font-size: 14px;
+    color: #383938;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .detailed span {
+    color: #68595A;
+
+  }
+
+  .detaileds {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
 </style>
 

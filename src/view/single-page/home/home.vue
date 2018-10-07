@@ -289,7 +289,7 @@
     },
     data() {
       return {
-        modal3: true,
+        modal3: false,
         inforCardData: [
           {title: '新增用户', icon: 'md-person-add', count: 803, color: '#2d8cf0'},
           {title: '累计点击', icon: 'md-locate', count: 23432, color: '#19be6b'},
@@ -390,13 +390,13 @@
             }
           ]
         },
-
         modal2: false,
         single: false,
         yichang: 2,
         dateType: 'day',
         countDate: [(new Date()), (new Date())],
-        tableColumns: [{
+        tableColumns: [
+          {
           type: 'index'
         }, {
           title: '名称',
@@ -405,7 +405,8 @@
           title: '销售额',
           key: 'sell'
         }],
-        tableData2: [{
+        tableData2: [
+          {
           name: '门店1',
           sell: '123000'
         }, {
