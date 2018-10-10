@@ -38,7 +38,12 @@
     </Row>
     <div class="list_table">
       <Row :gutter="16" class="search_list2">
-        <Button class="exportdata" type="primary" size="large"><Icon type="md-add" />新增任务</Button>
+        <router-link to="/cpcjgl/cpcjrwadd">
+          <Button class="exportdata" type="primary" size="large">
+            <Icon type="md-add"/>
+            新增任务
+          </Button>
+        </router-link>
         <Button class="exportdata" size="large">删除</Button>
         <Col>
           <Table :columns="columns" :data="tableData" ref="table"></Table>
@@ -170,7 +175,7 @@
           {title: '主体名称', key: 'address', sortable: true},
           {title: '产品名称', key: 'zhuti',},
           {title: '数量', key: 'shuliang',},
-          {title: '产品追溯码', key: 'zhuisuma',width:230},
+          {title: '产品追溯码', key: 'zhuisuma', width: 230},
           {title: '赋码日期', key: 'createTime',},
           {title: '标签打印数量', key: 'zhangshu',},
           {
@@ -190,7 +195,9 @@
                   },
                   on: {
                     click: () => {
-                      this.show(row.index)
+                      this.$router.push({
+                        path: '/cpcjgl/cpcjrw/'+row.id
+                      });
                     }
                   }
                 }, '查看'),

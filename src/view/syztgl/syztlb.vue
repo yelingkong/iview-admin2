@@ -268,7 +268,7 @@
                   on: {
                     click: () => {
                       this.$router.push({
-                        path: '/syztgl/syztlb/1231'
+                        path: '/syztgl/syztlb/'+params.id
                       });
                     }
                   }

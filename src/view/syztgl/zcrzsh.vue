@@ -275,7 +275,7 @@
                     on: {
                       click: () => {
                         this.$router.push({
-                          path: '/syztgl/zcrzsh/1231'
+                          path: '/syztgl/zcrzsh/'+row.id
                         });
                       }
                     }

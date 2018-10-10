@@ -501,10 +501,6 @@
     margin-bottom: 10px;
   }
 
-  .detailed span {
-    color: #68595A;
-
-  }
 
   .detaileds {
     margin-top: 20px;

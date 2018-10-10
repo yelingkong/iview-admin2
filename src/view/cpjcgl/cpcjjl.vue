@@ -50,12 +50,17 @@
       </Row>
     </Row>
     <div class="list_table">
-      <Row :gutter="16" class="button_left">
-        <Button class="exportdata" type="primary" size="large"><Icon type="md-add" />新增任务</Button>
+      <Row :gutter="16" class="buttonl_r">
+        <router-link to="/cpcjgl/cpcjjladd">
+          <Button class="exportdata" type="primary" size="large">
+            <Icon type="md-add"/>
+            新增任务
+          </Button>
+        </router-link>
         <Button class="exportdata" size="large">删除</Button>
       </Row>
       <Row :gutter="16" class="search_list2">
-        <Col>
+        <Col span="24">
           <tables ref="tables" editable v-model="tableData" :columns="columns"/>
         </Col>
       </Row>
@@ -71,14 +76,14 @@
 </template>
 <script>
   import Tables from '_c/tables'
-  import { getTableData } from '@/api/data'
+  import {getTableData} from '@/api/data'
 
   export default {
     name: 'zcrzsh',
     components: {
       Tables
     },
-    data () {
+    data() {
       return {
         listztHover: 0,
         listzt: [
@@ -184,14 +189,14 @@
           phone: '1000000'
         },
         columns: [
-          { type: 'selection', width: 60, align: 'center' },
-          { title: '地区', key: 'address', sortable: true },
-          { title: '企业名称', key: 'zhuti', },
-          { title: '检查单位', key: 'createTime', },
+          {type: 'selection', width: 60, align: 'center'},
+          {title: '地区', key: 'address', sortable: true},
+          {title: '企业名称', key: 'zhuti',},
+          {title: '检查单位', key: 'createTime',},
           {
             title: '巡查结果',
             key: 'reviewTheStatus',
-            render: (h, { row }) => {
+            render: (h, {row}) => {
               if (row.reviewTheStatus === 0) {
                 return h('Badge', {
                   props: {
@@ -219,13 +224,11 @@
           {
             title: '巡查日期',
             key: 'dateOfAudit',
-            render: (h, { row }) => {
+            render: (h, {row}) => {
               if (row.reviewTheStatus === 0) {
-                return h('div', {
-                })
-              }else{
-                return h('div', {
-                },row.dateOfAudit)
+                return h('div', {})
+              } else {
+                return h('div', {}, row.dateOfAudit)
               }
             }
           },
@@ -234,7 +237,7 @@
             key: 'action',
             width: 250,
             align: 'center',
-            render: (h, { row,index }) => {
+            render: (h, {row, index}) => {
               return h('div', [
                 h('Button', {
                   props: {
@@ -246,7 +249,9 @@
                   },
                   on: {
                     click: () => {
-                      this.show(row.index)
+                      this.$router.push({
+                        path: '/cpcjgl/cpcjjl/'+row.id
+                      });
                     }
                   }
                 }, '查看'),
@@ -329,23 +334,23 @@
         }]
       }
     },
-    mounted () {
+    mounted() {
       getTableData().then(res => {
         this.tableData = res.data
       })
     },
     methods: {
-      show (index) {
+      show(index) {
         this.$Modal.info({
           title: 'User Info',
           content: `Name：${this.tableData[index].name}<br>Age：${this.tableData[index].age}<br>Address：${this.tableData[index].address}`
         })
       },
-      shenhe (index) {
-        this.tableData[index].reviewTheStatus=1
+      shenhe(index) {
+        this.tableData[index].reviewTheStatus = 1
       },
-      fushen(index){
-        this.tableData[index].reviewTheStatus=2
+      fushen(index) {
+        this.tableData[index].reviewTheStatus = 2
       }
     }
   }
@@ -463,6 +468,7 @@
 
   .list_table {
     background: #fff;
+    padding: 16px;
   }
 
   .search_list2 {
@@ -487,5 +493,18 @@
   .button_left {
     margin-left: 10px !important;
   }
-</style>
 
+  .search_list {
+    padding: 16px;
+  }
+
+  .buttonl_r {
+    margin-left: 0px !important;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .buttonl_r button {
+    margin-right: 10px;
+  }
+</style>

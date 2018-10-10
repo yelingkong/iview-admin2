@@ -51,7 +51,7 @@
     </Row>
     <div class="list_table">
       <Row :gutter="16" class="button_left">
-        <Button class="exportdata" type="primary" size="large"><Icon type="md-add" />新增任务</Button>
+        <router-link to="/dcxcgl/dcxcjladd"><Button class="exportdata" type="primary" size="large"><Icon type="md-add" />新增任务</Button></router-link>
         <Button class="exportdata" size="large">删除</Button>
       </Row>
       <Row :gutter="16" class="search_list2">
@@ -246,7 +246,9 @@
                   },
                   on: {
                     click: () => {
-                      this.show(row.index)
+                      this.$router.push({
+                        path: '/dcxcgl/dcxcjl/'+row.id
+                      });
                     }
                   }
                 }, '查看'),
@@ -443,6 +445,8 @@
 
   .exportdata {
     margin-top: -5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
 
   .breadcrumbstyle {

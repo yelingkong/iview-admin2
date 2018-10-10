@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout style="height: 100%;">
     <HeaderHead></HeaderHead>
     <Layout style="margin-top: 60px;" class="main">
       <Sider hide-trigger collapsible :width="256" :collapsed-width="64" v-model="collapsed" class="left-sider"
@@ -11,6 +11,7 @@
       <Layout>
         <Header class="header-con">
           <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
+            <a @click="fanhui">返回</a>
             <!--<user :user-avator="userAvator"/>-->
             <!--<language @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>-->
             <!--<fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>-->
@@ -83,7 +84,7 @@
       },
       local () {
         return this.$store.state.app.local
-      }
+      },
     },
     methods: {
       ...mapMutations([
@@ -131,6 +132,9 @@
       },
       handleClick (item) {
         this.turnToPage(item)
+      },
+      fanhui(){
+        return this.$router.go(-1);
       }
     },
     watch: {

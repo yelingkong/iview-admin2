@@ -62,7 +62,7 @@ export default [
       },
       {
         path: 'zcrzsh/:id',
-        name: 'zcrzshxq',
+        name: 'zcrzsh',
         meta: {
           icon: 'md-flower',
           title: '注册认证详情',
@@ -71,42 +71,6 @@ export default [
           hideInMenu:true
         },
         component: () => import('@/view/syztgl/zcrzshdetailed.vue')
-      },
-      {
-        path: 'dagxsh/:id',
-        name: 'dagxshde',
-        meta: {
-          icon: 'md-flower',
-          title: '注册认证详情',
-          notCache: true,
-          beforeCloseName: 'before_close_normal',
-          hideInMenu:true
-        },
-        component: () => import('@/view/syztgl/dagxshdetailed.vue')
-      },
-      {
-        path: 'ycztgl/:id',
-        name: 'ycztglid',
-        meta: {
-          icon: 'md-flower',
-          title: '注册认证详情',
-          notCache: true,
-          beforeCloseName: 'before_close_normal',
-          hideInMenu:true
-        },
-        component: () => import('@/view/syztgl/ycztgldetailed.vue')
-      },
-      {
-        path: 'syztlb/:id',
-        name: 'syztlbid',
-        meta: {
-          icon: 'md-flower',
-          title: '溯源主体详情',
-          notCache: true,
-          beforeCloseName: 'before_close_normal',
-          hideInMenu:true
-        },
-        component: () => import('@/view/syztgl/syztlbdetailed.vue')
       },
       {
         path: 'dagxsh',
@@ -118,6 +82,18 @@ export default [
         component: () => import('@/view/syztgl/dagxsh.vue')
       },
       {
+        path: 'dagxsh/:id',
+        name: 'dagxsh',
+        meta: {
+          icon: 'md-flower',
+          title: '注册认证详情',
+          notCache: true,
+          beforeCloseName: 'before_close_normal',
+          hideInMenu:true
+        },
+        component: () => import('@/view/syztgl/dagxshdetailed.vue')
+      },
+      {
         path: 'ycztgl',
         name: 'ycztgl',
         meta: {
@@ -127,6 +103,18 @@ export default [
         component: () => import('@/view/syztgl/ycztgl.vue')
       },
       {
+        path: 'ycztgl/:id',
+        name: 'ycztgl',
+        meta: {
+          icon: 'md-flower',
+          title: '注册认证详情',
+          notCache: true,
+          beforeCloseName: 'before_close_normal',
+          hideInMenu:true
+        },
+        component: () => import('@/view/syztgl/ycztgldetailed.vue')
+      },
+      {
         path: 'syztlb',
         name: 'syztlb',
         meta: {
@@ -134,6 +122,18 @@ export default [
           title: '溯源主体列表'
         },
         component: () => import('@/view/syztgl/syztlb.vue')
+      },
+      {
+        path: 'syztlb/:id',
+        name: 'syztlb',
+        meta: {
+          icon: 'md-flower',
+          title: '溯源主体详情',
+          notCache: true,
+          beforeCloseName: 'before_close_normal',
+          hideInMenu:true
+        },
+        component: () => import('@/view/syztgl/syztlbdetailed.vue')
       },
     ]
   },
@@ -177,6 +177,7 @@ export default [
       }
     ]
   },
+
   {
     path: '/dcxcgl',
     name: 'dcxcgl',
@@ -196,6 +197,28 @@ export default [
         component: () => import('@/view/dcxcgl/dcxcrw.vue')
       },
       {
+        path: 'dcxcrwadd',
+        name: 'dcxcrw',
+        meta: {
+          icon: 'md-flower',
+          title: '新增督查巡查任务',
+          notCache: true,
+          beforeCloseName: 'before_close_normal',
+          hideInMenu:true
+        },
+        component: () => import('@/view/dcxcgl/add-dcxcrw.vue')
+      },
+      {
+        path: 'dcxcrw/:id',
+        name: 'dcxcrw',
+        meta: {
+          icon: 'md-checkbox-outline',
+          title: '督查巡查记录详情',
+          hideInMenu:true
+        },
+        component: () => import('@/view/dcxcgl/dcxcrwdetailed.vue')
+      },
+      {
         path: 'dcxcjl',
         name: 'dcxcjl',
         meta: {
@@ -203,6 +226,29 @@ export default [
           title: '督查巡查记录'
         },
         component: () => import('@/view/dcxcgl/dcxcjl.vue')
+      },
+      {
+        path: 'dcxcjladd',
+        name: 'dcxcjl',
+        meta: {
+          icon: 'md-flower',
+          title: '新增督查巡查记录',
+          notCache: true,
+          beforeCloseName: 'before_close_normal',
+          hideInMenu:true
+        },
+        component: () => import('@/view/dcxcgl/add-dcxcjl.vue')
+      },
+
+      {
+        path: 'dcxcjl/:id',
+        name: 'dcxcjl',
+        meta: {
+          icon: 'md-checkbox-outline',
+          title: '督查巡查记录详情',
+          hideInMenu:true
+        },
+        component: () => import('@/view/dcxcgl/dcxcjldetailed.vue')
       },
     ]
   },
@@ -225,6 +271,26 @@ export default [
         component: () => import('@/view/cpjcgl/cpcjrw.vue')
       },
       {
+        path: 'cpcjrwadd',
+        name: 'cpcjrw',
+        meta: {
+          icon: 'md-checkbox-outline',
+          title: '新增产品抽检任务',
+          hideInMenu:true
+        },
+        component: () => import('@/view/cpjcgl/add-cpcjrw.vue')
+      },
+      {
+        path: 'cpcjrw/:id',
+        name: 'cpcjrw',
+        meta: {
+          icon: 'md-checkbox-outline',
+          title: '新增产品抽检任务',
+          hideInMenu:true
+        },
+        component: () => import('@/view/cpjcgl/cpcjrwdetailed.vue')
+      },
+      {
         path: 'cpcjjl',
         name: 'cpcjjl',
         meta: {
@@ -232,6 +298,26 @@ export default [
           title: '产品抽检记录'
         },
         component: () => import('@/view/cpjcgl/cpcjjl.vue')
+      },
+      {
+        path: 'cpcjjladd',
+        name: 'cpcjjl',
+        meta: {
+          icon: 'md-checkbox-outline',
+          title: '新增产品抽检记录',
+          hideInMenu:true
+        },
+        component: () => import('@/view/cpjcgl/add-cpcjjl.vue')
+      },
+      {
+        path: 'cpcjjl/:id',
+        name: 'cpcjjl',
+        meta: {
+          icon: 'md-checkbox-outline',
+          title: '新增产品抽检记录',
+          hideInMenu:true
+        },
+        component: () => import('@/view/cpjcgl/cpcjjldetailed.vue')
       },
     ]
   },
