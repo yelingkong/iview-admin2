@@ -12,8 +12,8 @@
         </Col>
       </div>
     </Row>
-    <Row class="search_list">
-      <Row :gutter="16" class="search_list2">
+    <Row class="zcrzsh_search_row">
+      <Row :gutter="16">
         <Form :label-width="100">
           <i-col span="8">
             <FormItem label="地区：">
@@ -51,16 +51,16 @@
         </Form>
       </Row>
     </Row>
-    <div class="list_table">
-      <Row :gutter="16" class="search_list2">
-        <Button class="exportdata" type="primary" size="large" @click="exportData(1)">导出数据</Button>
+    <div class="zcrzsh_table">
+      <Row>
+        <Button type="primary" size="large" @click="exportData(1)">导出数据</Button>
         <Col>
           <Table :columns="columns" :data="tableData" ref="table"></Table>
         </Col>
       </Row>
-      <Row :gutter="16" type="flex" justify="end">
+      <Row type="flex" justify="end">
         <Col span="24" justify="end" class="page_right">
-          <Page :total="100"/>
+          <Page :total="100" show-sizer  show-elevator show-total />
         </Col>
         <Col span="1"></Col>
       </Row>
@@ -99,6 +99,13 @@
         </div>
       </Card>
     </Modal>
+    <Modal v-model="modal_bqdymx" class="modal_see" width="1000" footer-hide="true" header-hide="true">
+      <Card title="标签打印明细">
+        <div class="shenhe_style">
+          <Table :columns="bqdyColumns" :data="bqdyTableData" ref="table"></Table>
+        </div>
+      </Card>
+    </Modal>
   </div>
 </template>
 <script>
@@ -106,13 +113,24 @@
   import Tables from '_c/tables'
 
   export default {
+    name:'trpsyjl',
     components: {
       Tables
     },
     data() {
       return {
+        modal_bqdymx: false,
         listztHover: 0,
         modal_see: false,
+        bqdyColumns: [
+          {type: 'selection', width: 60, align: 'center'},
+          {title: '产品名称', key: 'zhuti',},
+          {title: '数量', key: 'shuliang',},
+          {title: '产品追溯码', key: 'zhuisuma', width: 230},
+          {title: '打印日期', key: 'createTime',},
+          {title: '打印张数', key: 'shuliang',},
+        ],
+        bqdyTableData: [],
         listzt: [
           {
             name: '合计投入品使用记录',
@@ -229,12 +247,12 @@
         },
         columns: [
           {type: 'selection', width: 60, align: 'center'},
-          {title: '主体名称', key: 'address', sortable: true},
-          {title: '产品名称', key: 'zhuti',},
-          {title: '数量', key: 'shuliang',},
-          {title: '产品追溯码', key: 'zhuisuma',width:230},
-          {title: '赋码日期', key: 'createTime',},
-          {title: '标签打印数量', key: 'zhangshu',},
+          {title: '投入品类型', key: 'address', sortable: true},
+          {title: '投入品名称', key: 'zhuti',},
+          {title: '产品名称', key: 'shuliang',},
+          {title: '使用日期', key: 'createTime',},
+          {title: '主体名称', key: 'zhuti',width:230},
+          {title: '所在地', key: 'address',width:230},
           {
             title: '操作',
             key: 'action',
@@ -314,6 +332,7 @@
     mounted() {
       getTableData().then(res => {
         this.tableData = res.data
+        this.bqdyTableData = res.data
       })
     },
     methods: {
@@ -327,7 +346,10 @@
       },
       remove(index) {
         this.data1.splice(index, 1)
-      }
+      },
+      bqdymx_show(index) {
+        this.modal_bqdymx = true
+      },
     }
   }
 
@@ -506,6 +528,41 @@
     margin-top: 20px;
     margin-left: 20px;
   }
+  .zcrzsh_search_row {
+    margin-top: 20px;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 
+  .zcrzsh_search_row button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+  }
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
+  .zcrzsh_search_row .ivu-form-item {
+    margin-bottom: 15px;
+  }
+
+  .zcrzsh_search {
+  }
+
+  .zcrzsh_table {
+    background: #fff;
+  }
+
+  .zcrzsh_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+
+  .zcrzsh_table .ivu-table-wrapper {
+    margin: 0 30px;
+  }
+
+  .zcrzsh_table .page_right {
+    margin: 10px 30px;
+  }
 </style>
 

@@ -12,8 +12,8 @@
         </Col>
       </div>
     </Row>
-    <Row class="search_list">
-      <Row :gutter="16" class="search_list2">
+    <Row class="zcrzsh_search_row">
+      <Row :gutter="16">
         <Form :label-width="100">
           <i-col span="8">
             <FormItem label="处理状态：">
@@ -43,8 +43,8 @@
         </Form>
       </Row>
     </Row>
-    <div class="list_table">
-      <Row :gutter="16" class="button_left">
+    <div class="zcrzsh_table">
+      <Row :gutter="16">
         <Col>
           <i-col span="3">
             <i-col span="12">
@@ -53,14 +53,14 @@
           </i-col>
         </Col>
       </Row>
-      <Row :gutter="16" class="search_list2">
+      <Row :gutter="16">
         <Col>
           <Table :columns="columns" :data="data1" ref="table"></Table>
         </Col>
       </Row>
       <Row :gutter="16" type="flex" justify="end">
         <Col span="24" justify="end" class="page_right">
-          <Page :total="100"/>
+          <Page :total="100" show-sizer  show-elevator show-total />
         </Col>
         <Col span="1"></Col>
       </Row>
@@ -95,7 +95,6 @@
     <!--处理信息modal-->
     <!--恢复modal-->
     <template>
-      <Button type="primary" @click="modal1 = true">Display dialog box</Button>
       <Modal v-model="huifuModal" width="360">
         <div style="text-align:center">
           <p>该企业有新的异常情况发生，确定要恢复吗？</p>
@@ -116,7 +115,15 @@
   </div>
 </template>
 <script>
+  import {getTableData} from '@/api/data'
+  import Tables from '_c/tables'
+  import expandRow from '_c/tables/table-expand.vue'
   export default {
+    name:'ycztgl',
+    components: {
+      Tables,
+      expandRow
+    },
     data () {
       return {
         listztHover: 0,
@@ -236,6 +243,17 @@
             align: 'center'
           },
           {
+            type: 'expand',
+            width: 50,
+            render: (h, params) => {
+              return h(expandRow, {
+                props: {
+                  row: params.row
+                }
+              })
+            }
+          },
+          {
             title: '地区',
             key: 'name'
           },
@@ -259,7 +277,7 @@
             title: '操作',
             key: 'action',
             width: 150,
-            align: 'center',
+            align: 'left',
             render: (h, params) => {
               return h('div', [
                 h('Button', {
@@ -579,6 +597,18 @@
 
   .modal_see .ivu-modal-body {
     padding: 0;
+  }
+  .zcrzsh_search_row{margin-top: 20px;background: #fff;padding-top: 10px;padding-left: 30px;padding-right: 30px;}
+  .zcrzsh_search_row button.ivu-btn-large{padding: 3px 15px 3px 15px;}
+  .zcrzsh_search_row .ivu-form-item{margin-bottom: 15px;}
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
+  .zcrzsh_search{}
+  .zcrzsh_table{background: #fff;}
+  .zcrzsh_table button.ivu-btn-large{padding: 3px 15px 3px 15px;margin-bottom: 10px;margin-left: 30px;}
+  .zcrzsh_table .ivu-table-wrapper{margin: 0 30px;}
+  .zcrzsh_table .page_right{margin: 10px 30px;}
+  .expand-row {
+    margin-bottom: 16px;
   }
   /*处理结果class*/
 </style>

@@ -119,13 +119,17 @@
         <div class="detaileds zzjgdm">
           <i-col span="4">
             <div class="detailed">
-              <img :src="yyzz"/>
+              <viewer :images="yyzz">
+                <img :src="yyzz"/>
+              </viewer>
               <p>营业执照</p>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <img :src="zzjgdm"/>
+              <viewer :images="zzjgdm">
+                <img :src="zzjgdm"/>
+              </viewer>
               <p>组织机构代码</p>
             </div>
           </i-col>
@@ -138,19 +142,25 @@
         <div class="detaileds zzjgdm">
           <i-col span="4">
             <div class="detailed">
-              <img :src="sfzz"/>
+              <viewer :images="sfzz">
+                <img :src="sfzz"/>
+              </viewer>
               <p>身份证正面</p>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <img :src="sfzf"/>
+              <viewer :images="sfzf">
+                <img :src="sfzf"/>
+              </viewer>
               <p>身份证反面</p>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <img :src="sfzsc"/>
+              <viewer :images="sfzsc">
+                <img :src="sfzsc"/>
+              </viewer>
               <p>手持身份证</p>
             </div>
           </i-col>

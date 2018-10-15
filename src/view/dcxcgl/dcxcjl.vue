@@ -12,8 +12,8 @@
         </Col>
       </div>
     </Row>
-    <Row class="search_list">
-      <Row :gutter="16" class="search_list2">
+    <Row class="zcrzsh_search_row">
+      <Row :gutter="16">
         <Form :label-width="100">
           <i-col span="8">
             <FormItem label="地区：">
@@ -49,19 +49,19 @@
         </Form>
       </Row>
     </Row>
-    <div class="list_table">
-      <Row :gutter="16" class="button_left">
-        <router-link to="/dcxcgl/dcxcjladd"><Button class="exportdata" type="primary" size="large"><Icon type="md-add" />新增任务</Button></router-link>
+    <div class="zcrzsh_table">
+      <Row>
+        <router-link to="/dcxcgl/dcxcjladd"><Button type="primary" size="large"><Icon type="md-add" />新增任务</Button></router-link>
         <Button class="exportdata" size="large">删除</Button>
       </Row>
-      <Row :gutter="16" class="search_list2">
+      <Row>
         <Col>
           <tables ref="tables" editable v-model="tableData" :columns="columns"/>
         </Col>
       </Row>
       <Row :gutter="16" type="flex" justify="end">
         <Col span="24" justify="end" class="page_right">
-          <Page :total="100"/>
+          <Page :total="100" show-sizer  show-elevator show-total />
         </Col>
         <Col span="1"></Col>
       </Row>
@@ -490,6 +490,42 @@
 
   .button_left {
     margin-left: 10px !important;
+  }
+  .zcrzsh_search_row {
+    margin-top: 20px;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .zcrzsh_search_row button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+  }
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
+  .zcrzsh_search_row .ivu-form-item {
+    margin-bottom: 15px;
+  }
+
+  .zcrzsh_search {
+  }
+
+  .zcrzsh_table {
+    background: #fff;
+  }
+
+  .zcrzsh_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+
+  .zcrzsh_table .ivu-table-wrapper {
+    margin: 0 30px;
+  }
+
+  .zcrzsh_table .page_right {
+    margin: 10px 30px;
   }
 </style>
 

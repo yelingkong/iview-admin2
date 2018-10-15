@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="search_list_index">
+    <div class="zcrzsh_search_row mtpt0 mb20">
       <Tabs value="name1">
         <TabPane label="按地区查看" name="name1">
-          <Row class="search_list">
-            <Row :gutter="16" class="search_list2">
+          <Row>
+            <Row :gutter="16">
               <Form :label-width="100">
                 <i-col span="8">
                   <FormItem label="地区：">
@@ -70,10 +70,10 @@
         </TabPane>
       </Tabs>
     </div>
-    <Card title="常州市农产品追溯码统计表" :padding="0" shadow class="syztfb sycppzfb">
-      <Button type="primary" size="large" slot="extra" class="dcsj">导出数据</Button>
-      <div class="list_table">
-        <Row :gutter="16" class="search_list2">
+    <Card title="常州市农产品追溯码统计表" :padding="0" shadow class="qytj_table">
+      <Button type="primary" size="large" slot="extra">导出数据</Button>
+      <div>
+        <Row>
           <Col>
             <tables ref="tables" editable v-model="tableData" :columns="columns"/>
           </Col>
@@ -149,7 +149,7 @@
   import pc3 from '@/assets/images/pc3.png'
 
   export default {
-    name: 'zcrzsh',
+    name: 'ncpzsmtj',
     components: {
       Tables
     },
@@ -347,7 +347,17 @@
           },
           series: [{
             data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
+            type: 'line',
+            lineStyle: {
+              normal: {
+                color: '#7CB5EC',
+              }
+            },
+            itemStyle: {
+              normal: {
+                color: '#7CB5EC',
+              }
+            }
           }]
         },
         data: [
@@ -401,7 +411,10 @@
       }
     },
     mounted() {
-      this.initChart()
+      this.$nextTick(() => {
+        this.initChart()
+        this.selfAdaption()
+      })
       getTableData().then(res => {
         this.tableData = res.data
       })
@@ -423,6 +436,15 @@
         const myChart = echarts.init(this.$refs.chart)
         myChart.setOption(this.option)
       },
+      selfAdaption() {
+        let _this = this;
+        setTimeout(() => {
+          window.addEventListener('resize', function () {
+            const myChart = echarts.init(_this.$refs.chart)
+            myChart.resize();
+          })
+        }, 10)
+      }
     }
   }
 
@@ -611,5 +633,49 @@
     display: block;
     margin: 10px auto;
   }
+  .zcrzsh_search_row {
+    margin-top: 20px;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .zcrzsh_search_row button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+  }
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
+  .zcrzsh_search_row .ivu-form-item {
+    margin-bottom: 15px;
+  }
+
+  .zcrzsh_search {
+  }
+
+  .qytj_table {
+    background: #fff;
+  }
+
+  .qytj_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+
+  .qytj_table .ivu-table-wrapper {
+    margin: 10px 10px;
+  }
+
+  .qytj_table .page_right {
+    margin: 10px 30px;
+  }
+  .qytj_table .ivu-card-extra {
+    right: 10px;
+  }
+  .qytj_table .ivu-card-head {
+    padding: 14px 10px;
+  }
+  .mb20{margin-bottom: 20px;padding-bottom: 10px;}
+  .mtpt0{margin-top: 0px;}
 </style>
 

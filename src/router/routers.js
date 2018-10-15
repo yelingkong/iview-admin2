@@ -23,6 +23,15 @@ export default [
     component: () => import('@/view/login/login.vue')
   },
   {
+    path: '/ceshi',
+    name: 'ceshi',
+    meta: {
+      title: 'ceshi - 登录',
+      hideInMenu: true
+    },
+    component: () => import('@/view/single-page/ceshi')
+  },
+  {
     path: '/',
     name: 'home',
     component: Main,

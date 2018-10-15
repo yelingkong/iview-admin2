@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Row class="search_list">
-      <Row :gutter="16" class="search_list2">
+    <Row class="zcrzsh_search_row mtpt0 mb20">
+      <Row :gutter="16">
         <Form :label-width="100">
           <i-col span="8">
             <FormItem label="地区：">
@@ -25,17 +25,17 @@
         </Form>
       </Row>
     </Row>
-    <Card title="常州市产品抽检统计" :padding="0" shadow class="syztfb sycppzfb">
-      <Button type="primary" size="large" slot="extra" class="dcsj">导出数据</Button>
-      <div class="list_table">
-        <Row :gutter="16" class="search_list2">
+    <Card title="常州市产品抽检统计" :padding="0" shadow class="qytj_table">
+      <Button type="primary" size="large" slot="extra">导出数据</Button>
+      <div>
+        <Row :gutter="16">
           <Col>
-            <tables ref="tables" editable v-model="tableData" :columns="columns"/>
+            <tables ref="tables" :highlight-row="true" editable v-model="tableData" :columns="columns"/>
           </Col>
         </Row>
         <Row :gutter="16" type="flex" justify="end">
           <Col span="24" justify="end" class="page_right">
-            <Page :total="100"/>
+            <Page :total="100" show-sizer  show-elevator show-total />
           </Col>
           <Col span="1"></Col>
         </Row>
@@ -48,7 +48,7 @@
   import {getTableData} from '@/api/data'
 
   export default {
-    name: 'zcrzsh',
+    name: 'cpcjtj',
     components: {
       Tables
     },
@@ -144,131 +144,13 @@
           phone: '1000000'
         },
         columns: [
-          {type: 'selection', width: 60, align: 'center'},
-          {title: '地区', key: 'address', sortable: true},
-          {title: '主体名称', key: 'zhuti',},
-          {title: '注册时间', key: 'createTime',},
-          {
-            title: '审核状态',
-            key: 'reviewTheStatus',
-            render: (h, {row}) => {
-              if (row.reviewTheStatus === 0) {
-                return h('Badge', {
-                  props: {
-                    status: 'default',
-                    text: '待审核'
-                  }
-                })
-              } else if (row.reviewTheStatus === 1) {
-                return h('Badge', {
-                  props: {
-                    status: 'error',
-                    text: '待复审'
-                  }
-                })
-              } else if (row.reviewTheStatus === 2) {
-                return h('Badge', {
-                  props: {
-                    status: 'success',
-                    text: '已复审'
-                  }
-                })
-              }
-            }
-          },
-          {
-            title: '审核日期',
-            key: 'dateOfAudit',
-            render: (h, {row}) => {
-              if (row.reviewTheStatus === 0) {
-                return h('div', {})
-              } else {
-                return h('div', {}, row.dateOfAudit)
-              }
-            }
-          },
-          {
-            title: '操作',
-            key: 'action',
-            width: 150,
-            align: 'center',
-            render: (h, {row, index}) => {
-              if (row.reviewTheStatus === 0) {
-                return h('div', [
-                  h('Button', {
-                    props: {
-                      type: 'primary',
-                      size: 'small'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    },
-                    on: {
-                      click: () => {
-                        this.show(row.index)
-                      }
-                    }
-                  }, '查看'),
-                  h('Button', {
-                    props: {
-                      type: 'error',
-                      size: 'small'
-                    },
-                    on: {
-                      click: () => {
-                        this.shenhe(index)
-                      }
-                    }
-                  }, '审核')
-                ])
-              } else if (row.reviewTheStatus === 1) {
-                return h('div', [
-                  h('Button', {
-                    props: {
-                      type: 'primary',
-                      size: 'small'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    },
-                    on: {
-                      click: () => {
-                        this.show(index)
-                      }
-                    }
-                  }, '查看'),
-                  h('Button', {
-                    props: {
-                      type: 'error',
-                      size: 'small'
-                    },
-                    on: {
-                      click: () => {
-                        this.fushen(index)
-                      }
-                    }
-                  }, '复审')
-                ])
-              } else if (row.reviewTheStatus === 2) {
-                return h('div', [
-                  h('Button', {
-                    props: {
-                      type: 'primary',
-                      size: 'small'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    },
-                    on: {
-                      click: () => {
-                        this.show(index)
-                      }
-                    }
-                  }, '查看')
-                ])
-              }
-            }
-          }
+          {title: '地区', key: 'address',},
+          {title: '未抽检企业数（家）', key: 'zhuti',},
+          {title: '抽检1次企业数（家）', key: 'zhuti',},
+          {title: '抽检2次及以上企业数（家）', key: 'zhuti',},
+          {title: '抽检主体总数（家）', key: 'zhuti',},
+          {title: '抽检覆盖率（%）', key: 'zhuti',},
+          {title: '抽检合格率（%）', key: 'zhuti',},
         ],
         tableData: [],
         data: [{
@@ -487,5 +369,49 @@
     float: left;
   }
   .dcsj{margin-top: -5px;}
+  .zcrzsh_search_row {
+    margin-top: 20px;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .zcrzsh_search_row button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+  }
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
+  .zcrzsh_search_row .ivu-form-item {
+    margin-bottom: 15px;
+  }
+
+  .zcrzsh_search {
+  }
+
+  .qytj_table {
+    background: #fff;
+  }
+
+  .qytj_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+
+  .qytj_table .ivu-table-wrapper {
+    margin: 10px 10px;
+  }
+
+  .qytj_table .page_right {
+    margin: 10px 30px;
+  }
+  .qytj_table .ivu-card-extra {
+    right: 10px;
+  }
+  .qytj_table .ivu-card-head {
+    padding: 14px 10px;
+  }
+  .mb20{margin-bottom: 20px;padding-bottom: 10px;}
+  .mtpt0{margin-top: 0px;}
 </style>
 

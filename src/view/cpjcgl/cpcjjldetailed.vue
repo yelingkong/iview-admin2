@@ -76,6 +76,7 @@
   import expandRow from '_c/tables/table-expand.vue'
 
   export default {
+    name:'cpcjjldetailed',
     components: {
       Tables,
       expandRow

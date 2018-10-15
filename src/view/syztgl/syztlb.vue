@@ -12,8 +12,8 @@
         </Col>
       </div>
     </Row>
-    <Row class="search_list">
-      <Row :gutter="16" class="search_list2">
+    <Row class="zcrzsh_search_row">
+      <Row :gutter="16">
         <Form :label-width="100">
           <i-col span="8">
             <FormItem label="地区：">
@@ -45,7 +45,8 @@
           <i-col span="8">
             <FormItem label="抽检情况：">
               <Select v-model="samplingSituationModel">
-                <Option v-for="item in samplingSituation" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Option v-for="item in samplingSituation" :value="item.value" :key="item.value">{{ item.label }}
+                </Option>
               </Select>
             </FormItem>
           </i-col>
@@ -65,25 +66,31 @@
         </Form>
       </Row>
     </Row>
-    <div class="list_table">
-      <Row :gutter="16" class="search_list2">
+    <div class="zcrzsh_table">
+      <Row :gutter="16" class="mt10">
         <Col>
-          <Table :columns="columns1" :data="data1" ref="table"></Table>
+          <tables ref="tables" editable v-model="tableData" :columns="columns"/>
         </Col>
       </Row>
       <Row :gutter="16" type="flex" justify="end">
         <Col span="24" justify="end" class="page_right">
-          <Page :total="100"/>
+          <Page :total="100" show-sizer show-elevator show-total/>
         </Col>
         <Col span="1"></Col>
       </Row>
     </div>
-
   </div>
 </template>
 <script>
+  import Tables from '_c/tables'
+  import {getTableData} from '@/api/data'
+
   export default {
-    data () {
+    name: 'syztlb',
+    components: {
+      Tables
+    },
+    data() {
       return {
         listztHover: 0,
         listzt: [
@@ -224,7 +231,7 @@
           zone: '010',
           phone: '1000000'
         },
-        columns1: [
+        columns: [
           {
             type: 'selection',
             width: 60,
@@ -254,7 +261,7 @@
             title: '操作',
             key: 'action',
             width: 150,
-            align: 'center',
+            align: 'left',
             render: (h, params) => {
               return h('div', [
                 h('Button', {
@@ -268,7 +275,7 @@
                   on: {
                     click: () => {
                       this.$router.push({
-                        path: '/syztgl/syztlb/'+params.id
+                        path: '/syztgl/syztlb/' + params.id
                       });
                     }
                   }
@@ -277,73 +284,7 @@
             }
           }
         ],
-        data1: [
-          {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          }, {
-            name: '天宁区',
-            key: 10000,
-            key1: 10000,
-            key2: 10000,
-            key3: 10000,
-            key4: 10000,
-            key5: 10000,
-            key6: 10000,
-          },
-
-        ],
+        tableData: [],
         data: [{
           value: 'beijing',
           label: '北京',
@@ -394,21 +335,24 @@
       }
     },
     mounted: function () {
-
+      getTableData().then(res => {
+        this.tableData = res.data
+        console.log(res)
+      })
     },
     methods: {
-      exportData (type) {
+      exportData(type) {
         this.$refs.table.exportCsv({
           filename: 'The original data'
         })
       },
-      show (index) {
+      show(index) {
         this.$Modal.info({
           title: 'User Info',
           content: `Name：${this.data1[index].name}<br>Age：${this.data1[index].age}<br>Address：${this.data1[index].address}`
         })
       },
-      remove (index) {
+      remove(index) {
         this.data1.splice(index, 1)
       }
     }
@@ -557,5 +501,47 @@
     width: 20%;
     float: left;
   }
+
+  .zcrzsh_search_row {
+    margin-top: 20px;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .zcrzsh_search_row button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+  }
+
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label {
+    text-align: left;
+  }
+
+  .zcrzsh_search_row .ivu-form-item {
+    margin-bottom: 15px;
+  }
+
+  .zcrzsh_search {
+  }
+
+  .zcrzsh_table {
+    background: #fff;
+  }
+
+  .zcrzsh_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+
+  .zcrzsh_table .ivu-table-wrapper {
+    margin: 0 30px;
+  }
+
+  .zcrzsh_table .page_right {
+    margin: 10px 30px;
+  }
+  .mt10{padding-top: 10px;}
 </style>
 

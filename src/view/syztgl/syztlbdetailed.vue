@@ -75,7 +75,9 @@
                   <div class="detailed">详细地址：<span>洛阳镇洛东村101县道</span></div>
                 </i-col>
                 <i-col span="8">
-                  <div class="detailed">经纬度：<span>经度119.811893    纬度31.763468</span></div>
+                  <div class="detailed">经纬度：<span>经度119.811893    纬度31.763468</span>
+                    <Icon type="ios-eye" @click="handler_map" size="20" style="margin-left: 10px;cursor: pointer"/>
+                  </div>
                 </i-col>
               </div>
             </Row>
@@ -121,17 +123,20 @@
               <div class="detaileds zzjgdm">
                 <i-col span="4">
                   <div class="detailed">
-                    <img :src="yyzz"/>
+                    <viewer :images="yyzz">
+                      <img :src="yyzz"/>
+                    </viewer>
                     <p>营业执照</p>
                   </div>
                 </i-col>
                 <i-col span="4">
                   <div class="detailed">
-                    <img :src="zzjgdm"/>
+                    <viewer :images="zzjgdm">
+                      <img :src="zzjgdm"/>
+                    </viewer>
                     <p>组织机构代码</p>
                   </div>
                 </i-col>
-
               </div>
             </Row>
           </Card>
@@ -140,30 +145,35 @@
               <div class="detaileds zzjgdm">
                 <i-col span="4">
                   <div class="detailed">
-                    <img :src="sfzz"/>
+                    <viewer :images="sfzz">
+                      <img :src="sfzz"/>
+                    </viewer>
                     <p>身份证正面</p>
                   </div>
                 </i-col>
                 <i-col span="4">
                   <div class="detailed">
-                    <img :src="sfzf"/>
+                    <viewer :images="sfzf">
+                      <img :src="sfzf"/>
+                    </viewer>
                     <p>身份证反面</p>
                   </div>
                 </i-col>
                 <i-col span="4">
                   <div class="detailed">
-                    <img :src="sfzsc"/>
+                    <viewer :images="sfzsc">
+                      <img :src="sfzsc"/>
+                    </viewer>
                     <p>手持身份证</p>
                   </div>
                 </i-col>
-
               </div>
             </Row>
           </Card>
         </TabPane>
         <TabPane label="溯源产品" name="name2">
-          <Row class="search_list">
-            <Row :gutter="16" class="search_list2">
+          <Row class="zcrzsh_search_row mt0">
+            <Row :gutter="16">
               <Form :label-width="100">
                 <i-col span="8">
                   <FormItem label="产品名称：">
@@ -187,24 +197,24 @@
               </Form>
             </Row>
           </Row>
-          <div class="list_table">
-            <Row :gutter="16" class="search_list2">
-              <Button class="exportdata" type="primary" size="large" @click="exportData(1)">导出数据</Button>
+          <div class="zcrzsh_table">
+            <Row>
+              <Button type="primary" size="large" @click="exportData(1)">导出数据</Button>
               <Col>
                 <Table :columns="columns" :data="tableData" ref="table"></Table>
               </Col>
             </Row>
             <Row :gutter="16" type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100"/>
+                <Page :total="100" show-sizer  show-elevator show-total />
               </Col>
               <Col span="1"></Col>
             </Row>
           </div>
         </TabPane>
         <TabPane label="投入品使用" name="name3">
-          <Row class="search_list">
-            <Row :gutter="16" class="search_list2">
+          <Row class="zcrzsh_search_row mt0">
+            <Row :gutter="16">
               <Form :label-width="100">
                 <i-col span="8">
                   <FormItem label="投入品类型：">
@@ -234,24 +244,24 @@
               </Form>
             </Row>
           </Row>
-          <div class="list_table">
-            <Row :gutter="16" class="search_list2">
-              <Button class="exportdata" type="primary" size="large" @click="exportData(1)">导出数据</Button>
+          <div class="zcrzsh_table">
+            <Row>
+              <Button type="primary" size="large" @click="exportData(1)">导出数据</Button>
               <Col>
                 <Table :columns="trpColumns" :data="trpTableData" ref="table"></Table>
               </Col>
             </Row>
             <Row :gutter="16" type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100"/>
+                <Page :total="100" show-sizer  show-elevator show-total />
               </Col>
               <Col span="1"></Col>
             </Row>
           </div>
         </TabPane>
         <TabPane label="督查巡查" name="name4">
-          <Row class="search_list">
-            <Row :gutter="16" class="search_list2">
+          <Row class="zcrzsh_search_row mt0">
+            <Row :gutter="16">
               <Form :label-width="100">
                 <i-col span="8">
                   <FormItem label="巡查日期：">
@@ -277,23 +287,23 @@
               </Form>
             </Row>
           </Row>
-          <div class="list_table">
-            <Row :gutter="16" class="search_list2">
+          <div class="zcrzsh_table">
+            <Row class="mt10">
               <Col>
                 <Table :columns="xcColumns" :data="xcTableData" ref="table"></Table>
               </Col>
             </Row>
-            <Row :gutter="16" type="flex" justify="end">
+            <Row type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100"/>
+                <Page :total="100" show-sizer  show-elevator show-total />
               </Col>
               <Col span="1"></Col>
             </Row>
           </div>
         </TabPane>
         <TabPane label="产品抽检" name="name5">
-          <Row class="search_list">
-            <Row :gutter="16" class="search_list2">
+          <Row class="zcrzsh_search_row mt0">
+            <Row :gutter="16">
               <Form :label-width="100">
                 <i-col span="8">
                   <FormItem label="检查日期：">
@@ -331,45 +341,45 @@
               </Form>
             </Row>
           </Row>
-          <div class="list_table">
-            <Row :gutter="16" class="search_list2">
+          <div class="zcrzsh_table mt10">
+            <Row>
               <Col>
                 <Table :columns="cpcjColumns" :data="cpcjTableData" ref="table"></Table>
               </Col>
             </Row>
-            <Row :gutter="16" type="flex" justify="end">
+            <Row type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100"/>
+                <Page :total="100" show-sizer  show-elevator show-total />
               </Col>
               <Col span="1"></Col>
             </Row>
           </div>
         </TabPane>
         <TabPane label="变更历史" name="name6">
-          <div class="list_table">
-            <Row :gutter="16" class="search_list2">
+          <div>
+            <Row :gutter="16" class="zcrzsh_table mt0">
               <Col>
                 <Table :columns="bglsColumns" :data="bglsTableData" ref="table"></Table>
               </Col>
             </Row>
             <Row :gutter="16" type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100"/>
+                <Page :total="100" show-sizer  show-elevator show-total />
               </Col>
               <Col span="1"></Col>
             </Row>
           </div>
         </TabPane>
         <TabPane label="异常历史" name="name7">
-          <div class="list_table">
-            <Row :gutter="16" class="search_list2">
+          <div class="zcrzsh_table mt0">
+            <Row>
               <Col>
                 <Table :columns="yclsColumns" :data="yclsTableData" ref="table"></Table>
               </Col>
             </Row>
             <Row :gutter="16" type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100"/>
+                <Page :total="100" show-sizer  show-elevator show-total />
               </Col>
               <Col span="1"></Col>
             </Row>
@@ -450,15 +460,13 @@
       <Card title="巡查照片">
         <Row :gutter="16">
           <div class="detaileds">
-            <i-col span="4">
-              <div class="detailed"><img :src="tupian1" alt=""></div>
-            </i-col>
-            <i-col span="4">
-              <div class="detailed"><img :src="tupian2" alt=""></div>
-            </i-col>
-            <i-col span="4">
-              <div class="detailed"><img :src="tupian3" alt=""></div>
-            </i-col>
+            <viewer :images="tupians">
+              <i-col span="4" v-for="item in tupians">
+                <div class="detailed">
+                  <img :src="item.img" alt="">
+                </div>
+              </i-col>
+            </viewer>
           </div>
         </Row>
       </Card>
@@ -546,10 +554,18 @@
         </div>
       </Card>
     </Modal>
+    <Modal v-model="modal_map" class="modal_map" width="1000" footer-hide="true" header-hide="true">
+      <Card title="常州市洛丰果品专业合作社">
+        <baidu-map class="map" :center="center" :zoom="zoom">
+          <bm-marker :position="center" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
+          </bm-marker>
+        </baidu-map>
+      </Card>
+    </Modal>
     <Modal v-model="modal_xiangqing" class="modal_see" width="1000" footer-hide="true" header-hide="true">
       <Card title="溯源产品详情">
-        <div class="shenhe_style">
-          <Card title="产品信息" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+        <div class="shenhe_style hide_after">
+          <Card title="产品信息" :dis-hover="true" :bordered="false" :padding="0" style="margin-top: 0px;"class="detailed">
             <Row :gutter="16">
               <div class="detaileds">
                 <i-col span="10">
@@ -579,7 +595,7 @@
               </div>
             </Row>
           </Card>
-          <Card title="销售信息" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+          <Card title="销售信息" :dis-hover="true" :bordered="false" :padding="0" style="margin-top: 0px;" class="detailed">
             <Row :gutter="16">
               <div class="detaileds">
                 <i-col span="10">
@@ -603,7 +619,7 @@
               </div>
             </Row>
           </Card>
-          <Card title="标签打印" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+          <Card title="标签打印" :dis-hover="true" :bordered="false" :padding="0" style="margin-top: 0px;" class="detailed">
             <Row :gutter="16">
               <div class="detaileds">
                 <i-col span="20">
@@ -618,36 +634,7 @@
     <Modal v-model="modal_bqdymx" class="modal_see" width="1000" footer-hide="true" header-hide="true">
       <Card title="标签打印明细">
         <div class="shenhe_style">
-          <Card title="产品信息" :padding="0" style="margin-top: 0px;" shadow class="detailed">
-            <Row :gutter="16">
-              <div class="detaileds">
-                <i-col span="10">
-                  <div class="detailed">产品名称：<span>白菜</span></div>
-                </i-col>
-                <i-col span="14">
-                  <div class="detailed">产品追溯码：<span>1.2.62563584652132545X.02010102.20180904180329.001</span></div>
-                </i-col>
-                <i-col span="10">
-                  <div class="detailed">产品来源：<span>自产</span></div>
-                </i-col>
-                <i-col span="14">
-                  <div class="detailed">来源地：<span>蔬菜大棚基地</span></div>
-                </i-col>
-                <i-col span="10">
-                  <div class="detailed">数量：<span>30公斤</span></div>
-                </i-col>
-                <i-col span="14">
-                  <div class="detailed">赋码日期：<span>2018-07-19</span></div>
-                </i-col>
-                <i-col span="10">
-                  <div class="detailed">质检类型：<span>自检合格</span></div>
-                </i-col>
-                <i-col span="14">
-                  <div class="detailed">质检结果：<span>合格</span></div>
-                </i-col>
-              </div>
-            </Row>
-          </Card>
+          <Table :columns="bqdyColumns" :data="bqdyTableData" ref="table"></Table>
         </div>
       </Card>
     </Modal>
@@ -701,6 +688,8 @@
     data() {
       return {
         listztHover: 0,
+        center: {lng: 120.088214, lat: 31.650013},
+        zoom: 17,
         modal_xiangqing: false,
         listzt: [
           {
@@ -801,14 +790,21 @@
         modal_trp: false,
         dcxc: true,
         dcxcxq: false,
+        modal_map: false,
         yyzz,
         zzjgdm,
         sfzf,
         sfzz,
         sfzsc,
-        tupian1,
-        tupian2,
-        tupian3,
+        tupians: [
+          {
+            img: tupian1,
+          }, {
+            img: tupian2,
+          }, {
+            img: tupian3,
+          }
+        ],
         modal_see: false,
         modal_bqdymx: false,
         columns: [
@@ -858,6 +854,15 @@
             }
           }
         ],
+        bqdyColumns: [
+          {type: 'selection', width: 60, align: 'center'},
+          {title: '产品名称', key: 'zhuti',},
+          {title: '数量', key: 'shuliang',},
+          {title: '产品追溯码', key: 'zhuisuma', width: 230},
+          {title: '打印日期', key: 'createTime',},
+          {title: '打印张数', key: 'shuliang',},
+        ],
+        bqdyTableData: [],
         trpColumns: [
           {type: 'selection', width: 60, align: 'center'},
           {title: '投入品类型', key: 'zhuti',},
@@ -894,7 +899,34 @@
           {type: 'selection', width: 60, align: 'center'},
           {title: '检查单位', key: 'zhuti',},
           {title: '检查人员', key: 'zhuti',},
-          {title: '巡查结果', key: 'zhuti',},
+          {
+            title: '巡查结果',
+            key: 'reviewTheStatus',
+            render: (h, {row}) => {
+              if (row.reviewTheStatus === 0) {
+                return h('Badge', {
+                  props: {
+                    status: 'error',
+                    text: '不合格'
+                  }
+                })
+              } else if (row.reviewTheStatus === 1) {
+                return h('Badge', {
+                  props: {
+                    status: 'success',
+                    text: '合格'
+                  }
+                })
+              } else if (row.reviewTheStatus === 2) {
+                return h('Badge', {
+                  props: {
+                    status: 'success',
+                    text: '合格'
+                  }
+                })
+              }
+            }
+          },
           {title: '巡查日期', key: 'createTime',},
           {
             title: '操作',
@@ -927,7 +959,34 @@
           {title: '检测类型', key: 'zhuti',},
           {title: '检测产品', key: 'zhuti',},
           {title: '检测人员', key: 'zhuti',},
-          {title: '检测结果', key: 'zhuti',},
+          {
+            title: '检测结果',
+            key: 'reviewTheStatus',
+            render: (h, {row}) => {
+              if (row.reviewTheStatus === 0) {
+                return h('Badge', {
+                  props: {
+                    status: 'error',
+                    text: '不合格'
+                  }
+                })
+              } else if (row.reviewTheStatus === 1) {
+                return h('Badge', {
+                  props: {
+                    status: 'success',
+                    text: '合格'
+                  }
+                })
+              } else if (row.reviewTheStatus === 2) {
+                return h('Badge', {
+                  props: {
+                    status: 'success',
+                    text: '合格'
+                  }
+                })
+              }
+            }
+          },
           {title: '检测日期', key: 'createTime',},
           {
             title: '操作',
@@ -994,6 +1053,7 @@
         this.bglsTableData = res.data
         this.yclsTableData = res.data
         this.cpcjjcxxTableData = res.data
+        this.bqdyTableData = res.data
       })
     },
     methods: {
@@ -1032,6 +1092,14 @@
       },
       remove(index) {
         this.data1.splice(index, 1)
+      },
+      handler_map({BMap, map}) {
+        this.modal_map = true
+        console.log(BMap, map)
+        // 31.649513
+        this.center.lng = 120.088214-0.009
+        this.center.lat = 31.650013+0.004
+        this.zoom = 17
       }
     }
   }
@@ -1045,10 +1113,9 @@
   .detailed {
     font-size: 14px;
     color: #383938;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
-
 
   .detaileds {
     margin-top: 20px;
@@ -1271,17 +1338,24 @@
     padding: 0;
   }
 
+  modal_map {
+    width: 1000px;
+    height: 500px;
+  }
+
+  .modal_map .ivu-modal-body, .modal_map .ivu-card-body {
+    padding: 0;
+  }
+
+  .modal_map .map {
+    padding: 0;
+    width: 997px;
+    height: 500px;
+  }
+
   .detailed h2 {
     margin-bottom: 20px;
   }
-
-  .detailed {
-    font-size: 14px;
-    color: #383938;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
 
   .detaileds {
     margin-top: 20px;
@@ -1291,4 +1365,44 @@
   .jcxx .ivu-card {
     margin-top: 10px;
   }
+  .zcrzsh_search_row {
+    margin-top: 20px;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .zcrzsh_search_row button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+  }
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
+  .zcrzsh_search_row .ivu-form-item {
+    margin-bottom: 15px;
+  }
+
+  .zcrzsh_search {
+  }
+
+  .zcrzsh_table {
+    background: #fff;
+  }
+
+  .zcrzsh_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+
+  .zcrzsh_table .ivu-table-wrapper {
+    margin: 0 30px;
+  }
+
+  .zcrzsh_table .page_right {
+    margin: 10px 30px;
+  }
+  .mt10{padding-top: 10px;}
+  .mt0{
+    margin-top: 0;padding-top: 20px;}
+  .hide_after .ivu-row::after{}
 </style>

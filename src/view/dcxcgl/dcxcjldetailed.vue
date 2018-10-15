@@ -71,17 +71,23 @@
         <div class="detaileds zzjgdm">
           <i-col span="4">
             <div class="detailed">
+              <viewer :images="sfzz">
               <img :src="sfzz"/>
+              </viewer>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <img :src="sfzf"/>
+              <viewer :images="sfzf">
+                <img :src="sfzf"/>
+              </viewer>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <img :src="sfzsc"/>
+              <viewer :images="sfzsc">
+                <img :src="sfzsc"/>
+              </viewer>
             </div>
           </i-col>
 
@@ -110,6 +116,7 @@
   import Tables from '_c/tables'
 
   export default {
+    name:'dcxcjldetailed',
     components: {
       Tables
     },

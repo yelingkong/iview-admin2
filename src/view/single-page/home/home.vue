@@ -233,7 +233,7 @@
         </Card>
       </i-col>
     </Row>
-    <Modal v-model="modal2" width="360">
+    <Modal v-model="modal2" width="360" :closable="false">
       <div style="text-align:center">
         <p>某某某，您好。常州市目前有待处理异常主体{{yichang}}家，是否现在处理？</p>
         <Row>
@@ -298,30 +298,52 @@
           {title: '新增互动', icon: 'md-chatbubbles', count: 12, color: '#E46CBB'},
           {title: '新增页面', icon: 'md-map', count: 14, color: '#9A66E4'}
         ],
-        pieData1: [
-          {value: 28, name: '蔬菜'},
-          {value: 100, name: '其他'}
-        ],
-        pieData2: [
-          {value: 22, name: '水果'},
-          {value: 100, name: '其他'}
-        ],
-        pieData3: [
-          {value: 28, name: '水产品'},
-          {value: 100, name: '其他'}
-        ],
-        pieData4: [
-          {value: 28, name: '畜禽'},
-          {value: 100, name: '其他'}
-        ],
-        pieData5: [
-          {value: 28, name: '粮油'},
-          {value: 100, name: '其他'}
-        ],
-        pieData6: [
-          {value: 28, name: '其他'},
-          {value: 100, name: '其他'}
-        ],
+        pieData1: {
+          data: [
+            {value: 28, name: '蔬菜'},
+            {value: 100, name: '其他'}
+          ],
+          color: ['#48A1FE', '#F0F2F5'],
+          textColor: ['#1890FF', '#1890FF'],
+        },
+        pieData2: {
+          data: [{value: 22, name: '水果'},
+            {value: 100, name: '其他'}],
+          color: ['#77D38A', '#F0F2F5'],
+          textColor: ['#929292', '#272727'],
+        },
+        pieData3: {
+          data: [
+            {value: 28, name: '水产品'},
+            {value: 100, name: '其他'}
+          ],
+          color: ['#FCDB6C', '#F0F2F5'],
+          textColor: ['#929292', '#272727'],
+        },
+        pieData4: {
+          data: [
+            {value: 28, name: '畜禽'},
+            {value: 100, name: '其他'}
+          ],
+          color: ['#FCDB6C', '#F0F2F5'],
+          textColor: ['#929292', '#272727'],
+        },
+        pieData5: {
+          data: [
+            {value: 28, name: '粮油'},
+            {value: 100, name: '其他'}
+          ],
+          color: ['#FCDB6C', '#F0F2F5'],
+          textColor: ['#929292', '#272727'],
+        },
+        pieData6: {
+          data: [
+            {value: 28, name: '其他'},
+            {value: 100, name: '总数'}
+          ],
+          color: ['#FCDB6C', '#F0F2F5'],
+          textColor: ['#929292', '#272727'],
+        },
         barData: {
           Mon: 13253,
           Tue: 34235,
@@ -350,12 +372,22 @@
           },
           series: [{
             data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
+            type: 'line',
+            lineStyle: {
+              normal: {
+                color: '#7CB5EC',
+              }
+            },
+            itemStyle: {
+              normal: {
+                color: '#7CB5EC',
+              }
+            }
           }]
         },
         columns: [
           {
-            title: '序号', width: 60, align: 'center', type:'index'
+            title: '序号', width: 60, align: 'center', type: 'index'
           },
           {title: '产品', key: 'chanpin', width: 80},
           {title: '数量', key: 'shuliang', width: 60},
@@ -397,31 +429,31 @@
         countDate: [(new Date()), (new Date())],
         tableColumns: [
           {
-          type: 'index'
-        }, {
-          title: '名称',
-          key: 'name'
-        }, {
-          title: '销售额',
-          key: 'sell'
-        }],
+            type: 'index'
+          }, {
+            title: '名称',
+            key: 'name'
+          }, {
+            title: '销售额',
+            key: 'sell'
+          }],
         tableData2: [
           {
-          name: '门店1',
-          sell: '123000'
-        }, {
-          name: '门店2',
-          sell: '123000'
-        }, {
-          name: '门店3',
-          sell: '123000'
-        }, {
-          name: '门店4',
-          sell: '123000'
-        }, {
-          name: '门店5',
-          sell: '123000'
-        },]
+            name: '门店1',
+            sell: '123000'
+          }, {
+            name: '门店2',
+            sell: '123000'
+          }, {
+            name: '门店3',
+            sell: '123000'
+          }, {
+            name: '门店4',
+            sell: '123000'
+          }, {
+            name: '门店5',
+            sell: '123000'
+          },]
       }
     },
     methods: {
@@ -477,18 +509,29 @@
       initChart2() {
         const myChart = echarts.init(this.$refs.chart2)
         myChart.setOption(this.option2)
+      },
+      selfAdaption() {
+        let _this = this;
+        setTimeout(() => {
+          window.addEventListener('resize', function () {
+            const myChart = echarts.init(_this.$refs.chart)
+            myChart.resize();
+          })
+        }, 10)
       }
     },
     mounted() {
+      this.$nextTick(() => {
+        this.initChart()
+        this.initChart2()
+        this.selfAdaption()
+      })
       this.getRemind()
-      this.initChart()
-      this.initChart2()
       getTableData().then(res => {
         this.tableData = res.data
       })
     }
   }
-
 </script>
 <style scoped>
   .count {
@@ -508,6 +551,7 @@
 
   .fwb {
     font-weight: bold;
+    color: red;
   }
 
   .dbsj_list {
@@ -596,7 +640,6 @@
     width: 100%;
     height: 400px;
     margin-top: 20px;
-    max-width: 870px;
   }
 
   .syztfb {

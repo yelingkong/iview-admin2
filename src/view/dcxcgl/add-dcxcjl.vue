@@ -7,7 +7,7 @@
             <template>
               <FormItem label="*被检测区域：">
                 <template>
-                  <Cascader :data="data" v-model="value1"></Cascader>
+                  <cascaderMulti @on-change="array => end_code = array" :data="data" placeholder="地区"></cascaderMulti>
                 </template>
               </FormItem>
               <FormItem label="任务起止时间：">
@@ -52,7 +52,7 @@
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*被检单位：">
-                <Select v-model="modellist">
+                <Select v-model="modellist" filterable="true">
                   <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -63,7 +63,7 @@
             <div v-for="(item,index) in bjdw">
               <i-col span="20">
                 <FormItem label="*被检单位：">
-                  <Select>
+                  <Select filterable="true">
                     <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                   </Select>
                 </FormItem>
@@ -81,7 +81,7 @@
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*被检单位：">
-                <Select v-model="modellist">
+                <Select filterable="true" v-model="modellist">
                   <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -92,7 +92,7 @@
             <div v-for="(item,index) in bjdw">
               <i-col span="20">
                 <FormItem label="*被检单位：">
-                  <Select>
+                  <Select filterable="true">
                     <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                   </Select>
                 </FormItem>
@@ -110,7 +110,7 @@
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*检查人员：">
-                <Select v-model="jcryModel">
+                <Select filterable="true" v-model="jcryModel">
                   <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -121,7 +121,7 @@
             <div v-for="(item,index) in jcry">
               <i-col span="20">
                 <FormItem label="*检查人员：">
-                  <Select>
+                  <Select filterable="true">
                     <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                   </Select>
                 </FormItem>
@@ -139,7 +139,7 @@
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*检查人员：">
-                <Select v-model="modellist">
+                <Select filterable="true" v-model="modellist">
                   <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -149,7 +149,7 @@
             </i-col>
             <div v-for="(item,index) in jcry">
               <i-col span="20">
-                <FormItem label="*检查人员：">
+                <FormItem filterable="true" label="*检查人员：">
                   <Select>
                     <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                   </Select>
@@ -168,7 +168,7 @@
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*检查结果：">
-                <Select v-model="jcjg2Model">
+                <Select filterable="true" v-model="jcjg2Model">
                   <Option v-for="item in jcjg2" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -181,7 +181,7 @@
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*检查结果：">
-                <Select v-model="jcjg3Model">
+                <Select filterable="true" v-model="jcjg3Model">
                   <Option v-for="item in jcjg3" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -194,7 +194,7 @@
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*检查结果：">
-                <Select v-model="jcjg4Model">
+                <Select filterable="true" v-model="jcjg4Model">
                   <Option v-for="item in jcjg4" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -207,7 +207,7 @@
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*检查结果：">
-                <Select v-model="jcjg5Model">
+                <Select filterable="true" v-model="jcjg5Model">
                   <Option v-for="item in jcjg5" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -239,7 +239,7 @@
             :on-format-error="handleFormatError"
             :on-exceeded-size="handleMaxSize"
             :before-upload="handleBeforeUpload"
-            multiple
+            multiple="true"
             type="drag"
             action="//jsonplaceholder.typicode.com/posts/"
             style="display: inline-block;width:58px;">
@@ -267,6 +267,7 @@
 <script>
 
   export default {
+    name:'add-dcxcjl',
     data() {
       return {
         formItem: {
@@ -289,15 +290,18 @@
             children: [
               {
                 value: 'gugong',
-                label: '故宫'
+                label: '故宫',
+                multiple: true
               },
               {
                 value: 'tiantan',
-                label: '天坛'
+                label: '天坛',
+                multiple: true
               },
               {
                 value: 'wangfujing',
-                label: '王府井'
+                label: '王府井',
+                multiple: true
               }
             ]
           }, {
@@ -321,10 +325,12 @@
                   {
                     value: 'zhuozhengyuan',
                     label: '拙政园',
+                    multiple: true
                   },
                   {
                     value: 'shizilin',
                     label: '狮子林',
+                    multiple: true
                   }
                 ]
               }

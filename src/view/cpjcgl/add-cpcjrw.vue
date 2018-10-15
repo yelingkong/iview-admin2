@@ -32,7 +32,7 @@
               </FormItem>
               <FormItem label="上传附件：">
                 <i-col span="20" class="fr upcolor"><p>支持扩展名：.rar .zip .doc .docx .pdf .jpg...</p></i-col>
-                <Upload action="//jsonplaceholder.typicode.com/posts/">
+                <Upload action="//jsonplaceholder.typicode.com/posts/" multiple="true">
                   <Button icon="ios-cloud-upload-outline">上传文件</Button>
                 </Upload>
               </FormItem>
@@ -49,6 +49,7 @@
 <script>
 
   export default {
+    name:'add-cpcjrw',
     data() {
       return {
         formItem: {

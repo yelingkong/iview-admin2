@@ -11,12 +11,23 @@ import importDirective from '@/directive'
 import 'iview/dist/styles/iview.css'
 import './index.less'
 import '@/assets/icons/iconfont.css'
+import Viewer from 'v-viewer'
+import 'viewerjs/dist/viewer.css'
+import BaiduMap from 'vue-baidu-map'
+import cascaderMulti from "cascader-multi";
 // 实际打包时应该不引入mock
 /* eslint-disable */
 if (process.env.NODE_ENV !== 'production') require('@/mock')
-
+Vue.use(cascaderMulti);
 Vue.use(iView, {
   i18n: (key, value) => i18n.t(key, value)
+})
+Vue.use(Viewer);
+Viewer.setDefaults({
+  Options: { "inline": true, "button": true, "navbar": true, "title": true, "toolbar": true, "tooltip": true, "movable": true, "zoomable": true, "rotatable": true, "scalable": true, "transition": true, "fullscreen": true, "keyboard": true, "url": "data-source" }
+});
+Vue.use(BaiduMap, {
+  ak: 'Gy841Y4ibbGfxkZvGSgxFtiw'
 })
 Vue.config.productionTip = false
 /**

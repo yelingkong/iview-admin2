@@ -12,8 +12,9 @@
         </Col>
       </div>
     </Row>
-    <Row class="search_list">
-      <Row :gutter="16" class="search_list2">
+
+    <Row class="zcrzsh_search_row">
+      <Row :gutter="16">
         <Form :label-width="100">
           <i-col span="8">
             <FormItem label="地区：">
@@ -44,8 +45,8 @@
         </Form>
       </Row>
     </Row>
-    <div class="list_table">
-      <Row :gutter="16" class="button_left">
+    <div class="zcrzsh_table">
+      <Row :gutter="16">
         <Col>
           <i-col span="3">
             <i-col span="12">
@@ -57,14 +58,14 @@
           </i-col>
         </Col>
       </Row>
-      <Row :gutter="16" class="search_list2">
+      <Row :gutter="16">
         <Col>
           <tables ref="tables" v-model="tableData" :columns="columns"/>
         </Col>
       </Row>
       <Row :gutter="16" type="flex" justify="end">
         <Col span="24" justify="end" class="page_right">
-          <Page :total="100"/>
+          <Page :total="100" show-sizer show-elevator show-total/>
         </Col>
         <Col span="1"></Col>
       </Row>
@@ -191,10 +192,10 @@
         },
         columns: [
           {type: 'selection', width: 60, align: 'center'},
-          {title: '地区', key: 'address', sortable: true},
-          {title: '主体名称', key: 'zhuti',},
-          {title: '负责人', key: 'name',},
-          {title: '联系电话', key: 'tel',},
+          {title: '地区', key: 'address', sortable: true, ellipsis: true},
+          {title: '主体名称', key: 'zhuti', ellipsis: true},
+          {title: '负责人', key: 'name', ellipsis: true},
+          {title: '联系电话', key: 'tel', ellipsis: true},
           {title: '申请时间', key: 'dataTime', width: 180},
           {
             title: '审核状态',
@@ -221,7 +222,7 @@
             title: '操作',
             key: 'action',
             width: 150,
-            align: 'center',
+            align: 'left',
             render: (h, {row, index}) => {
               if (row.status === 0) {
                 return h('div', [
@@ -236,7 +237,7 @@
                     on: {
                       click: () => {
                         this.$router.push({
-                          path: '/syztgl/dagxsh/'+row.id
+                          path: '/syztgl/dagxsh/' + row.id
                         });
                       }
                     }
@@ -484,6 +485,7 @@
   .button_left {
     margin-left: 10px !important;
   }
+
   .shenhe_style {
     overflow: hidden;
   }
@@ -495,6 +497,43 @@
 
   .modal_see .ivu-modal-body {
     padding: 0;
+  }
+
+  .zcrzsh_search_row {
+    margin-top: 20px;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .zcrzsh_search_row button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+  }
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
+  .zcrzsh_search_row .ivu-form-item {
+    margin-bottom: 15px;
+  }
+
+  .zcrzsh_search {
+  }
+
+  .zcrzsh_table {
+    background: #fff;
+  }
+
+  .zcrzsh_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+
+  .zcrzsh_table .ivu-table-wrapper {
+    margin: 0 30px;
+  }
+
+  .zcrzsh_table .page_right {
+    margin: 10px 30px;
   }
 </style>
 

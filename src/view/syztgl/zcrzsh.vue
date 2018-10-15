@@ -12,8 +12,8 @@
         </Col>
       </div>
     </Row>
-    <Row class="search_list">
-      <Row :gutter="16" class="search_list2">
+    <Row class="zcrzsh_search_row">
+      <Row :gutter="16" class="zcrzsh_search">
         <Form :label-width="100">
           <i-col span="8">
             <FormItem label="地区：">
@@ -64,8 +64,8 @@
         </Form>
       </Row>
     </Row>
-    <div class="list_table">
-      <Row :gutter="16" class="button_left">
+    <div class="zcrzsh_table">
+      <Row :gutter="16">
         <Col>
           <i-col span="3">
             <i-col span="12">
@@ -77,14 +77,14 @@
           </i-col>
         </Col>
       </Row>
-      <Row :gutter="16" class="search_list2">
+      <Row :gutter="16">
         <Col>
           <tables ref="tables" editable v-model="tableData" :columns="columns"/>
         </Col>
       </Row>
       <Row :gutter="16" type="flex" justify="end">
         <Col span="24" justify="end" class="page_right">
-          <Page :total="100"/>
+          <Page :total="100" show-sizer  show-elevator show-total />
         </Col>
         <Col span="1"></Col>
       </Row>
@@ -214,9 +214,9 @@
         },
         columns: [
           {type: 'selection', width: 60, align: 'center'},
-          {title: '地区', key: 'address', sortable: true},
-          {title: '主体名称', key: 'zhuti',},
-          {title: '注册时间', key: 'createTime',},
+          {title: '地区', key: 'address', sortable: true,ellipsis:true},
+          {title: '主体名称', key: 'zhuti',ellipsis:true},
+          {title: '注册时间', key: 'createTime',ellipsis:true},
           {
             title: '审核状态',
             key: 'reviewTheStatus',
@@ -260,7 +260,7 @@
             title: '操作',
             key: 'action',
             width: 150,
-            align: 'center',
+            align: 'left',
             render: (h, {row, index}) => {
               if (row.reviewTheStatus === 0) {
                 return h('div', [
@@ -526,17 +526,8 @@
     padding: 16px;
   }
 
-  .search_list {
-    margin-top: 20px;
-    background: #fff;
-  }
-
   .list_table {
     background: #fff;
-  }
-
-  .search_list2 {
-    margin: 10px !important;
   }
 
   .fr {
@@ -570,5 +561,13 @@
   .modal_see .ivu-modal-body {
     padding: 0;
   }
+  .zcrzsh_search_row{margin-top: 20px;background: #fff;padding-top: 10px;padding-left: 30px;padding-right: 30px;}
+  .zcrzsh_search_row button.ivu-btn-large{padding: 3px 15px 3px 15px;}
+  .zcrzsh_search_row .ivu-form-item{margin-bottom: 15px;}
+  .zcrzsh_search{}
+  .zcrzsh_table{background: #fff;}
+  .zcrzsh_table button.ivu-btn-large{padding: 3px 15px 3px 15px;margin-bottom: 10px;margin-left: 30px;}
+  .zcrzsh_table .ivu-table-wrapper{margin: 0 30px;}
+  .zcrzsh_table .page_right{margin: 10px 30px;}
 </style>
 

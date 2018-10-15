@@ -95,6 +95,7 @@
   import expandRow from '_c/tables/table-expand.vue'
 
   export default {
+    name:'dcxcrwdetailed',
     components: {
       Tables,
       expandRow
