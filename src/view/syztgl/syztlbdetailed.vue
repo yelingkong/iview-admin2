@@ -29,96 +29,179 @@
     <div class="tabs" v-show="dcxc">
       <Tabs value="name1">
         <TabPane label="主体概况" name="name1">
-          <Card title="主体信息" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+          <Card title="主体信息" :padding="0" style="margin-top: 0px;" shadow class="detailed_card">
             <Row :gutter="16">
               <div class="detaileds">
-                <i-col span="8">
-                  <div class="detailed">主体名称：<span>常州市洛丰果品专业合作社</span></div>
+                <i-col span="24">
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">主体名称：</i-col>
+                      <i-col span="16">常州市洛丰果品专业合作社常州市洛丰果品专业合作社常州市洛丰果品专业合作社</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">主体性质：</i-col>
+                      <i-col span="16">合作社</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">证件类型：</i-col>
+                      <i-col span="16">普通营业执照</i-col>
+                    </div>
+                  </i-col>
                 </i-col>
-                <i-col span="8">
-                  <div class="detailed">主体性质：<span>合作社</span></div>
+                <i-col span="24">
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">企业注册号：</i-col>
+                      <i-col span="16">32042119570929022X</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">组织机构代码：</i-col>
+                      <i-col span="16">75053388-2</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">营业期限：</i-col>
+                      <i-col span="16">2003/06/04 - 2023/06/03</i-col>
+                    </div>
+                  </i-col>
                 </i-col>
-                <i-col span="8">
-                  <div class="detailed">证件类型：<span>普通营业执照</span></div>
+                <i-col span="24">
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">主体类型：</i-col>
+                      <i-col span="16">生产主体</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">主体属性：</i-col>
+                      <i-col span="16">一般主体</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">所属行业：</i-col>
+                      <i-col span="16">种植业，畜牧业，渔业</i-col>
+                    </div>
+                  </i-col>
                 </i-col>
-                <i-col span="8">
-                  <div class="detailed">企业注册号：<span>32042119570929022X</span></div>
+                <i-col span="24">
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">年产量(种植业)：</i-col>
+                      <i-col span="16">13.5吨</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">年产量(畜牧业)：</i-col>
+                      <i-col span="16">300头</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">年产量(水产品)：</i-col>
+                      <i-col span="16">300公斤</i-col>
+                    </div>
+                  </i-col>
                 </i-col>
-                <i-col span="8">
-                  <div class="detailed">组织机构代码：<span>75053388-2</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">营业期限：<span>2003/06/04 - 2023/06/03</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">主体类型：<span>生产主体</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">主体属性：<span>一般主体</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">所属行业：<span>种植业，畜牧业，渔业</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">年产量(种植业)：<span>13.5吨</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">年产量(畜牧业)：<span>300头</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">年产量(水产品)：<span>300公斤</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">注册地所在：<span>常州市武进区洛阳镇洛东村</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">详细地址：<span>洛阳镇洛东村101县道</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">经纬度：<span>经度119.811893    纬度31.763468</span>
-                    <Icon type="ios-eye" @click="handler_map" size="20" style="margin-left: 10px;cursor: pointer"/>
-                  </div>
+                <i-col span="24">
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">注册地所在：</i-col>
+                      <i-col span="16">常州市武进区洛阳镇洛东村</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">详细地址：</i-col>
+                      <i-col span="16">洛阳镇洛东村101县道</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">经纬度：</i-col>
+                      <i-col span="16">经度119.811893 纬度31.763468<Icon type="ios-eye" @click="handler_map" size="20" style="margin-left: 10px;cursor: pointer"/></i-col>
+                    </div>
+                  </i-col>
                 </i-col>
               </div>
             </Row>
           </Card>
-          <Card title="法定代表人信息" :padding="0" shadow class="detailed">
+          <Card title="法定代表人信息" :padding="0" shadow class="detailed_card">
             <Row :gutter="16">
               <div class="detaileds">
-                <i-col span="8">
-                  <div class="detailed">法定代表人：<span>梅桂芳</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">法人身份证：<span>32042119570929022X</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">法人联系电话：<span>13911223098</span></div>
+                <i-col span="24">
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">法定代表人：</i-col>
+                      <i-col span="16">梅桂芳</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">法人身份证：</i-col>
+                      <i-col span="16">32042119570929022X</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">法人联系电话：</i-col>
+                      <i-col span="16">13911223098</i-col>
+                    </div>
+                  </i-col>
                 </i-col>
               </div>
             </Row>
           </Card>
-          <Card title="联系人信息" :padding="0" shadow class="detailed">
+          <Card title="联系人信息" :padding="0" shadow class="detailed_card">
             <Row :gutter="16">
               <div class="detaileds">
-                <i-col span="8">
-                  <div class="detailed">联系人姓名：<span>梅桂芳</span></div>
+                <i-col span="24">
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">联系人姓名：</i-col>
+                      <i-col span="16">梅桂芳</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">联系人身份证：</i-col>
+                      <i-col span="16">32042119570929022X</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">联系人电话：</i-col>
+                      <i-col span="16">13911223098</i-col>
+                    </div>
+                  </i-col>
                 </i-col>
-                <i-col span="8">
-                  <div class="detailed">联系人身份证：<span>32042119570929022X</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">联系人电话：<span>13911223098</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">联系人电子邮箱：<span>13911223098@139.com</span></div>
-                </i-col>
-                <i-col span="8">
-                  <div class="detailed">联系人传真号码：<span>0519-81891128</span></div>
+                <i-col span="24">
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">联系人电子邮箱：</i-col>
+                      <i-col span="16">13911223098@139.com</i-col>
+                    </div>
+                  </i-col>
+                  <i-col span="8">
+                    <div class="detailed">
+                      <i-col span="7">联系人传真号码：</i-col>
+                      <i-col span="16">0519-81891128</i-col>
+                    </div>
+                  </i-col>
                 </i-col>
               </div>
             </Row>
           </Card>
-          <Card title="主体证照信息" :padding="0" shadow class="detailed">
+          <Card title="主体证照信息" :padding="0" shadow class="detailed_card">
             <Row :gutter="16">
               <div class="detaileds zzjgdm">
                 <i-col span="4">
@@ -140,7 +223,7 @@
               </div>
             </Row>
           </Card>
-          <Card title="法定代表人证照信息" :padding="0" shadow class="detailed">
+          <Card title="法定代表人证照信息" :padding="0" shadow class="detailed_card">
             <Row :gutter="16">
               <div class="detaileds zzjgdm">
                 <i-col span="4">
@@ -1405,4 +1488,9 @@
   .mt0{
     margin-top: 0;padding-top: 20px;}
   .hide_after .ivu-row::after{}
+  .detailed_card {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 20px;
+  }
 </style>

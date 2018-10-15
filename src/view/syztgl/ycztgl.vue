@@ -117,7 +117,7 @@
 <script>
   import {getTableData} from '@/api/data'
   import Tables from '_c/tables'
-  import expandRow from '_c/tables/table-expand.vue'
+  import expandRow from '_c/tables/table-expand2.vue'
   export default {
     name:'ycztgl',
     components: {
@@ -610,6 +610,8 @@
   .expand-row {
     margin-bottom: 16px;
   }
+  td.ivu-table-expanded-cell{padding: 10px 0px;}
+  .zcrzsh_table td.ivu-table-expanded-cell.ivu-table-wrapper{margin: 0;}
   /*处理结果class*/
 </style>
 

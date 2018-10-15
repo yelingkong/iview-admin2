@@ -569,5 +569,6 @@
   .zcrzsh_table button.ivu-btn-large{padding: 3px 15px 3px 15px;margin-bottom: 10px;margin-left: 30px;}
   .zcrzsh_table .ivu-table-wrapper{margin: 0 30px;}
   .zcrzsh_table .page_right{margin: 10px 30px;}
+
 </style>
 

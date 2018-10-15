@@ -54,7 +54,7 @@
     </Row>
     <Row :gutter="16" class="tongji_body">
       <i-col span="17">
-        <Tabs value="dcxj" class="bg-white">
+        <Tabs value="dcxj" class="bg-white dcxc_class">
           <TabPane label="督查巡检" name="dcxj">
             <router-link to="/dcxcgl/dcxcjl">
               <Row :gutter="16">
@@ -173,14 +173,14 @@
           <ul class="syztfb_list">
             <li v-for="(item,index) in tableData2">
               <div v-if="index<3">
-                <i-col span="2"><i class="active">{{index+1}}</i></i-col>
-                <i-col span="8"><span>{{item.name}}</span></i-col>
-                <i-col span="14"><span>{{item.sell}}</span></i-col>
+                <i-col span="4"><i class="active">{{index+1}}</i></i-col>
+                <i-col span="12" class="shenglue"><span>{{item.name}}</span></i-col>
+                <i-col span="7" offset="1" class="shenglue"><span>{{item.sell}}</span></i-col>
               </div>
               <div v-else>
-                <i-col span="2"><i>{{index+1}}</i></i-col>
-                <i-col span="8"><span>{{item.name}}</span></i-col>
-                <i-col span="14"><span>{{item.sell}}</span></i-col>
+                <i-col span="4"><i>{{index+1}}</i></i-col>
+                <i-col span="12" class="shenglue"><span>{{item.name}}</span></i-col>
+                <i-col span="7" offset="1" class="shenglue"><span>{{item.sell}}</span></i-col>
               </div>
             </li>
           </ul>
@@ -192,14 +192,14 @@
               <ul class="syztfb_list mt0">
                 <li v-for="(item,index) in tableData2">
                   <div v-if="index<3">
-                    <i-col span="2"><i class="active">{{index+1}}</i></i-col>
-                    <i-col span="8"><span>{{item.name}}</span></i-col>
-                    <i-col span="14"><span>{{item.sell}}</span></i-col>
+                    <i-col span="4"><i class="active">{{index+1}}</i></i-col>
+                    <i-col span="12" class="shenglue"><span>{{item.name}}</span></i-col>
+                    <i-col span="7" offset="1" class="shenglue"><span>{{item.sell}}</span></i-col>
                   </div>
                   <div v-else>
-                    <i-col span="2"><i>{{index+1}}</i></i-col>
-                    <i-col span="8"><span>{{item.name}}</span></i-col>
-                    <i-col span="14"><span>{{item.sell}}</span></i-col>
+                    <i-col span="4"><i>{{index+1}}</i></i-col>
+                    <i-col span="12" class="shenglue"><span>{{item.name}}</span></i-col>
+                    <i-col span="7" offset="1" class="shenglue"><span>{{item.sell}}</span></i-col>
                   </div>
                 </li>
               </ul>
@@ -214,14 +214,14 @@
               <ul class="syztfb_list mt0">
                 <li v-for="(item,index) in tableData2">
                   <div v-if="index<3">
-                    <i-col span="2"><i class="active">{{index+1}}</i></i-col>
-                    <i-col span="8"><span>{{item.name}}</span></i-col>
-                    <i-col span="14"><span>{{item.sell}}</span></i-col>
+                    <i-col span="4"><i class="active">{{index+1}}</i></i-col>
+                    <i-col span="12" class="shenglue"><span>{{item.name}}</span></i-col>
+                    <i-col span="7" offset="1" class="shenglue"><span>{{item.sell}}</span></i-col>
                   </div>
                   <div v-else>
-                    <i-col span="2"><i>{{index+1}}</i></i-col>
-                    <i-col span="8"><span>{{item.name}}</span></i-col>
-                    <i-col span="14"><span>{{item.sell}}</span></i-col>
+                    <i-col span="4"><i>{{index+1}}</i></i-col>
+                    <i-col span="12" class="shenglue"><span>{{item.name}}</span></i-col>
+                    <i-col span="7" offset="1" class="shenglue"><span>{{item.sell}}</span></i-col>
                   </div>
                 </li>
               </ul>
@@ -439,7 +439,7 @@
           }],
         tableData2: [
           {
-            name: '门店1',
+            name: '门店1门店1门店1门店1门店1门店1门店1',
             sell: '123000'
           }, {
             name: '门店2',
@@ -705,4 +705,16 @@
     height: 450px;
   }
 
+  .ivu-modal-body {
+    padding: 16px;
+  }
+
+  .shenglue {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .syztfb_list span{text-align: left; display: block;}
+  .dcxc_class .ivu-tabs-tab{padding: 15px 16px;}
+  .dcxc_class .more{font-size: 14px;}
 </style>
