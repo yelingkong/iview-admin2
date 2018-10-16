@@ -233,7 +233,7 @@
             title: '操作',
             key: 'action',
             width: 250,
-            align: 'center',
+            align: 'left',
             render: (h, { row,index }) => {
               return h('div', [
                 h('Button', {

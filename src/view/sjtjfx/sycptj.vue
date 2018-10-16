@@ -30,10 +30,8 @@
         <div v-for="(item,index) in listzt">
           <Col class="list-zt-7">
             <div class="list-zt" :class="{'hover':index==listztHover}" @click="listztHover=index">
-              <div class="list-zt-top"></div>
               <span>{{item.name}}</span>
               <p>{{item.num}}户</p>
-              <div class="list-zt-bottom"></div>
             </div>
           </Col>
         </div>
@@ -282,52 +280,6 @@
 
   .list-zt.hover {
     position: relative
-  }
-
-  .list-zt.hover .list-zt-top {
-    position: absolute;
-    top: -31px;
-    width: 100%;
-    background: #72B2FC;
-    height: 6px;
-    display: none;
-  }
-
-  .list-zt.hover .list-zt-top::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-top: 10px solid #72B2FC;
-    z-index: 99;
-    bottom: -10px;
-    left: 50%;
-    margin-left: -10px
-  }
-
-  .list-zt.hover .list-zt-bottom {
-    position: absolute;
-    bottom: -31px;
-    width: 100%;
-    background: #72B2FC;
-    height: 6px;
-    display: none;
-  }
-
-  .list-zt.hover .list-zt-bottom::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-bottom: 10px solid #72B2FC;
-    z-index: 99;
-    top: -10px;
-    left: 50%;
-    margin-left: -10px
   }
 
   .list-mt20 {

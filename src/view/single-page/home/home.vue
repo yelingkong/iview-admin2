@@ -534,10 +534,6 @@
   }
 </script>
 <style scoped>
-  .count {
-    font-size: 24px;
-  }
-
   .breadcrumbstyle {
     height: 54px;
     width: 100%;
@@ -714,7 +710,20 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .syztfb_list span{text-align: left; display: block;}
-  .dcxc_class .ivu-tabs-tab{padding: 15px 16px;}
-  .dcxc_class .more{font-size: 14px;}
+
+  .syztfb_list span {
+    text-align: left;
+    display: block;
+  }
+
+  .dcxc_class .more {
+    font-size: 14px;
+    padding-top: 15px;
+  }
+
+</style>
+<style>
+  .dcxc_class .ivu-tabs-tab {
+    padding: 16px 16px;
+  }
 </style>

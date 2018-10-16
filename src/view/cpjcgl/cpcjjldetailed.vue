@@ -233,7 +233,7 @@
             title: '操作',
             key: 'action',
             width: 150,
-            align: 'center',
+            align: 'left',
             render: (h, {row, index}) => {
               return h('div', [
                 h('Button', {
@@ -264,7 +264,7 @@
             title: '操作',
             key: 'action',
             width: 150,
-            align: 'center',
+            align: 'left',
             render: (h, {row, index}) => {
               return h('div', [
                 h('Button', {
@@ -296,7 +296,7 @@
             title: '操作',
             key: 'action',
             width: 150,
-            align: 'center',
+            align: 'left',
             render: (h, {row, index}) => {
               return h('div', [
                 h('Button', {
@@ -329,7 +329,7 @@
             title: '操作',
             key: 'action',
             width: 150,
-            align: 'center',
+            align: 'left',
             render: (h, {row, index}) => {
               return h('div', [
                 h('Button', {

@@ -83,8 +83,8 @@
     <Card title="常州市2018年农产品追溯码打印趋势" :padding="0" shadow class="syztfb sycppzfb zhuisuma_chart">
       <div class="charts" ref="chart"></div>
     </Card>
-    <Modal v-model="modal4" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
-      <Card title="农产品生产批次码" :padding="0">
+    <Modal title="农产品生产批次码" v-model="modal4" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
+
         <Row :gutter="16" class="search_list2">
           <Col>
             <i-col span="22" offset="1"><p>农产品在产出或组合时，农产品生产经营者在江苏追溯平台进行生产批次管理，系统自动生成与产品批次相对应的代码，可打印在产品追溯标识或追溯凭证上。</p>
@@ -101,10 +101,9 @@
             </i-col>
           </i-col>
         </Row>
-      </Card>
+
     </Modal>
-    <Modal v-model="modal6" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
-      <Card title="产品流通批次码" :padding="0">
+    <Modal title="产品流通批次码" v-model="modal6" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
         <Row :gutter="16" class="search_list2">
           <Col>
             <i-col span="22" offset="1"><p>农产品在产出或组合时，农产品生产经营者在江苏追溯平台进行生产批次管理，系统自动生成与产品批次相对应的代码，可打印在产品追溯标识或追溯凭证上。</p>
@@ -121,10 +120,9 @@
             </i-col>
           </i-col>
         </Row>
-      </Card>
+
     </Modal>
-    <Modal v-model="modal5" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
-      <Card title="产品流通批次码" :padding="0">
+    <Modal title="产品流通批次码" v-model="modal5" width="1000" footer-hide="true" :padding="0" header-hide="true" class="ncpscpc">
         <Row :gutter="16" class="search_list2">
           <Col>
             <i-col span="22" offset="1">
@@ -136,7 +134,7 @@
             <p>入市追溯凭证标签</p>
           </i-col>
         </Row>
-      </Card>
+
     </Modal>
   </div>
 </template>
@@ -487,52 +485,6 @@
     position: relative
   }
 
-  .list-zt.hover .list-zt-top {
-    position: absolute;
-    top: -31px;
-    width: 100%;
-    background: #72B2FC;
-    height: 6px;
-    display: none;
-  }
-
-  .list-zt.hover .list-zt-top::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-top: 10px solid #72B2FC;
-    z-index: 99;
-    bottom: -10px;
-    left: 50%;
-    margin-left: -10px
-  }
-
-  .list-zt.hover .list-zt-bottom {
-    position: absolute;
-    bottom: -31px;
-    width: 100%;
-    background: #72B2FC;
-    height: 6px;
-    display: none;
-  }
-
-  .list-zt.hover .list-zt-bottom::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-bottom: 10px solid #72B2FC;
-    z-index: 99;
-    top: -10px;
-    left: 50%;
-    margin-left: -10px
-  }
-
   .list-mt20 {
     margin: 20px auto
   }
@@ -614,10 +566,6 @@
   }
 
   .ncpscpc {
-    padding: 0 !important;
-  }
-
-  .ivu-modal-body {
     padding: 0 !important;
   }
 
