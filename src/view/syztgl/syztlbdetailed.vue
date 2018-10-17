@@ -128,7 +128,9 @@
                   <i-col span="8">
                     <div class="detailed">
                       <i-col span="7">经纬度：</i-col>
-                      <i-col span="16">经度119.811893 纬度31.763468<Icon type="ios-eye" @click="handler_map" size="20" style="margin-left: 10px;cursor: pointer"/></i-col>
+                      <i-col span="16">经度119.811893 纬度31.763468
+                        <Icon type="ios-eye" @click="handler_map" size="20" style="margin-left: 10px;cursor: pointer"/>
+                      </i-col>
                     </div>
                   </i-col>
                 </i-col>
@@ -289,7 +291,7 @@
             </Row>
             <Row :gutter="16" type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100" show-sizer  show-elevator show-total />
+                <Page :total="100" show-sizer show-elevator show-total/>
               </Col>
               <Col span="1"></Col>
             </Row>
@@ -336,7 +338,7 @@
             </Row>
             <Row :gutter="16" type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100" show-sizer  show-elevator show-total />
+                <Page :total="100" show-sizer show-elevator show-total/>
               </Col>
               <Col span="1"></Col>
             </Row>
@@ -378,7 +380,7 @@
             </Row>
             <Row type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100" show-sizer  show-elevator show-total />
+                <Page :total="100" show-sizer show-elevator show-total/>
               </Col>
               <Col span="1"></Col>
             </Row>
@@ -432,7 +434,7 @@
             </Row>
             <Row type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100" show-sizer  show-elevator show-total />
+                <Page :total="100" show-sizer show-elevator show-total/>
               </Col>
               <Col span="1"></Col>
             </Row>
@@ -447,7 +449,7 @@
             </Row>
             <Row :gutter="16" type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100" show-sizer  show-elevator show-total />
+                <Page :total="100" show-sizer show-elevator show-total/>
               </Col>
               <Col span="1"></Col>
             </Row>
@@ -462,7 +464,7 @@
             </Row>
             <Row :gutter="16" type="flex" justify="end">
               <Col span="24" justify="end" class="page_right">
-                <Page :total="100" show-sizer  show-elevator show-total />
+                <Page :total="100" show-sizer show-elevator show-total/>
               </Col>
               <Col span="1"></Col>
             </Row>
@@ -477,23 +479,45 @@
         </a>
         <Row :gutter="16">
           <div class="detaileds">
-            <i-col span="8">
-              <div class="detailed">被检区域：<span>金坛市 » 指前镇</span></div>
+            <i-col span="24">
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">被检区域：</i-col>
+                  <i-col span="18">金坛市 » 指前镇</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">被检单位：</i-col>
+                  <i-col span="18">金坛江南百果园生态农业科技发展有限公司</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">检查单位：</i-col>
+                  <i-col span="18">武进区南夏墅街道农产品质量安全监督管理站</i-col>
+                </div>
+              </i-col>
             </i-col>
-            <i-col span="8">
-              <div class="detailed">被检单位：<span>金坛江南百果园生态农业科技发展有限公司</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">检查单位：<span>武进区南夏墅街道农产品质量安全监督管理站</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">检查日期：<span>2018-07-24</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">检查人员：<span>张文艳，肖召旺</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">检查行业：<span>种植业</span></div>
+            <i-col span="24">
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">检查日期：</i-col>
+                  <i-col span="18">2018-07-24</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">检查人员：</i-col>
+                  <i-col span="18">张文艳，肖召旺</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">检查行业：</i-col>
+                  <i-col span="18">种植业</i-col>
+                </div>
+              </i-col>
             </i-col>
           </div>
         </Row>
@@ -561,47 +585,100 @@
         </a>
         <Row :gutter="16">
           <div class="detaileds">
-            <i-col span="8">
-              <div class="detailed">被检区域：<span>金坛市 » 指前镇</span></div>
+            <i-col span="24">
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">被检区域：</i-col>
+                  <i-col span="18">金坛市 » 指前镇</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">被检单位：</i-col>
+                  <i-col span="18">金坛江南百果园生态农业科技发展有限公司</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">地址：</i-col>
+                  <i-col span="18">金坛区指前镇建春村委96号</i-col>
+                </div>
+              </i-col>
             </i-col>
-            <i-col span="8">
-              <div class="detailed">被检单位：<span>金坛江南百果园生态农业科技发展有限公司</span></div>
+            <i-col span="24">
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">负责人：</i-col>
+                  <i-col span="18">曹珺</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">联系方式：</i-col>
+                  <i-col span="18">13961200682</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">检测单位：</i-col>
+                  <i-col span="18">金坛市指前镇农产品快速检测站</i-col>
+                </div>
+              </i-col>
             </i-col>
-            <i-col span="8">
-              <div class="detailed">地址：<span>金坛区指前镇建春村委96号</span></div>
+
+            <i-col span="24">
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">联系方式：</i-col>
+                  <i-col span="18">0519-86310547</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">任务来源：</i-col>
+                  <i-col span="18">市农委</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">检测类别：</i-col>
+                  <i-col span="18">例行抽查</i-col>
+                </div>
+              </i-col>
             </i-col>
-            <i-col span="8">
-              <div class="detailed">负责人：<span>曹珺</span></div>
+            <i-col span="24">
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">检测任务：</i-col>
+                  <i-col span="18">2018年蔬菜例行监测</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">采样人员：</i-col>
+                  <i-col span="18">张文艳，肖召旺</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">采样日期：</i-col>
+                  <i-col span="18">2018-07-24</i-col>
+                </div>
+              </i-col>
             </i-col>
-            <i-col span="8">
-              <div class="detailed">联系方式：<span>13961200682</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">检测单位：<span>金坛市指前镇农产品快速检测站</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">联系方式：<span>0519-86310547</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">任务来源：<span>市农委</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">检测类别：<span>例行抽查</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">检测任务：<span>2018年蔬菜例行监测</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">采样人员：<span>张文艳，肖召旺</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">采样日期：<span>2018-07-24</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">检测日期：<span>2018-07-24</span></div>
-            </i-col>
-            <i-col span="8">
-              <div class="detailed">员工人数：<span>8</span></div>
+            <i-col span="24">
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">检测日期：</i-col>
+                  <i-col span="18">2018-07-24</i-col>
+                </div>
+              </i-col>
+              <i-col span="8">
+                <div class="detailed">
+                  <i-col span="5">员工人数：</i-col>
+                  <i-col span="18">8</i-col>
+                </div>
+              </i-col>
             </i-col>
           </div>
         </Row>
@@ -648,7 +725,7 @@
     <Modal v-model="modal_xiangqing" class="modal_see" width="1000" footer-hide="true" header-hide="true">
       <Card title="溯源产品详情">
         <div class="shenhe_style hide_after">
-          <Card title="产品信息" :dis-hover="true" :bordered="false" :padding="0" style="margin-top: 0px;"class="detailed">
+          <Card title="产品信息" :dis-hover="true" :bordered="false" :padding="0" style="margin-top: 0px;" class="detailed">
             <Row :gutter="16">
               <div class="detaileds">
                 <i-col span="10">
@@ -1180,8 +1257,8 @@
         this.modal_map = true
         console.log(BMap, map)
         // 31.649513
-        this.center.lng = 120.088214-0.009
-        this.center.lat = 31.650013+0.004
+        this.center.lng = 120.088214 - 0.009
+        this.center.lat = 31.650013 + 0.004
         this.zoom = 17
       }
     }
@@ -1448,6 +1525,7 @@
   .jcxx .ivu-card {
     margin-top: 10px;
   }
+
   .zcrzsh_search_row {
     margin-top: 20px;
     background: #fff;
@@ -1459,7 +1537,11 @@
   .zcrzsh_search_row button.ivu-btn-large {
     padding: 3px 15px 3px 15px;
   }
-  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
+
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label {
+    text-align: left;
+  }
+
   .zcrzsh_search_row .ivu-form-item {
     margin-bottom: 15px;
   }
@@ -1484,10 +1566,19 @@
   .zcrzsh_table .page_right {
     margin: 10px 30px;
   }
-  .mt10{padding-top: 10px;}
-  .mt0{
-    margin-top: 0;padding-top: 20px;}
-  .hide_after .ivu-row::after{}
+
+  .mt10 {
+    padding-top: 10px;
+  }
+
+  .mt0 {
+    margin-top: 0;
+    padding-top: 20px;
+  }
+
+  .hide_after .ivu-row::after {
+  }
+
   .detailed_card {
     margin-bottom: 10px;
     margin-top: 10px;
