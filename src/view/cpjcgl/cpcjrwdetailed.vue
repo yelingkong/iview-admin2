@@ -31,9 +31,18 @@
               附件：
             </i-col>
             <i-col span="22">
-              <p class="fujian"><Icon type="md-briefcase" />文档.docx 下载</p>
-              <p class="fujian"><Icon type="md-briefcase" />文档.docx 下载</p>
-              <p class="fujian"><Icon type="md-briefcase" />文档.docx 下载</p>
+              <p class="fujian">
+                <Icon type="md-briefcase"/>
+                文档.docx 下载
+              </p>
+              <p class="fujian">
+                <Icon type="md-briefcase"/>
+                文档.docx 下载
+              </p>
+              <p class="fujian">
+                <Icon type="md-briefcase"/>
+                文档.docx 下载
+              </p>
             </i-col>
           </i-col>
           <i-col span="24">
@@ -49,35 +58,33 @@
       </Row>
     </Card>
     <Card title="任务执行情况" :padding="0" shadow class="detailed">
-      <Row class="search_list">
-        <Row :gutter="16" class="search_list2">
+      <div class="iv-ml30 iv-mr30 iv-mt20">
+        <Row :gutter="16">
           <Form :label-width="100">
-            <i-col span="10">
+            <i-col span="8">
               <FormItem label="巡查完成度：">
                 <Select v-model="xcModel">
                   <Option v-for="item in xcList2" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
             </i-col>
-            <i-col span="11">
+            <i-col span="8">
               <FormItem label="企业名称：">
                 <Input v-model="value" placeholder="请输入"/>
               </FormItem>
             </i-col>
-            <i-col span="3">
-              <i-col span="12">
-                <Button type="primary" size="large" class="fr">查询</Button>
-              </i-col>
-              <i-col span="12">
+            <i-col span="8">
                 <Button size="large" class="fr">重置</Button>
-              </i-col>
+                <Button type="primary" size="large" class="fr iv-mr10">查询</Button>
             </i-col>
           </Form>
         </Row>
-      </Row>
-      <Row>
-        <Table :columns="columns10" :data="data9"></Table>
-      </Row>
+      </div>
+      <div class="iv-ml30 iv-mr30 iv-mb20 iv-pb20">
+        <Row>
+          <Table :columns="columns10" :data="data9"></Table>
+        </Row>
+      </div>
     </Card>
   </div>
 </template>
@@ -95,7 +102,7 @@
   import expandRow from '_c/tables/table-expand.vue'
 
   export default {
-    name:'cpcjrwdetailed',
+    name: 'cpcjrwdetailed',
     components: {
       Tables,
       expandRow
@@ -609,10 +616,6 @@
     margin-bottom: 0px;
   }
 
-  .list-zt-body {
-    background: #fff;
-  }
-
   .list-zt {
     text-align: center;
     box-sizing: border-box;
@@ -787,8 +790,6 @@
     margin-top: 10px;
   }
 
-
-
   .edit {
     text-align: center;
     margin-bottom: 20px;
@@ -802,5 +803,25 @@
   .expand-row {
     margin-bottom: 16px;
   }
-  .fujian{margin-bottom: 5px;}
+
+  .fujian {
+    margin-bottom: 5px;
+  }
+
+  .zcrzsh_table {
+    background: #fff;
+  }
+
+  .zcrzsh_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+  }
+
+  .zcrzsh_table .ivu-table-wrapper {
+    margin: 0 30px;
+  }
+
+  .zcrzsh_table .page_right {
+    margin: 10px 30px;
+  }
 </style>

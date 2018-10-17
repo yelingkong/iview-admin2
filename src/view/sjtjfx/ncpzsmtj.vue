@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="zcrzsh_search_row mtpt0 mb20">
+    <div class="zcrzsh_search_row iv-mt0 iv-mb10 iv-pb20">
       <Tabs value="name1">
         <TabPane label="按地区查看" name="name1">
           <Row>
@@ -23,21 +23,17 @@
                                 style="width: 100%" transfer></DatePicker>
                   </FormItem>
                 </i-col>
-                <i-col span="3" offset="21">
-                  <i-col span="12">
-                    <Button type="primary" size="large" class="fr">查询</Button>
-                  </i-col>
-                  <i-col span="12">
-                    <Button size="large" class="fr">重置</Button>
-                  </i-col>
+                <i-col span="24">
+                  <Button size="large" class="fr">重置</Button>
+                  <Button type="primary" size="large" class="fr mr10">查询</Button>
                 </i-col>
               </Form>
             </Row>
           </Row>
         </TabPane>
         <TabPane label="按企业查看" name="name2">
-          <Row class="search_list">
-            <Row :gutter="16" class="search_list2">
+          <Row>
+            <Row :gutter="16">
               <Form :label-width="100">
                 <i-col span="8">
                   <FormItem label="地区：">
@@ -56,13 +52,9 @@
                                 style="width: 100%" transfer></DatePicker>
                   </FormItem>
                 </i-col>
-                <i-col span="3" offset="21">
-                  <i-col span="12">
-                    <Button type="primary" size="large" class="fr">查询</Button>
-                  </i-col>
-                  <i-col span="12">
-                    <Button size="large" class="fr">重置</Button>
-                  </i-col>
+                <i-col span="24">
+                  <Button size="large" class="fr">重置</Button>
+                  <Button type="primary" size="large" class="fr mr10">查询</Button>
                 </i-col>
               </Form>
             </Row>
@@ -452,10 +444,6 @@
     font-size: 50px;
   }
 
-  .list-zt-body {
-    background: #fff;
-    margin-bottom: 20px;
-  }
 
   .list-zt {
     text-align: center;
@@ -625,5 +613,13 @@
   }
   .mb20{margin-bottom: 20px;padding-bottom: 10px;}
   .mtpt0{margin-top: 0px;}
+
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
+  }
 </style>
 

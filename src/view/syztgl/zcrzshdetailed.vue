@@ -201,56 +201,52 @@
     </Card>
     <Card title="主体证照信息" :padding="0" shadow class="detailed_card">
       <Row :gutter="16">
+        <viewer :images="zjzxx">
         <div class="detaileds zzjgdm">
           <i-col span="4">
             <div class="detailed">
-              <viewer :images="yyzz">
                 <img :src="yyzz"/>
-              </viewer>
               <p>营业执照</p>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <viewer :images="zzjgdm">
                 <img :src="zzjgdm"/>
-              </viewer>
               <p>组织机构代码</p>
             </div>
           </i-col>
 
         </div>
+        </viewer>
       </Row>
     </Card>
     <Card title="法定代表人证照信息" :padding="0" shadow class="detailed_card">
       <Row :gutter="16">
+        <viewer :images="sfzz">
         <div class="detaileds zzjgdm">
           <i-col span="4">
             <div class="detailed">
-              <viewer :images="sfzz">
+
                 <img :src="sfzz"/>
-              </viewer>
+
               <p>身份证正面</p>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <viewer :images="sfzf">
                 <img :src="sfzf"/>
-              </viewer>
               <p>身份证反面</p>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <viewer :images="sfzsc">
                 <img :src="sfzsc"/>
-              </viewer>
               <p>手持身份证</p>
             </div>
           </i-col>
 
         </div>
+        </viewer>
       </Row>
     </Card>
     <Modal v-model="modal_see" class="modal_see" width="600" footer-hide="true" header-hide="true">
@@ -308,6 +304,8 @@
         sfzz,
         sfzsc,
         modal_see: false,
+        sfz: [{img: sfzf}, {img: sfzz}, {img: sfzsc}],
+        zjzxx: [{img: yyzz}, {img: zzjgdm}],
       }
     },
     methods:{

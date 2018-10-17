@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Card title="任务详情" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+    <Card title="任务详情" :padding="0" style="margin-top: 0px;" shadow  class="detailed_card">
       <Row :gutter="16">
         <div class="detaileds">
           <i-col span="8">
@@ -29,36 +29,34 @@
         </div>
       </Row>
     </Card>
-    <Card title="任务执行情况" :padding="0" shadow class="detailed">
-      <Row class="search_list">
-        <Row :gutter="16" class="search_list2">
+    <Card title="任务执行情况" :padding="0" shadow  class="detailed_card">
+      <Row class="iv-ml30 iv-mr30 iv-mt20">
+        <Row :gutter="16">
           <Form :label-width="100">
-            <i-col span="10">
+            <i-col span="8">
               <FormItem label="巡查完成度：">
                 <Select v-model="xcModel">
                   <Option v-for="item in xcList2" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
             </i-col>
-            <i-col span="11">
+            <i-col span="8">
               <FormItem label="企业名称：">
                 <Input v-model="value" placeholder="请输入"/>
               </FormItem>
             </i-col>
-            <i-col span="3">
-              <i-col span="12">
-                <Button type="primary" size="large" class="fr">查询</Button>
-              </i-col>
-              <i-col span="12">
-                <Button size="large" class="fr">重置</Button>
-              </i-col>
+            <i-col span="8">
+              <Button size="large" class="fr">重置</Button>
+              <Button type="primary" size="large" class="fr mr10">查询</Button>
             </i-col>
           </Form>
         </Row>
       </Row>
-      <Row>
-        <Table :columns="columns10" :data="data9"></Table>
-      </Row>
+      <div class="iv-ml30 iv-mr30">
+        <Row>
+          <Table :columns="columns10" :data="data9"></Table>
+        </Row>
+      </div>
     </Card>
   </div>
 </template>
@@ -539,17 +537,8 @@
     margin: auto;
   }
 
-  .zzjgdm {
-    text-align: center;
-  }
-
   .detailed img {
     margin-bottom: 10px;
-  }
-
-  .shtg {
-    float: right;
-    margin-left: 10px;
   }
 
   .status span {
@@ -571,35 +560,15 @@
     overflow: hidden;
   }
 
-  .shenhe_style {
-    overflow: hidden;
-  }
-
   .shenhe_style button {
     margin: 0 auto;
     display: block;
-  }
-
-  .title {
-    margin-bottom: 10px;
   }
 
   .tabs .ivu-tabs-bar {
     background: #fff;
     margin-top: 10px;
     margin-bottom: 0px;
-  }
-
-  .list-zt-body {
-    background: #fff;
-  }
-
-  .list-zt {
-    text-align: center;
-    box-sizing: border-box;
-    border-right: 1px solid #E9E9E9;
-    cursor: pointer;
-
   }
 
   .list-zt p {
@@ -615,10 +584,6 @@
 
   .list-zt.hover p, .list-zt.hover span {
     color: #48A1FF
-  }
-
-  .list-zt.hover {
-    position: relative
   }
 
   .list-zt.hover .list-zt-top {
@@ -665,78 +630,8 @@
     margin-left: -10px
   }
 
-  .list-mt20 {
-    margin: 20px auto
-  }
-
-  .bor {
-    border: none;
-  }
-
-  .xuncha_tongjibiao {
-    text-align: left;
-  }
-
-  .exportdata {
-    margin-top: -5px;
-  }
-
-  .breadcrumbstyle {
-    background: #fff;
-    line-height: 45px;
-    text-align: left;
-    padding-left: 20px;
-  }
-
-  .dcxctj {
-    padding: 16px;
-  }
-
-  .search_list {
-    margin-top: 20px;
-    background: #fff;
-  }
-
-  .list_table {
-    background: #fff;
-  }
-
-  .search_list2 {
-    padding-top: 10px;
-    padding: 10px !important;
-  }
-
   .fr {
     float: right;
-  }
-
-  .page_right {
-    text-align: right;
-    margin-right: 17px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-
-  .fl {
-    float: left;
-  }
-
-  .button_left {
-    margin-left: 10px !important;
-  }
-
-  .list_zt_5 {
-    width: 20%;
-    float: left;
-  }
-
-  .exportdata {
-    margin-left: 10px;
-    margin-bottom: 10px;
-  }
-
-  .shenhe_style {
-    overflow: hidden;
   }
 
   .shenhe_style button {
@@ -768,20 +663,11 @@
     margin-top: 10px;
   }
 
-
-
-  .edit {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
   .edit button {
     margin-left: 10px;
     margin-right: 10px;
   }
-
-  .expand-row {
-    margin-bottom: 16px;
+  .mr10 {
+    margin-right: 10px;
   }
-  .fujian{margin-bottom: 5px;}
 </style>

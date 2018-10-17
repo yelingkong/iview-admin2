@@ -1,30 +1,34 @@
 <template>
   <div>
-    <Card title="基本信息" :padding="0" style="margin-top: 0px;" shadow class="detailed">
+    <Card title="基本信息" :padding="0" style="margin-top: 0px;" shadow  class="detailed_card">
       <Row :gutter="16">
         <div class="detaileds">
-          <i-col span="8">
-            <div class="detailed">被检区域：<span>金坛市 » 指前镇</span></div>
+          <i-col span="24">
+            <i-col span="8">
+              <div class="detailed"><i-col span="5">被检区域：</i-col><i-col span="18">金坛市 » 指前镇</i-col></div>
+            </i-col>
+            <i-col span="8">
+              <div class="detailed"><i-col span="5">被检单位：</i-col><i-col span="18">金坛江南百果园生态农业科技发展有限公司</i-col></div>
+            </i-col>
+            <i-col span="8">
+              <div class="detailed"><i-col span="5">检查单位：</i-col><i-col span="18">武进区南夏墅街道农产品质量安全监督管理站</i-col></div>
+            </i-col>
           </i-col>
-          <i-col span="8">
-            <div class="detailed">被检单位：<span>金坛江南百果园生态农业科技发展有限公司</span></div>
-          </i-col>
-          <i-col span="8">
-            <div class="detailed">检查单位：<span>武进区南夏墅街道农产品质量安全监督管理站</span></div>
-          </i-col>
-          <i-col span="8">
-            <div class="detailed">检查日期：<span>2018-07-24</span></div>
-          </i-col>
-          <i-col span="8">
-            <div class="detailed">检查人员：<span>张文艳，肖召旺</span></div>
-          </i-col>
-          <i-col span="8">
-            <div class="detailed">检查行业：<span>种植业</span></div>
+          <i-col span="24">
+            <i-col span="8">
+              <div class="detailed"><i-col span="5">检查日期：</i-col><i-col span="18">2018-07-24</i-col></div>
+            </i-col>
+            <i-col span="8">
+              <div class="detailed"><i-col span="5">检查人员：</i-col><i-col span="18">张文艳，肖召旺</i-col></div>
+            </i-col>
+            <i-col span="8">
+              <div class="detailed"><i-col span="5">检查行业：</i-col><i-col span="18">种植业</i-col></div>
+            </i-col>
           </i-col>
         </div>
       </Row>
     </Card>
-    <Card title="检查信息" :padding="0" shadow class="detailed">
+    <Card title="检查信息" :padding="0" shadow  class="detailed_card">
       <Row :gutter="16">
         <div class="detaileds">
           <i-col span="10">
@@ -66,32 +70,27 @@
         </div>
       </Row>
     </Card>
-    <Card title="巡查照片" :padding="0" shadow class="detailed">
+    <Card title="巡查照片" :padding="0" shadow  class="detailed_card">
       <Row :gutter="16">
+      <viewer :images="sfz">
         <div class="detaileds zzjgdm">
           <i-col span="4">
             <div class="detailed">
-              <viewer :images="sfzz">
               <img :src="sfzz"/>
-              </viewer>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <viewer :images="sfzf">
                 <img :src="sfzf"/>
-              </viewer>
             </div>
           </i-col>
           <i-col span="4">
             <div class="detailed">
-              <viewer :images="sfzsc">
                 <img :src="sfzsc"/>
-              </viewer>
             </div>
           </i-col>
-
         </div>
+      </viewer>
       </Row>
     </Card>
     <Card>
@@ -124,6 +123,7 @@
       return {
         listztHover: 0,
         modal_xiangqing: false,
+        sfz: [{img: sfzf}, {img: sfzz}, {img: sfzsc}],
         listzt: [
           {
             name: '溯源产品',
@@ -531,10 +531,6 @@
     background: #fff;
     margin-top: 10px;
     margin-bottom: 0px;
-  }
-
-  .list-zt-body {
-    background: #fff;
   }
 
   .list-zt {

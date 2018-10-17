@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="dcxctj">
-      <Card class="zcrzsh_search_row mtpt0 mb20">
-        <Row>
+    <div>
+      <Card class="zcrzsh_search_row  iv-mt0 iv-mb10">
+        <Row  :gutter="16">
           <i-col span="8">
             <Form :label-width="80">
               <FormItem label="地区：">
@@ -18,13 +18,9 @@
               </FormItem>
             </Form>
           </i-col>
-          <i-col span="3" offset="21">
-            <i-col span="12">
-              <Button type="primary" size="large">查询</Button>
-            </i-col>
-            <i-col span="12">
-              <Button size="large">重置</Button>
-            </i-col>
+          <i-col span="24">
+            <Button size="large" class="fr">重置</Button>
+            <Button type="primary" size="large" class="fr mr10">查询</Button>
           </i-col>
         </Row>
       </Card>
@@ -548,4 +544,12 @@
     margin-top: 0px;
   }
 
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
+  }
+.fr{float: right;}
 </style>

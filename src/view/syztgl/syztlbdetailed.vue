@@ -12,7 +12,7 @@
               <Button class="shtg" @click="modal_see=true" type="primary">溯源管理</Button>
             </i-col>
             <Divider/>
-            <Row justify="space-between" class="list-zt-body">
+            <Row justify="space-between" class="iv-bg-w">
               <div v-for="(item,index) in listzt">
                 <Col span="4">
                   <div class="list-zt" :class="{'hover':index==listztHover,'bor':item.bor}" @click="listztHover=index">
@@ -205,54 +205,49 @@
           </Card>
           <Card title="主体证照信息" :padding="0" shadow class="detailed_card">
             <Row :gutter="16">
-              <div class="detaileds zzjgdm">
-                <i-col span="4">
-                  <div class="detailed">
-                    <viewer :images="yyzz">
+              <viewer :images="zjzxx">
+                <div class="detaileds zzjgdm">
+                  <i-col span="4">
+                    <div class="detailed">
                       <img :src="yyzz"/>
-                    </viewer>
-                    <p>营业执照</p>
-                  </div>
-                </i-col>
-                <i-col span="4">
-                  <div class="detailed">
-                    <viewer :images="zzjgdm">
+                      <p>营业执照</p>
+                    </div>
+                  </i-col>
+                  <i-col span="4">
+                    <div class="detailed">
                       <img :src="zzjgdm"/>
-                    </viewer>
-                    <p>组织机构代码</p>
-                  </div>
-                </i-col>
-              </div>
+                      <p>组织机构代码</p>
+                    </div>
+                  </i-col>
+                </div>
+              </viewer>
+
             </Row>
           </Card>
           <Card title="法定代表人证照信息" :padding="0" shadow class="detailed_card">
             <Row :gutter="16">
+              <viewer :images="sfz">
               <div class="detaileds zzjgdm">
                 <i-col span="4">
                   <div class="detailed">
-                    <viewer :images="sfzz">
                       <img :src="sfzz"/>
-                    </viewer>
                     <p>身份证正面</p>
                   </div>
                 </i-col>
                 <i-col span="4">
                   <div class="detailed">
-                    <viewer :images="sfzf">
                       <img :src="sfzf"/>
-                    </viewer>
                     <p>身份证反面</p>
                   </div>
                 </i-col>
                 <i-col span="4">
                   <div class="detailed">
-                    <viewer :images="sfzsc">
                       <img :src="sfzsc"/>
-                    </viewer>
                     <p>手持身份证</p>
                   </div>
                 </i-col>
               </div>
+              </viewer>
             </Row>
           </Card>
         </TabPane>
@@ -271,20 +266,16 @@
                                 style="width: 100%" transfer></DatePicker>
                   </FormItem>
                 </i-col>
-                <i-col span="3" offset="21">
-                  <i-col span="12">
-                    <Button type="primary" size="large" class="fr">查询</Button>
-                  </i-col>
-                  <i-col span="12">
-                    <Button size="large" class="fr">重置</Button>
-                  </i-col>
+                <i-col span="24">
+                  <Button size="large" class="fr">重置</Button>
+                  <Button type="primary" size="large" class="fr mr10">查询</Button>
                 </i-col>
               </Form>
             </Row>
           </Row>
           <div class="zcrzsh_table">
             <Row>
-              <Button type="primary" size="large" @click="exportData(1)">导出数据</Button>
+              <Button type="primary" size="large" class="ml30" @click="exportData(1)">导出数据</Button>
               <Col>
                 <Table :columns="columns" :data="tableData" ref="table"></Table>
               </Col>
@@ -318,20 +309,16 @@
                     <Input v-model="value" placeholder="请输入"/>
                   </FormItem>
                 </i-col>
-                <i-col span="3" offset="21">
-                  <i-col span="12">
-                    <Button type="primary" size="large" class="fr">查询</Button>
-                  </i-col>
-                  <i-col span="12">
-                    <Button size="large" class="fr">重置</Button>
-                  </i-col>
+                <i-col span="24">
+                  <Button size="large" class="fr">重置</Button>
+                  <Button type="primary" size="large" class="fr mr10">查询</Button>
                 </i-col>
               </Form>
             </Row>
           </Row>
           <div class="zcrzsh_table">
             <Row>
-              <Button type="primary" size="large" @click="exportData(1)">导出数据</Button>
+              <Button type="primary" size="large" class="ml30" @click="exportData(1)">导出数据</Button>
               <Col>
                 <Table :columns="trpColumns" :data="trpTableData" ref="table"></Table>
               </Col>
@@ -361,13 +348,9 @@
                     </Select>
                   </FormItem>
                 </i-col>
-                <i-col span="3" offset="21">
-                  <i-col span="12">
-                    <Button type="primary" size="large" class="fr">查询</Button>
-                  </i-col>
-                  <i-col span="12">
-                    <Button size="large" class="fr">重置</Button>
-                  </i-col>
+                <i-col span="24">
+                  <Button size="large" class="fr">重置</Button>
+                  <Button type="primary" size="large" class="fr mr10">查询</Button>
                 </i-col>
               </Form>
             </Row>
@@ -415,13 +398,9 @@
                     </Select>
                   </FormItem>
                 </i-col>
-                <i-col span="3" offset="21">
-                  <i-col span="12">
-                    <Button type="primary" size="large" class="fr">查询</Button>
-                  </i-col>
-                  <i-col span="12">
-                    <Button size="large" class="fr">重置</Button>
-                  </i-col>
+                <i-col span="24">
+                  <Button size="large" class="fr">重置</Button>
+                  <Button type="primary" size="large" class="fr mr10">查询</Button>
                 </i-col>
               </Form>
             </Row>
@@ -795,6 +774,9 @@
       <Card title="标签打印明细">
         <div class="shenhe_style">
           <Table :columns="bqdyColumns" :data="bqdyTableData" ref="table"></Table>
+          <Col span="24" justify="end" class="page_right">
+            <Page :total="100" show-sizer show-elevator show-total transfer/>
+          </Col>
         </div>
       </Card>
     </Modal>
@@ -851,6 +833,7 @@
         center: {lng: 120.088214, lat: 31.650013},
         zoom: 17,
         modal_xiangqing: false,
+        sfz: [{img: sfzf}, {img: sfzz}, {img: sfzsc}],
         listzt: [
           {
             name: '溯源产品',
@@ -956,6 +939,8 @@
         sfzf,
         sfzz,
         sfzsc,
+        zjzxx: [{img: yyzz}, {img: zzjgdm}],
+        sfz: [{img: sfzf}, {img: sfzz}, {img: sfzsc}],
         tupians: [
           {
             img: tupian1,
@@ -1339,10 +1324,6 @@
     margin-bottom: 0px;
   }
 
-  .list-zt-body {
-    background: #fff;
-  }
-
   .list-zt {
     text-align: center;
     box-sizing: border-box;
@@ -1556,7 +1537,6 @@
   .zcrzsh_table button.ivu-btn-large {
     padding: 3px 15px 3px 15px;
     margin-bottom: 10px;
-    margin-left: 30px;
   }
 
   .zcrzsh_table .ivu-table-wrapper {
@@ -1583,5 +1563,13 @@
     margin-bottom: 10px;
     margin-top: 10px;
     padding-bottom: 20px;
+  }
+
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
   }
 </style>

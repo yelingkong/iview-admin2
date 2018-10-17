@@ -516,6 +516,8 @@
           window.addEventListener('resize', function () {
             const myChart = echarts.init(_this.$refs.chart)
             myChart.resize();
+            const myChart2 = echarts.init(_this.$refs.chart2)
+            myChart2.resize();
           })
         }, 10)
       }

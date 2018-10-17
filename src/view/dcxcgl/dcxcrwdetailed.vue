@@ -609,9 +609,6 @@
     margin-bottom: 0px;
   }
 
-  .list-zt-body {
-    background: #fff;
-  }
 
   .list-zt {
     text-align: center;

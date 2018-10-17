@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Row justify="space-between" class="list-zt-body">
+    <Row justify="space-between" class="iv-bg-w">
       <div v-for="(item,index) in listzt">
         <Col span="6">
           <div class="list-zt" :class="{'hover':index==listztHover}" @click="listztHover=index">
@@ -32,13 +32,9 @@
               <Input v-model="value" placeholder="请输入主体名称"/>
             </FormItem>
           </i-col>
-          <i-col span="3" offset="21">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fr">查询</Button>
-            </i-col>
-            <i-col span="12">
+          <i-col span="24">
               <Button size="large" class="fr">重置</Button>
-            </i-col>
+              <Button type="primary" size="large" class="fr mr10">查询</Button>
           </i-col>
         </Form>
       </Row>
@@ -46,10 +42,8 @@
     <div class="zcrzsh_table">
       <Row :gutter="16">
         <Col>
-          <i-col span="3">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fl">处理</Button>
-            </i-col>
+          <i-col span="24">
+            <Button type="primary" size="large" class="fl ml30">处理</Button>
           </i-col>
         </Col>
       </Row>
@@ -60,7 +54,7 @@
       </Row>
       <Row :gutter="16" type="flex" justify="end">
         <Col span="24" justify="end" class="page_right">
-          <Page :total="100" show-sizer  show-elevator show-total />
+          <Page :total="100" show-sizer show-elevator show-total/>
         </Col>
         <Col span="1"></Col>
       </Row>
@@ -118,17 +112,18 @@
   import {getTableData} from '@/api/data'
   import Tables from '_c/tables'
   import expandRow from '_c/tables/table-expand2.vue'
+
   export default {
-    name:'ycztgl',
+    name: 'ycztgl',
     components: {
       Tables,
       expandRow
     },
-    data () {
+    data() {
       return {
         listztHover: 0,
-        modal_see:false,
-        huifuModal:false,
+        modal_see: false,
+        huifuModal: false,
         listzt: [
           {
             name: '合计主体数',
@@ -290,7 +285,7 @@
                   },
                   on: {
                     click: () => {
-                      this.huifuModal=true
+                      this.huifuModal = true
                     }
                   }
                 }, '恢复'),
@@ -301,7 +296,7 @@
                   },
                   on: {
                     click: () => {
-                      this.modal_see=true
+                      this.modal_see = true
                     }
                   }
                 }, '处理')
@@ -378,70 +373,70 @@
         ],
         data: [
           {
-          value: 'beijing',
-          label: '北京',
-          children: [
-            {
-              value: 'gugong',
-              label: '故宫'
-            },
-            {
-              value: 'tiantan',
-              label: '天坛'
-            },
-            {
-              value: 'wangfujing',
-              label: '王府井'
-            }
-          ]
-        }, {
-          value: 'jiangsu',
-          label: '江苏',
-          children: [
-            {
-              value: 'nanjing',
-              label: '南京',
-              children: [
-                {
-                  value: 'fuzimiao',
-                  label: '夫子庙',
-                }
-              ]
-            },
-            {
-              value: 'suzhou',
-              label: '苏州',
-              children: [
-                {
-                  value: 'zhuozhengyuan',
-                  label: '拙政园',
-                },
-                {
-                  value: 'shizilin',
-                  label: '狮子林',
-                }
-              ]
-            }
-          ],
-        }]
+            value: 'beijing',
+            label: '北京',
+            children: [
+              {
+                value: 'gugong',
+                label: '故宫'
+              },
+              {
+                value: 'tiantan',
+                label: '天坛'
+              },
+              {
+                value: 'wangfujing',
+                label: '王府井'
+              }
+            ]
+          }, {
+            value: 'jiangsu',
+            label: '江苏',
+            children: [
+              {
+                value: 'nanjing',
+                label: '南京',
+                children: [
+                  {
+                    value: 'fuzimiao',
+                    label: '夫子庙',
+                  }
+                ]
+              },
+              {
+                value: 'suzhou',
+                label: '苏州',
+                children: [
+                  {
+                    value: 'zhuozhengyuan',
+                    label: '拙政园',
+                  },
+                  {
+                    value: 'shizilin',
+                    label: '狮子林',
+                  }
+                ]
+              }
+            ],
+          }]
       }
     },
     mounted: function () {
 
     },
     methods: {
-      exportData (type) {
+      exportData(type) {
         this.$refs.table.exportCsv({
           filename: 'The original data'
         })
       },
-      show (index) {
+      show(index) {
         this.$Modal.info({
           title: 'User Info',
           content: `Name：${this.data1[index].name}<br>Age：${this.data1[index].age}<br>Address：${this.data1[index].address}`
         })
       },
-      remove (index) {
+      remove(index) {
         this.data1.splice(index, 1)
       }
     }
@@ -451,10 +446,6 @@
 <style lang="less">
   .count-style {
     font-size: 50px;
-  }
-
-  .list-zt-body {
-    background: #fff;
   }
 
   .list-zt {
@@ -585,6 +576,7 @@
   .button_left {
     margin-left: 10px !important;
   }
+
   /*处理结果class*/
   .shenhe_style {
     overflow: hidden;
@@ -598,20 +590,67 @@
   .modal_see .ivu-modal-body {
     padding: 0;
   }
-  .zcrzsh_search_row{margin-top: 20px;background: #fff;padding-top: 10px;padding-left: 30px;padding-right: 30px;}
-  .zcrzsh_search_row button.ivu-btn-large{padding: 3px 15px 3px 15px;}
-  .zcrzsh_search_row .ivu-form-item{margin-bottom: 15px;}
-  .zcrzsh_search_row .ivu-form .ivu-form-item-label{text-align: left;}
-  .zcrzsh_search{}
-  .zcrzsh_table{background: #fff;}
-  .zcrzsh_table button.ivu-btn-large{padding: 3px 15px 3px 15px;margin-bottom: 10px;margin-left: 30px;}
-  .zcrzsh_table .ivu-table-wrapper{margin: 0 30px;}
-  .zcrzsh_table .page_right{margin: 10px 30px;}
+
+  .zcrzsh_search_row {
+    margin-top: 20px;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .zcrzsh_search_row button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+  }
+
+  .zcrzsh_search_row .ivu-form-item {
+    margin-bottom: 15px;
+  }
+
+  .zcrzsh_search_row .ivu-form .ivu-form-item-label {
+    text-align: left;
+  }
+
+  .zcrzsh_search {
+  }
+
+  .zcrzsh_table {
+    background: #fff;
+  }
+
+  .zcrzsh_table button.ivu-btn-large {
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 10px;
+  }
+
+  .zcrzsh_table .ivu-table-wrapper {
+    margin: 0 30px;
+  }
+
+  .zcrzsh_table .page_right {
+    margin: 10px 30px;
+  }
+
   .expand-row {
     margin-bottom: 16px;
   }
-  td.ivu-table-expanded-cell{padding: 10px 0px;}
-  .zcrzsh_table td.ivu-table-expanded-cell.ivu-table-wrapper{margin: 0;}
+
+  td.ivu-table-expanded-cell {
+    padding: 10px 0px;
+  }
+
+  .zcrzsh_table td.ivu-table-expanded-cell.ivu-table-wrapper {
+    margin: 0;
+  }
+
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
+  }
+
   /*处理结果class*/
 </style>
 

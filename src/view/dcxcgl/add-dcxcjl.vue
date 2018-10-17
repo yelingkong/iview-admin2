@@ -1,7 +1,7 @@
 <template>
   <div>
     <Form :model="formItem" :label-width="120">
-      <Card title="基本资料">
+      <Card title="基本资料" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <template>
@@ -47,7 +47,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="被检单位">
+      <Card title="被检单位" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
@@ -76,7 +76,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="检查单位">
+      <Card title="检查单位" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
@@ -105,7 +105,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="检查人员">
+      <Card title="检查人员" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
@@ -134,12 +134,12 @@
           </Col>
         </Row>
       </Card>
-      <Card title="产地环境的安全性">
+      <Card title="产地环境的安全性" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
               <FormItem label="*检查人员：">
-                <Select filterable="true" v-model="modellist">
+                <Select  filterable="true" v-model="modellist">
                   <Option v-for="item in list" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </FormItem>
@@ -163,7 +163,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="生产经营的规范性">
+      <Card title="生产经营的规范性" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
@@ -176,7 +176,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="产品质量的安全性">
+      <Card title="产品质量的安全性" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
@@ -189,7 +189,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="包装标识的合法性">
+      <Card title="包装标识的合法性" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
@@ -202,7 +202,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="其他">
+      <Card title="其他" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
@@ -215,7 +215,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="上传图片（图片大小不得大于2M）">
+      <Card title="上传图片（图片大小不得大于2M）" class="detailed_card2">
         <template>
           <div class="demo-upload-list" v-for="item in uploadList">
             <template v-if="item.status === 'finished'">

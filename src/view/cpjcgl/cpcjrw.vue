@@ -25,13 +25,9 @@
             </FormItem>
           </i-col>
 
-          <i-col span="3" offset="21">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fr">查询</Button>
-            </i-col>
-            <i-col span="12">
-              <Button size="large" class="fr">重置</Button>
-            </i-col>
+          <i-col span="24">
+            <Button size="large" class="fr">重置</Button>
+            <Button type="primary" size="large" class="fr mr10">查询</Button>
           </i-col>
         </Form>
       </Row>
@@ -39,12 +35,12 @@
     <div class="zcrzsh_table">
       <Row >
         <router-link to="/cpcjgl/cpcjrwadd">
-          <Button class="exportdata" type="primary" size="large">
+          <Button class="ml30 mr10" type="primary" size="large">
             <Icon type="md-add"/>
             新增任务
           </Button>
         </router-link>
-        <Button class="exportdata" size="large">删除</Button>
+        <Button class="" size="large">删除</Button>
         <Col>
           <Table :columns="columns" :data="tableData" ref="table"></Table>
         </Col>
@@ -285,10 +281,6 @@
     font-size: 50px;
   }
 
-  .list-zt-body {
-    background: #fff;
-  }
-
   .list-zt {
     text-align: center;
     margin: 25px auto;
@@ -453,7 +445,6 @@
   .zcrzsh_table button.ivu-btn-large {
     padding: 3px 15px 3px 15px;
     margin-bottom: 10px;
-    margin-left: 30px;
   }
 
   .zcrzsh_table .ivu-table-wrapper {
@@ -464,5 +455,13 @@
     margin: 10px 30px;
   }
   .mtpt0{margin-top: 0;}
+
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
+  }
 </style>
 

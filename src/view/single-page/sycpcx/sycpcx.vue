@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Row justify="space-between" class="list-zt-body">
+    <Row justify="space-between" class="iv-bg-w">
       <div v-for="(item,index) in listzt">
         <Col class="list_zt_7">
           <div class="list-zt" :class="{'hover':index==listztHover}" @click="listztHover=index">
@@ -37,20 +37,16 @@
             </FormItem>
           </i-col>
 
-          <i-col span="3" offset="21">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fr">查询</Button>
-            </i-col>
-            <i-col span="12">
-              <Button size="large" class="fr">重置</Button>
-            </i-col>
+          <i-col span="24">
+            <Button size="large" class="fr">重置</Button>
+            <Button type="primary" size="large" class="fr mr10">查询</Button>
           </i-col>
         </Form>
       </Row>
     </Row>
     <div class="zcrzsh_table">
       <Row>
-        <Button type="primary" size="large" @click="exportData(1)">导出数据</Button>
+        <Button type="primary" size="large" class="ml30" @click="exportData(1)">导出数据</Button>
         <Col>
           <Table :columns="columns" :data="tableData" ref="table"></Table>
         </Col>
@@ -135,6 +131,9 @@
       <Card title="标签打印明细">
         <div class="shenhe_style">
           <Table :columns="bqdyColumns" :data="bqdyTableData" ref="table"></Table>
+          <Col span="24" justify="end" class="page_right">
+          <Page :total="100" show-sizer  show-elevator show-total  transfer />
+        </Col>
         </div>
       </Card>
     </Modal>
@@ -391,10 +390,6 @@
     font-size: 50px;
   }
 
-  .list-zt-body {
-    background: #fff;
-  }
-
   .list-zt {
     text-align: center;
     margin: 25px auto;
@@ -587,7 +582,6 @@
   .zcrzsh_table button.ivu-btn-large {
     padding: 3px 15px 3px 15px;
     margin-bottom: 10px;
-    margin-left: 30px;
   }
 
   .zcrzsh_table .ivu-table-wrapper {
@@ -596,6 +590,14 @@
 
   .zcrzsh_table .page_right {
     margin: 10px 30px;
+  }
+
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
   }
 </style>
 

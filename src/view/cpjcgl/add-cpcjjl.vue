@@ -1,7 +1,7 @@
 <template>
   <div>
     <Form :model="formItem" :label-width="120">
-      <Card title="基本资料">
+      <Card title="基本资料" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="24">
@@ -80,7 +80,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="采样人员">
+      <Card title="采样人员" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="20">
@@ -109,7 +109,7 @@
           </Col>
         </Row>
       </Card>
-      <Card title="检测记录">
+      <Card title="检测记录" class="detailed_card2">
         <Row>
           <Col span="20" offset="2">
             <i-col span="12">

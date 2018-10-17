@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Row class="zcrzsh_search_row mb20 mtpt0">
+    <Row class="zcrzsh_search_row iv-mb10 iv-pb20">
       <Row :gutter="16">
         <Form :label-width="100">
           <i-col span="8">
@@ -14,19 +14,15 @@
                           style="width: 100%" transfer></DatePicker>
             </FormItem>
           </i-col>
-          <i-col span="3" offset="21">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fr">查询</Button>
-            </i-col>
-            <i-col span="12">
-              <Button size="large" class="fr">重置</Button>
-            </i-col>
+          <i-col span="24">
+            <Button size="large" class="fr">重置</Button>
+            <Button type="primary" size="large" class="fr mr10">查询</Button>
           </i-col>
         </Form>
       </Row>
     </Row>
     <Card title="常州市各类溯源主体分布" :padding="0" shadow class="qytj_table">
-      <Row justify="space-between" class="list-zt-body">
+      <Row justify="space-between" class="iv-bg-w iv-mb10">
         <div v-for="(item,index) in listzt">
           <Col class="list-zt-5">
             <div class="list-zt" :class="{'hover':index==listztHover}" @click="listztHover=index">
@@ -241,10 +237,6 @@
     font-size: 50px;
   }
 
-  .list-zt-body {
-    background: #fff;
-    margin-bottom: 20px;
-  }
 
   .list-zt {
     text-align: center;
@@ -379,5 +371,13 @@
   }
   .mb20{margin-bottom: 20px;padding-bottom: 10px;}
   .mtpt0{margin-top: 0px;}
+
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
+  }
 </style>
 

@@ -121,21 +121,10 @@
 </template>
 
 <script>
-  import yyzz from '@/assets/images/yyzz.jpg'
-  import zzjgdm from '@/assets/images/zhengshu1.jpg'
-  import sfzz from '@/assets/images/sfzz.jpg'
-  import sfzf from '@/assets/images/sfzf.jpg'
-  import sfzsc from '@/assets/images/sfzsc.jpg'
-
   export default {
     name: 'argu_page',
     data() {
       return {
-        yyzz,
-        zzjgdm,
-        sfzf,
-        sfzz,
-        sfzsc,
         modal_see: false,
       }
     }

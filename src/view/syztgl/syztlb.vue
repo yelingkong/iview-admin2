@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Row justify="space-between" class="list-zt-body">
+    <Row justify="space-between" class="iv-bg-w">
       <div v-for="(item,index) in listzt">
         <Col class="list_zt_5">
           <div class="list-zt" :class="{'hover':index==listztHover}" @click="listztHover=index">
@@ -55,13 +55,9 @@
               <Input v-model="value" placeholder="请输入主体名称"/>
             </FormItem>
           </i-col>
-          <i-col span="3" offset="21">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fr">查询</Button>
-            </i-col>
-            <i-col span="12">
+          <i-col span="24">
               <Button size="large" class="fr">重置</Button>
-            </i-col>
+            <Button type="primary" size="large" class="fr mr10">查询</Button>
           </i-col>
         </Form>
       </Row>
@@ -364,10 +360,6 @@
     font-size: 50px;
   }
 
-  .list-zt-body {
-    background: #fff;
-  }
-
   .list-zt {
     text-align: center;
     margin: 25px auto;
@@ -532,7 +524,6 @@
   .zcrzsh_table button.ivu-btn-large {
     padding: 3px 15px 3px 15px;
     margin-bottom: 10px;
-    margin-left: 30px;
   }
 
   .zcrzsh_table .ivu-table-wrapper {
@@ -543,5 +534,13 @@
     margin: 10px 30px;
   }
   .mt10{padding-top: 10px;}
+
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
+  }
 </style>
 

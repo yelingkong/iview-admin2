@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Row justify="space-between" class="list-zt-body">
+    <Row justify="space-between" class="iv-mb10 iv-bg-w">
       <div v-for="(item,index) in listzt">
         <Col span="6">
           <div class="list-zt" :class="{'hover':index==listztHover}" @click="listztHover=index">
@@ -38,13 +38,9 @@
               </Select>
             </FormItem>
           </i-col>
-          <i-col span="3" offset="21">
-            <i-col span="12">
-              <Button type="primary" size="large" class="fr">查询</Button>
-            </i-col>
-            <i-col span="12">
-              <Button size="large" class="fr">重置</Button>
-            </i-col>
+          <i-col span="24">
+            <Button size="large" class="fr">重置</Button>
+            <Button type="primary" size="large" class="fr mr10">查询</Button>
           </i-col>
         </Form>
       </Row>
@@ -52,12 +48,12 @@
     <div class="zcrzsh_table">
       <Row>
         <router-link to="/cpcjgl/cpcjjladd">
-          <Button class="exportdata" type="primary" size="large">
+          <Button class="ml30 mr10" type="primary" size="large">
             <Icon type="md-add"/>
             新增任务
           </Button>
         </router-link>
-        <Button class="exportdata" size="large">删除</Button>
+        <Button size="large">删除</Button>
       </Row>
       <Row>
         <Col span="24">
@@ -361,11 +357,6 @@
     font-size: 50px;
   }
 
-  .list-zt-body {
-    background: #fff;
-    margin-bottom: 10px;
-  }
-
   .list-zt {
     text-align: center;
     margin: 25px auto;
@@ -533,7 +524,6 @@
   .zcrzsh_table button.ivu-btn-large {
     padding: 3px 15px 3px 15px;
     margin-bottom: 10px;
-    margin-left: 30px;
   }
 
   .zcrzsh_table .ivu-table-wrapper {
@@ -542,5 +532,13 @@
 
   .zcrzsh_table .page_right {
     margin: 10px 30px;
+  }
+
+  .ml30 {
+    margin-left: 30px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
   }
 </style>

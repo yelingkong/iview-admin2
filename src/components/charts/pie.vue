@@ -80,7 +80,19 @@
         }
         let dom = echarts.init(this.$refs.dom, 'tdTheme')
         dom.setOption(option)
-      })
+      }),
+        this.selfAdaption()
+    },
+    methods: {
+      selfAdaption() {
+        let _this = this;
+        setTimeout(() => {
+          window.addEventListener('resize', function () {
+            const myChart = echarts.init(_this.$refs.dom)
+            myChart.resize();
+          })
+        }, 10)
+      }
     }
   }
 </script>
