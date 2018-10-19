@@ -5,34 +5,46 @@
         <Card shadow title="溯源信息统计" style="text-align: left">
           <Row :gutter="16">
             <Col span="4">
+              <router-link to="/sjtjfx/syqytj">
               <div class="suyuan_message"><h3>溯源主体总数</h3>
                 <p><span>682</span>家</p>
               </div>
+            </router-link>
             </Col>
             <Col span="4">
+              <router-link to="/sjtjfx/syqytj">
               <div class="suyuan_message"><h3>溯源三品企业数</h3>
                 <p><span>682</span>家</p>
               </div>
+              </router-link>
             </Col>
             <Col span="4">
+              <router-link to="/sjtjfx/ncpzsmtj">
               <div class="suyuan_message"><h3>溯源产品数</h3>
                 <p><span>682</span>家</p>
               </div>
+              </router-link>
             </Col>
             <Col span="4">
+              <router-link to="/sjtjfx/sycptj">
               <div class="suyuan_message"><h3>溯源产品品种数</h3>
                 <p><span>682</span>家</p>
               </div>
+              </router-link>
             </Col>
             <Col span="4">
+              <router-link to="/sjtjfx/ncpzsmtj">
               <div class="suyuan_message"><h3>追溯码打印张数</h3>
                 <p><span>682</span>家</p>
               </div>
+              </router-link>
             </Col>
             <Col span="4">
+              <router-link to="/sjtjfx/zsmcxtj">
               <div class="suyuan_message"><h3>追溯码查询次数</h3>
                 <p><span>682</span>家</p>
               </div>
+              </router-link>
             </Col>
           </Row>
         </Card>
@@ -585,6 +597,7 @@
     font-size: 14px;
     padding-top: 30px;
     font-weight: 400;
+    color: #515a6e;
   }
 
   .suyuan_message span {

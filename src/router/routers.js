@@ -393,6 +393,15 @@ export default [
         },
         component: () => import('@/view/sjtjfx/cpcjtj.vue')
       },
+      {
+        path: 'zsmcxtj',
+        name: 'zsmcxtj',
+        meta: {
+          icon: 'md-trending-up',
+          title: '追溯码查询统计'
+        },
+        component: () => import('@/view/sjtjfx/zsmcxtj.vue')
+      },
     ]
   },
   {
